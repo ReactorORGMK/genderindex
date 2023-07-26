@@ -1,0 +1,12 @@
+
+<div class="admin">
+    <div class="admin-nav container-fluid">
+      <div class="row" style="padding: 10px 0px">
+        <div class="col-md-10">Добредојдовте! Родов индекс</div>
+        <div class="col-md-2">
+          <span><i class="fas fa-user-ninja"></i> {{ (authService.user | async)?.email }}!</span>
+          <span style="padding-left: 20px"><i class="fas fa-power-off" (click)="logout()" style=""></i></span>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<admin-navbar></admin-navbar>
+<div class="container-fluid" class="header-block"><a [routerLink]="['/admin']"> <span class="first">почетна</span> </a> / 
+</div>
+<div class="admin">
+  <div class="container">
+    <div class="block">
+      <div class="action">
+        <span class="action-1">  
+    <select class='select-option' [(ngModel)]='optionSelected'>
+    	<option class='option' *ngFor='let option of dropdownOptions' [value]="option.id">{{option.name}}</option>
+    </select>
+		</span>
+        <span class="action-2"><button type="button" class="btn btn-default" (click)="removeRegion()">Избриши</button></span>
+        <span class="action-3"><button type="button" class="btn btn-default" (click)="redirectNewRegion()">Додади</button></span>
+        <div class=" error">{{error}}
+        </div>
+      </div>
+      <ul>
+        <li *ngFor="let region of regionList | async">
+          <span> 
+			<input type="checkbox"  (click)="getCheckboxVal($event, region.key)" ></span>
+          <a [routerLink]="['/admin-region',region.key]"><span> {{ region.key }}</span></a> 
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

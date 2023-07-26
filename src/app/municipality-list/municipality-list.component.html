@@ -1,0 +1,61 @@
+<app-navigation (languageEmit)="recieveLang($event)"></app-navigation>
+<span class="years_btn_position">
+    <span *ngFor="let year of years">
+      <span *ngIf="year.key!=lastYear" class="years_btn_style"(click)="changeYear(year.key)">
+        {{year.key}}
+        <span class="years_tooltip">{{'Click to view the data for'|translate}} {{year.key}} {{"год."|translate}}
+          <span class="arrow_up"></span>
+        </span>
+      </span>
+    </span>
+  </span>
+<div class="container bottom munList">
+
+  <h6 class="title">{{"municipalities"|translate}}</h6>
+   <div *ngIf="lastYear" class="current_year" style="top:48px;font-size: 16px;">( {{lastYear}} {{"год."|translate}} )</div>
+  <div class="row">
+    <div class="col-md-12">
+
+      <chart [options]="options" ></chart>
+    </div>
+<!--     <div class="download_pdf"><i class="fal fa-arrow-circle-down"></i></div>
+ -->   <!--  <div class="col-md-12 municipality row">
+      <ul class="row" style="width: 80%;margin: 0 auto;">
+        <li *ngFor="let region of regions" class="col-md-3">
+          <div style="margin-top: 30px">
+            <span class="region_name"> {{region.regionkey}}</span>
+            <ul style="width:100%">
+              <li *ngFor="let mun of region.mun" style="width:100%">
+                <div><a [routerLink]="['/municipality-list',mun.key]">{{mun.val}} <span style="text-transform: uppercase;font-family: ArsenalB">({{mun.key}})</span></a></div>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div> -->
+
+
+
+
+
+ <div class="col-md-12 municipality row" style="margin: 0 auto">
+      <ul class="row" style="width: 80%;margin: 0 auto;">
+        <li *ngFor="let region of regions" class="col-md-3 col-6">
+          <div style="margin-top: 30px">
+            <span class="region_name">{{region.regionkey | translate}}</span>
+            <ul style="width:100%">
+              <li *ngFor="let mun of region.mun | orderByMun" style="width:100%">
+                <div><a [routerLink]="['/municipality-list',lastYear,mun.link ]">{{ mun.name | translate}} <span style="text-transform: uppercase;font-family: ArsenalB;font-size: 12px">  ({{mun.code | translate}})</span></a></div>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+
+
+
+  </div>
+</div>
+<app-footer></app-footer>

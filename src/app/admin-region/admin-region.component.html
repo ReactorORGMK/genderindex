@@ -1,0 +1,45 @@
+<admin-navbar></admin-navbar>
+<div class="container-fluid" class="header-block"><a [routerLink]="['/admin']"> <span class="first">почетна</span> </a> / 
+<a [routerLink]="['/admin-region-list']"> <span >региони</span></a> / </div>
+
+<div class="admin">
+  <div class="container">
+    <div class="block">
+      <form>
+        <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="nameRegion">Регион</label>
+            </div>
+            <div class="col-md-7">
+              <input id="nameRegion" type="text" [(ngModel)]="nameRegion" name="nameRegion" class="form-control">
+            </div>
+             <div class="col-md-1" class="required">*</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="municipality">Општини</label>
+            </div>
+            <div class="col-md-7 checkbox-box">
+              <ul>
+                <li *ngFor="let municipality of municipalityList | async">
+                  <span>
+      				<input type="checkbox"  (click)="getCheckboxVal($event, municipality.key,  municipality.val.name, municipality.val.code, municipality.val.codeGraph, municipality.val.colorGraph)" ></span>
+                  <span> {{ municipality.val.name }}</span>
+                </li>
+              </ul>
+            </div>
+             <div class="col-md-1" class="required">*</div>
+          </div>
+        </div>
+                <div class="error">{{error}}</div>
+
+        <div class="col-md-12">
+          <button class="btn btn-primary" (click)="addRegion(nameRegion)">Зачувај</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

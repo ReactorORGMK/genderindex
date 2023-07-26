@@ -1,0 +1,1010 @@
+@import url(~bootstrap/dist/css/bootstrap.min.css);
+@import url(~@fortawesome/fontawesome-pro/css/all.css);
+*:focus {
+  outline: none; }
+
+@font-face {
+  font-family: Arsenal;
+  src: url(./assets/fonts/Arsenal-Regular.otf); }
+@font-face {
+  font-family: ArsenalB;
+  src: url(./assets/fonts/Arsenal-Bold.otf); }
+@font-face {
+  font-family: FontAwesome;
+  src: url(./assets/fonts/fa-solid-900.ttf); }
+body {
+  font-family: Arsenal; }
+
+a {
+  color: #2d2c2c; }
+  a:hover {
+    color: #7e7a7a !important;
+    text-decoration: none !important; }
+    b{
+      font-family: ArsenalB
+    }
+
+.in {
+  display: block !important;
+  transition: height 2s;
+  height: 180px !important; }
+
+.navbar-collapse {
+  transition: all 2s; }
+
+/*purple light*/
+/*purple mid dark*/
+/*purple dark*/
+[ng\:cloak],
+[ng-cloak],
+.ng-cloak {
+  display: none !important; }
+
+ul li {
+  list-style: none; }
+
+.required {
+  color: red; }
+
+.admin .fullBack {
+  background: #eef4ff; }
+  .admin .fullBack a {
+    color: #566f9e; }
+    .admin .fullBack a:hover {
+      text-decoration: none; }
+      .admin .fullBack a:hover span {
+        background: #6d7b9814; }
+  .admin .fullBack .main_cat {
+    padding: 5px 30px;
+    border-bottom: 1px solid #566f9e;
+    display: block; }
+    .admin .fullBack .main_cat:hover {
+      background: #6d7b9814;
+      cursor: pointer; }
+.admin .admin-nav {
+  background: #566f9e;
+  color: white; }
+.admin .fullHeight {
+  position: relative;
+  height: 100vh; }
+  .admin .fullHeight .box {
+    width: 500px;
+    text-transform: center; }
+  .admin .fullHeight .centerBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0 auto;
+    right: 0;
+    transform: translate(-50%, -50%); }
+    .admin .fullHeight .centerBox .loginForm {
+      padding: 27px;
+      background: white;
+      border-radius: .25rem;
+      border: 1px solid #bccef0; }
+      .admin .fullHeight .centerBox .loginForm label {
+        position: absolute;
+        line-height: 2.3;
+        padding: 0px 15px; }
+        .admin .fullHeight .centerBox .loginForm label i {
+          color: #bccef0; }
+      .admin .fullHeight .centerBox .loginForm input {
+        padding-left: 40px;
+        border: 1px solid #bccef0; }
+.admin .fa-power-off {
+  cursor: pointer; }
+.admin .block {
+  margin-top: 20px; }
+.admin textarea {
+  height: 150px; }
+.admin ul {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .admin ul li {
+    margin: 20px 0 20px; }
+.admin .action span[class*="action-"] {
+  margin: 0px 5px; }
+.admin .btn {
+  padding: 0px 30px; }
+.admin .error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  margin: 5px; }
+.admin .checkbox-box {
+  overflow-y: scroll;
+  height: 230px; }
+  .admin .checkbox-box ul li {
+    border-bottom: 1px solid #d2dff7;
+    margin: 0px 0 3px; }
+.admin .grade-box {
+  margin-top: 75px;
+  background: #566f9e;
+  color: white; }
+.admin .els_li {
+  margin: 0; }
+.admin .line_parts {
+  padding: 10px 0px; }
+.admin button {
+  background: #566f9e !important;
+  color: white; }
+
+.header-block {
+  background: #eef4ff;
+  border-bottom: 1px solid #c3d4e5; }
+  .header-block span.first {
+    padding-left: 15px; }
+
+/*end admin*/
+.bottom {
+  padding-bottom: 45px; }
+
+/*mapa*/
+.highcharts-container {
+  margin: 0 auto; }
+
+.highcharts-background {
+  opacity: 0; }
+
+chart[type^="Map"] .highcharts-container {
+  margin: 0 auto;
+  width: 60% !important; }
+  chart[type^="Map"] .highcharts-container svg {
+    height: 92vh;
+    width: 100%; }
+
+.bg-light {
+  background-color: #f6f6f6 !important; }
+
+.myNav {
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #000000;
+  height: 1px;
+  transition: height 2s;
+  position: relative;
+  z-index: 3; }
+
+.navbar-light .navbar-nav .nav-link {
+  color: black; }
+
+.nav-link-in {
+  max-height: 0;
+  overflow: hidden;
+  position: absolute;
+  background: #f6f6f6 !important;
+  /* Set our transitions up. */
+  -webkit-transition: max-height 0.8s;
+  -moz-transition: max-height 0.8s;
+  transition: max-height 0.8s, color .2s; }
+  .nav-link-in li {
+    transition: max-height 0.8s, color .2s; }
+    .nav-link-in li:hover {
+      color: #f19a60 !important; }
+
+.nav-item {
+  cursor: pointer; }
+  .nav-item:hover .nav-link-in {
+    max-height: 200px;
+    background: #f6f6f6 !important; }
+
+.nav-link {
+  color: black;
+  -webkit-transition: color .2s;
+  /* Safari */
+  transition: color .2s; }
+  .nav-link:hover {
+    color: #f19a60 !important; }
+
+.highcharts-tooltip .map {
+  background: white;
+  width: 200px;
+  height: 158px;
+  box-shadow: 1px 1px 2px 1px #7272726e;
+  text-align: center; }
+  .highcharts-tooltip .map .triangle {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #fff;
+    margin: 0 auto;
+    position: relative;
+    top: 5px; }
+  .highcharts-tooltip .map .name_mun {
+    font-size: 15px;
+    text-transform: uppercase;
+    padding-top: 17px;
+    font-family: ArsenalB; }
+  .highcharts-tooltip .map .grades {
+    font-size: 15px;
+    text-transform: uppercase;
+    padding: 5px 0px;
+    font-family: Arsenal;
+    background: #770E2A;
+    color: white;
+    margin-top: 11px; }
+.highcharts-tooltip span span:first-child {
+  display: none; }
+.highcharts-tooltip span span:nth-child(2) {
+  display: none; }
+
+ul {
+  margin: 0;
+  padding: 0; }
+  ul .list {
+    padding-bottom: 10px; }
+
+.active {
+  font-family: ArsenalB; }
+
+ul.domenSubdomen li:last-child div:nth-child(2) {
+  border-right: 0 !important; }
+
+div.subdomenList {
+  margin-left: 5px;
+  display: table;
+  height: 100%;
+  font-size: 15px; }
+  div.subdomenList div {
+    display: table-cell;
+    vertical-align: middle;
+    cursor: pointer; }
+
+div[id^='label'] {
+  font-size: 10px;
+  line-height: 0.9; }
+  div[id^='label'] .subdomen {
+    visibility: hidden; }
+  div[id^='label'] div[id$='1rank'],
+  div[id^='label'] div[id$='2grade'],
+  div[id^='label'] div[id$='3avg'],
+  div[id^='label'] #label5_8population {
+    font-size: 10px;
+    line-height: 0.9;
+    visibility: hidden; }
+
+.columnsTable {
+  font-size: 14px;
+  text-align: center; }
+
+div.domenList {
+  font-family: ArsenalB;
+  display: table;
+  height: 100%;
+  color: #f19a60; }
+  div.domenList div {
+    display: table-cell;
+    vertical-align: middle;
+    padding-top: 60px;
+    font-size: 16px;
+    cursor: pointer; }
+
+.valueBox {
+  height: 55px;
+  position: relative;
+  border-bottom: 1px solid #eaeaea; }
+  .valueBox .valueBoxIn {
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0; }
+
+.municipality li:nth-child(-n+4),
+.municipality li:nth-child(1n+4) {
+  width: 25%;
+  display: inline-block; }
+.municipality .list {
+  cursor: pointer; }
+
+.profileText {
+  text-transform: uppercase;
+  font-family: ArsenalB;
+  padding-bottom: 40px;
+  font-size: 14px; }
+
+.imageMun {
+  margin: 0 auto;
+  text-align: center; }
+
+.profileMun .imageMun,
+.profileMun .rangMun,
+.profileMun .demograficData {
+  margin: 0 15px; }
+  .profileMun .imageMun .area,
+  .profileMun .imageMun .population,
+  .profileMun .imageMun .women,
+  .profileMun .imageMun .men,
+  .profileMun .imageMun .budget,
+  .profileMun .imageMun .region,
+  .profileMun .imageMun .plannedbudget,
+  .profileMun .imageMun .numberRateInfants,
+  .profileMun .imageMun .numberRateMaternal,
+  .profileMun .imageMun .numberCompany,
+  .profileMun .imageMun .numberPlot,
+  .profileMun .imageMun .numberObject,
+  .profileMun .imageMun .numberFlat,
+  .profileMun .rangMun .area,
+  .profileMun .rangMun .population,
+  .profileMun .rangMun .women,
+  .profileMun .rangMun .men,
+  .profileMun .rangMun .budget,
+  .profileMun .rangMun .region,
+  .profileMun .rangMun .plannedbudget,
+  .profileMun .rangMun .numberRateInfants,
+  .profileMun .rangMun .numberRateMaternal,
+  .profileMun .rangMun .numberCompany,
+  .profileMun .rangMun .numberPlot,
+  .profileMun .rangMun .numberObject,
+  .profileMun .rangMun .numberFlat,
+  .profileMun .demograficData .area,
+  .profileMun .demograficData .population,
+  .profileMun .demograficData .women,
+  .profileMun .demograficData .men,
+  .profileMun .demograficData .budget,
+  .profileMun .demograficData .region,
+  .profileMun .demograficData .plannedbudget,
+  .profileMun .demograficData .numberRateInfants,
+  .profileMun .demograficData .numberRateMaternal,
+  .profileMun .demograficData .numberCompany,
+  .profileMun .demograficData .numberPlot,
+  .profileMun .demograficData .numberObject,
+  .profileMun .demograficData .numberFlat {
+    padding: 8px 0px;
+    font-size: 14px; }
+  .profileMun .imageMun .dataValue,
+  .profileMun .rangMun .dataValue,
+  .profileMun .demograficData .dataValue {
+    font-family: ArsenalB; }
+.profileMun .rangMun {
+  margin-top: 50px;
+  width: 100%; }
+  .profileMun .rangMun .index {
+    display: inline-block; }
+    .profileMun .rangMun .index .text {
+      color: #f19a60;
+      font-family: ArsenalB;
+      font-size: 26px; }
+
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  padding: 45px 0px;
+  
+  font-family: ArsenalB; }
+
+.staticPage {
+  padding-bottom: 80px;
+  text-align: justify; }
+
+.contactPage .contact {
+  padding: 5px 0px; }
+  .contact span{
+    margin-left: 5px
+  }
+
+.footer {
+  background: #f6f6f6 !important; }
+  .footer .mainText {
+    text-align: justify;
+    font-size: 12px; }
+    .footer .mainText .text {
+      font-size: 10px;
+      text-align: justify;
+      padding: 10px 0; }
+
+.error404 {
+  font-size: 40px;
+  text-align: center;
+  padding-top: 100px;
+  font-weight: bold; }
+
+.mainGrades {
+  width: 50px !important;
+  height: 50px !important; }
+
+.munTitle {
+  text-align: center;
+  text-transform: uppercase;
+  padding: 15px 0px;
+  margin: 50px 0px; }
+
+.dom .domen .columnsTable div:nth-child(2) {
+  padding-top: 40px; }
+.dom .domen:nth-child(n+2) {
+  margin-top: 80px; }
+.dom .domen1:nth-child(n+3) {
+  margin-top: 80px; }
+  .dom .domen1:nth-child(n+3) .lineMun {
+    border-right: 1px solid #f2f2f2;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: auto;
+    right: 50%;
+    margin: auto; }
+  .dom .domen1:nth-child(n+3) .num {
+    font-size: 16px; }
+
+.download_pdf {
+  width: 100%;
+  text-align: center;
+  font-size: 40px; }
+
+.region_name {
+  text-transform: uppercase;
+  font-family: ArsenalB; }
+
+.description {
+  text-align: justify; }
+
+.dropdown-item {
+  font-size: 11px; }
+
+.munList .highcharts-column-series, .munList .munCode {
+  text-transform: uppercase; }
+.munList .highcharts-legend-nav-active {
+  fill: orange; }
+
+.currentMunicipality {
+  position: relative; }
+  .currentMunicipality .domenList div:hover {
+    color: #ffbc90; }
+  .currentMunicipality .subdomenList div:hover {
+    color: #7e7a7a !important; }
+  .currentMunicipality .highcharts-container {
+    margin: 0 !important;
+    width: 100% !important; }
+  .currentMunicipality .compare .input-group-text {
+    color: orange !important;
+    font-size: 0.8rem !important; }
+  .currentMunicipality .btn-primary {
+    color: #242424 !important;
+    background-color: #ffffff !important;
+    border-color: #dfdfdf !important;
+    padding: 3px 11px !important; }
+
+.orangeText {
+  color: #f19a60;
+  font-family: ArsenalB; }
+
+.tooltipChart {
+  margin-left: 10px; }
+
+.num {
+  font-family: ArsenalB; }
+
+.mytooltip {
+  width: 170px;
+  position: absolute;
+  top: -36px;
+  padding: 4px 0px;
+  display: none;
+  font-size: 12px;
+  background: #f6f6f6;
+  text-align: center;
+  color: #363636;
+  border: 1px solid #ededed; }
+  .mytooltip:before {
+    content: "\f0d7";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    color: #ededed;
+    font-size: 20px;
+    padding-right: 0.5em;
+    position: absolute;
+    top: 13px;
+    left: 10px; }
+
+.activePoimnik {
+  width: 100%;
+  opacity: 1;
+  background: #f6f6f6;
+  opacity: 0;
+  position: absolute;
+  top: -300%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 150;
+  box-shadow: 1px 1px 4px 1px #d6d6d6;
+  transition: all 1s ease-in-out; }
+
+.activeMap {
+  width: 100%;
+  opacity: 1;
+  background: #f6f6f6;
+  opacity: 0;
+  position: absolute;
+  top: -300%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 150;
+  box-shadow: 0px 0px 3px 1px #e2e2e2;
+  transition: all 1s ease-in-out; }
+
+.myclass {
+  top: 0;
+  opacity: 1; }
+
+#removeBox {
+  cursor: pointer; }
+
+#poimnik,
+#mapa {
+  cursor: pointer; }
+  #poimnik:hover .mytooltip,
+  #mapa:hover .mytooltip {
+    display: block !important; }
+
+.titleMap, .titleDictionary {
+  text-align: center;
+  text-transform: uppercase;
+  padding: 10px; }
+
+.frameDictionary {
+  padding: 0px 40px;
+  border-top: 1px solid #ededed;
+  border-bottom: 1px solid #ededed;
+  background: white;
+  margin-bottom: 40px; }
+
+.dictionary {
+  margin-top: 30px; }
+  .dictionary .orangeText {
+    font-size: 1rem;
+    text-transform: uppercase; }
+
+span[class^="indicator"], span[class^="technic"] {
+  cursor: pointer;
+  font-family: ArsenalB; }
+  span[class^="indicator"] i, span[class^="technic"] i {
+    color: #f19a60; }
+
+span[class^="domen_indicator"] {
+  cursor: pointer; }
+
+span[class^="subdomen_indicator"] {
+  cursor: pointer; }
+
+.indi {
+  margin: 10px 0px;
+  text-align: justify; }
+
+.openDictionary {
+  max-height: 500px;
+  /* opacity: 1; */
+  visibility: visible;
+  -webkit-transition: opacity .3s ease-in, max-height 0.3s ease-in;
+  -moz-transition: opacity .3s ease-in, max-height 0.3s ease-in;
+  transition: opacity .3s ease-in, max-height 0.3s ease-in;
+  overflow: visible;
+  padding: 5px 15px; }
+
+.closeDictionary {
+  overflow: hidden;
+  max-height: 0px;
+  opacity: 0;
+  visibility: hidden;
+  padding: 5px 15px;
+  -webkit-transition: opacity .5s ease-out, visibility .5s ease-out, max-height 0.5s ease-out;
+  -moz-transition: opacity .5s ease-out, visibility .5s ease-out, max-height 0.5s ease-out;
+  transition: opacity .5s ease-out, visibility .5s ease-out, max-height 0.5s ease-out; }
+
+.poimnikIcon {
+  margin-right: 5px; }
+  .poimnikIcon i {
+    color: white;
+    font-size: 10px;
+    text-align: center;
+    width: 100%;
+    padding: 6px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: block; }
+
+.circleIcon {
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  display: inline-block;
+  background: orange;
+  position: relative; }
+  .circleIcon i {
+    font-size: 10px;
+    text-align: center;
+    width: 100%;
+    padding: 7px 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: block; }
+  .circleIcon .circleIn {
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    background: white;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto; }
+
+.munCompare {
+  font-size: 14px; }
+  .munCompare .dataLink {
+    cursor: pointer; }
+  .munCompare .domenLink:hover {
+    color: #ffbc90; }
+  .munCompare .subdomenLink:hover {
+    color: #7e7a7a !important; }
+  .munCompare .indexData {
+    padding-top: 50px;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+    margin-top: 7px;
+    border-top: 1px solid #eee; }
+  .munCompare .indexRS {
+    font-size: 20px;
+    padding-bottom: 15px;
+    padding-top: 10px; }
+  .munCompare .subdomenData,
+  .munCompare .columnData,
+  .munCompare .domenData {
+    padding-bottom: 15px;
+    line-height: 0.9; }
+  .munCompare div[id^='label'] {
+    font-size: 10px;
+    line-height: 0.9;
+    display: none; }
+    .munCompare div[id^='label'] .subdomen {
+      display: none; }
+  .munCompare .munName {
+    text-transform: uppercase;
+    font-family: ArsenalB;
+    padding: 10px; }
+
+/*home navigation*/
+.navigationUp {
+  background: #f6f6f6 !important;
+  border-bottom: 1px solid #ededed;
+  z-index: 1000;
+  position: relative; }
+
+.homeClass {
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 95vh;
+  overflow: hidden; }
+  .homeClass .home_title {
+    margin-top: 20%;
+    background: #606060;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    height: 55px;
+    line-height: 3.3; }
+  .homeClass .homeSliderText {
+    margin: 0px 6%;
+    cursor: pointer; }
+    .homeClass .homeSliderText .subject {
+      font-family: ArsenalB;
+      text-transform: uppercase; }
+    .homeClass .homeSliderText .description,
+    .homeClass .homeSliderText .subject {
+      cursor: text; }
+
+    /*.domenSubdomen {
+      text-transform: uppercase;
+
+      span {
+        display: block;
+
+      }
+    }*/
+#loaderData {
+  visibility: hidden;
+  position: absolute;
+  
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
+    width: 40%;
+  }
+
+.onLoader {
+  display: inline-block;
+  visibility: visible !important; }
+
+.offLoader {
+  display: none;
+  visibility: hidden; }
+
+.pull {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 2px;
+  background: #606060; }
+
+.pull_icon {
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  left: -23px;
+  background: url(/../assets/img/pull_icon.png);
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  z-index: 1;
+  cursor: pointer; }
+
+.pull_icon1 {
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  left: -23px;
+  background: url(/../assets/img/pull_icon1.png);
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  z-index: 1;
+  cursor: pointer; }
+
+.demograficData .area .population .women .men .budget .kindergartens .institutions .healthWomen .gynecologists {
+  padding: 5px 0px; }
+
+.pull_box {
+  background: #ffffffbf;
+  position: absolute;
+  top: 0;
+  right: -398px;
+  bottom: 0;
+  width: 400px;
+  transition: right 1s linear;
+  -webkit-trasnition: right 1s linear; }
+
+.pull_open {
+  background: #ffffffbf;
+  right: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 400px;
+  transition: right 1s linear;
+  -webkit-trasnition: right 1s linear;
+  z-index: 1000 }
+
+  .lang{
+    padding: 9px;
+  }
+  .lang select{
+border: none;
+    background: orange;
+    color: white;
+  }
+
+@media screen and (max-width: 992px) {
+  .years_btn_position{
+    top:25%!important;
+  }
+  chart[type^=Map] .highcharts-container {
+    width: 100% !important; }
+
+  .navcontainer {
+    overflow: hidden; }
+
+  .navbar-nav {
+    text-align: center; }
+
+  .footer {
+    text-align: center; }
+
+  .staticPage {
+    height: auto;
+    margin-bottom: 45px; }
+
+  .munCompare .columnData {
+    padding-bottom: 17px; }
+
+  .nav-link-in {
+    max-height: 0;
+    overflow: hidden;
+    position: relative;
+    font-size: 10px;
+    background: #f6f6f6 !important;
+    /* Set our transitions up. */
+    -webkit-transition: max-height 0.8s;
+    -moz-transition: max-height 0.8s;
+    transition: max-height 0.8s; }
+
+  .nav-item {
+    cursor: pointer; }
+    .nav-item:hover .nav-link-in {
+      max-height: 200px;
+      background: #f6f6f6 !important; }
+
+  .highcharts-container {
+    width: 100% !important; }
+    .highcharts-container svg {
+      width: 100%; }
+
+  .compare {
+    height: auto; } }
+@media screen and (max-width: 500px) {
+  .col-2 {
+    font-size: 10px;
+    padding: 0 10px !important; }
+
+  .col-3 div.subdomenList {
+    font-size: 10px !important; }
+  .col-3 div.domenList {
+    font-size: 10px !important; }
+
+  .munDomen {
+    border: none !important; }
+
+  .munCompare {
+    font-size: 10px; }
+    .munCompare .subdomenData {
+      font-size: 10px; }
+    .munCompare .columnData {
+      font-size: 10px;
+      padding-bottom: 18px; }
+    .munCompare .domenData {
+      font-size: 10px; }
+    .munCompare .indexData {
+      padding-top: 35px;
+      padding-bottom: 15px;
+      text-transform: uppercase; }
+    .munCompare .indexRS {
+      font-size: 15px;
+      padding-bottom: 8px;
+      padding-top: 15px; } }
+.button_compare {
+  width: 28px;
+  display: inline-block;
+  height: 31px;
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 1px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  top: -2px; }
+  .button_compare i {
+    font-size: 12px;
+    color: orange;
+    cursor: pointer; }
+
+.error {
+  font-size: 15px;
+  line-height: 1;
+  color: red; }
+
+/*input*/
+.form-control:focus {
+  border-color: #bccef0;
+  box-shadow: inset 0 0px 1px #bccef0, 0 0 1px #bccef0; }
+
+/*btn*/
+.btn-primary.focus,
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0) !important; }
+
+.dropdown-item.active,
+.dropdown-item:active {
+  color: #000 !important;
+  text-decoration: none;
+  background-color: #e4e4e4 !important;
+  font-size: 12px; }
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle {
+  color: white;
+  background-color: #566f9e;
+  border-color: #495368; }
+
+.btn-primary {
+  color: white;
+  background-color: #566f9e;
+  border-color: #495368; }
+  .btn-primary:hover {
+    color: white;
+    background-color: #384050;
+    border-color: #495368; }
+    .info_circle{
+      padding: 20px 15px;
+    background: #eff4fe;
+    }
+
+    .years_btn_position{
+          position: fixed;
+    top: 15%;
+    z-index: 30;
+    cursor: pointer;
+    left: -8vh;
+    width: 200px;
+    text-align: right;
+     
+    }
+
+     .years_tooltip{
+width: 125px;
+    position: absolute;
+    padding: 4px 0px;
+    display: none;
+    font-size: 12px;
+    background: #f6f6f6;
+    text-align: center;
+    color: #363636;
+    border: 1px solid #ededed;
+    display: none;
+    top: 64px;
+    left: 38%;
+    font-family: Arsenal;
+    transition: visibility 0.3s linear,opacity 0.3s linear;
+
+    }
+
+    .years_btn_position:hover .years_tooltip{
+    display: block!important
+    }
+
+    .years_tooltip .arrow_up{
+width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #ededed;
+    position: absolute;
+    top: -17%;
+    right: 5%;
+    }
+    .years_btn_style{
+      background:orange;
+      color:white;
+      padding: 10px 10px;
+      margin: 2px 0px;
+      display: block;
+      font-size: 23px;
+      font-family: ArsenalB;
+
+    }
+ .container{
+  position: relative;
+ }
+ .munList .years_btn_position{
+  left:10%!important;
+ }
+
+ .current_year{
+  text-align: center;
+  font-size: 20px;
+  padding: 20px;
+  position: absolute;
+  top: 0%;
+  left: 0;
+    right: 0;
+    margin: 0 auto;
+  color: #606060;
+ }
+
+/*# sourceMappingURL=styles.css.map */

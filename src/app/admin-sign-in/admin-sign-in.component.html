@@ -1,0 +1,22 @@
+<div class="admin">
+  <div class="fullBack">
+    <div class="container fullHeight">
+      <div class="centerBox">
+        <form class='loginForm'>
+          <div class="form-group">
+            <label for="email"><i class="fal fa-user-ninja"></i></label>
+            <input type="email" ngModel name="email" #email="ngModel" id="email" class="form-control">
+            <div class="alert alert-danger" *ngIf="email.touched && !email.value && email.valid">Ве молиме внесете ја вашата е адреса</div>
+          </div>
+          <div class="form-group">
+            <label for="password"><i class="fal fa-lock-alt"></i></label>
+            <input id="password" type="password" ngModel name="password" #password="ngModel" class="form-control">
+            <div class="alert alert-danger" *ngIf="password.touched &&  !password.value">Ве молиме внесете ја вашата лозинка
+            </div>
+          </div>
+          <button class="btn btn-primary" (click)="login(email,password)">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

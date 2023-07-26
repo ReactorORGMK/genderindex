@@ -1,0 +1,148 @@
+<admin-navbar></admin-navbar>
+<div class="container-fluid" class="header-block"><a [routerLink]="['/admin']"> <span class="first">почетна</span></a> / <a [routerLink]="['/admin-municipality-list']"> <span>општини</span></a> /</div>
+
+<div class="admin">
+  <div class="container">
+    <div class="block">
+    <h3 style="padding: 40px 15px ">Општина: {{municipalityData.name}}</h3>
+      <form>
+        <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="nameMunicipality">Име на општина</label>
+            </div>
+            <div class="col-md-6">
+              <input id="nameMunicipality" type="text" [(ngModel)]="newName" name="newName" class="form-control" placeholder="{{municipalityData.name}}">
+            </div>
+          </div>
+        </div>
+          <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="codeMunicipality">Код на општина (url)</label>
+            </div>
+            <div class="col-md-4">
+              <input id="codeMunicipality" type="text" [(ngModel)]="newCode" name="newCode" class="form-control" placeholder="{{municipalityData.code}}">
+            </div>
+          </div>
+        </div>
+         <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="codeMunicipality">Код на општина (graphic)</label>
+            </div>
+            <div class="col-md-4">
+              <input id="codeMunicipality" type="text" [(ngModel)]="newCodeGraph" name="newCodeGraph" class="form-control" placeholder="{{municipalityData.codeGraph}}">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="colorMunicipality">Боја на општина (graphic)</label>
+            </div>
+            <div class="col-md-4">
+              <input id="colorMunicipality" type="text" [(ngModel)]="newColorGraph" name="newColorGraph" class="form-control" placeholder="{{municipalityData.colorGraph}}">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="areaMunicipality">Површина km<sup>2</sup></label>
+            </div>
+            <div class="col-md-4">
+              <input id="areaMunicipality" type="number" [(ngModel)]="newArea" name="newArea" class="form-control" placeholder="{{municipalityData.area}}">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="populationMunicipality">Населени места</label>
+            </div>
+            <div class="col-md-4">
+              <input id="populationMunicipality" type="number" [(ngModel)]="newPopulation" name="newPopulation" class="form-control" placeholder="{{municipalityData.population}}">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="imgMunicipality">Слика</label>
+            </div>
+            <div class="col-md-4">
+              <img src="{{municipalityData.image}}" width="100px">
+              <div class="progress">
+                <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+                  {{progress.percentage}}%</div>
+              </div>
+              <label class="btn btn-default">
+                <input type="file" (change)="selectFile($event, municipalityData.name)">
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12 row error">
+            {{error}}
+          </div>
+        </div>
+        <!-- 
+         <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="populationMunicipality">населени места</label>
+            </div>
+            <div class="col-md-8">
+              <input id="populationMunicipality" type="number" [(ngModel)]="populated_places" name="populated_places" class="form-control">
+            </div>
+          </div>
+        </div>
+
+
+         <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="menMunicipality">Мажи</label>
+            </div>
+            <div class="col-md-8">
+              <input id="menMunicipality" type="number" [(ngModel)]="men" name="men" class="form-control">
+            </div>
+          </div>
+        </div>
+
+          <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="womenMunicipality">Жени</label>
+            </div>
+            <div class="col-md-8">
+              <input id="womenMunicipality" type="number" [(ngModel)]="women" name="women" class="form-control">
+            </div>
+          </div>
+        </div>
+       -->
+        <!-- <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="subdomen">Поддомен</label>
+            </div>
+            <div class="col-md-8 checkbox-box">
+              <ul>
+                <li *ngFor="let subdomen of subdomens | async">
+                  <span>
+      <input type="checkbox"  (click)="getCheckboxVal($event, subdomen.key,  subdomen.val.name)" ></span>
+                  <span> {{ subdomen.val.name }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
+        <div class="col-md-12">
+          <button class="btn btn-primary" (click)="updateData(idMunicipality, newName, newCode, newCodeGraph, newColorGraph, newArea, newPopulation, municipalityData.image)">Зачувај</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

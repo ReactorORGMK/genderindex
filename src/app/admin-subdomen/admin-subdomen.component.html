@@ -1,0 +1,65 @@
+<admin-navbar></admin-navbar>
+<div class="container-fluid" class="header-block"><a [routerLink]="['/admin']"> <span class="first">почетна</span> </a> / 
+  <a [routerLink]="['/admin-subdomen-list']"> <span >поддомени</span></a> / </div>
+
+  <div class="admin">
+    <div class="container">
+      <div class="block">
+        <form>
+          <div class="form-group">
+            <div class="col-md-12 row">
+              <div class="col-md-4">
+                <label for="nameSubdomen">Име на поддомен</label>
+              </div>
+              <div class="col-md-7">
+                <input id="nameSubdomen" type="text" [(ngModel)]="subdomen" name="subdomen" class="form-control">
+              </div>
+              <div class="col-md-1" class="required">*</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12 row">
+              <div class="col-md-4">
+                <label for="descriptionSubdomen">Опис</label>
+              </div>
+              <div class="col-md-7">
+                <textarea id="descriptionSubdomen" [(ngModel)]="descriptionsubdomen" type="text" name="description" class="form-control"></textarea>
+              </div>
+              <div class="col-md-1" class="required">*</div>
+            </div>
+          </div>
+           <div class="form-group">
+            <div class="col-md-12 row">
+              <div class="col-md-4">
+                <label for="subdomen">Колони за анализа</label>
+              </div>
+              <div class="col-md-5 checkbox-box">
+                <ul>
+                  <li *ngFor="let subdomen of subdomensColumns">
+                    <span>
+                      <input type="checkbox"  (click)="getCheckboxVal($event, subdomen.key,  subdomen.subject)" ></span>
+                      <span> {{ subdomen.subject }}</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-1" class="required">*</div>
+              </div>
+            </div>
+
+             <div class="form-group">
+            <div class="col-md-12 row">
+              <div class="col-md-12">
+                <label for="labelSubdomen"><i class="fas fa-info-circle"></i> * Доколку ви треба празен ред составен со наслов на подколони, тогаш насловот на подоменот/индикаторот треба да ви е LABELnumber пр: label2</label>
+              </div>
+             
+               
+              </div>
+            </div>
+          <div class="error">{{error}}</div>
+          <div class="col-md-12">
+            <button class="btn btn-primary" (click)="addSubdomen(subdomen,descriptionsubdomen)">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

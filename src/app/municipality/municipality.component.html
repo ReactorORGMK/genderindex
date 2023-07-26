@@ -1,0 +1,208 @@
+<app-navigation (languageEmit)="recieveLang($event)"></app-navigation>
+<span class="years_btn_position">
+    <span *ngFor="let year of years">
+      <span *ngIf="year.key!=idYear" class="years_btn_style"(click)="changeYear(year.key)">
+        {{year.key}}
+        <span class="years_tooltip">{{'Click to view the data for'|translate}} {{year.key}} {{"год."|translate}}
+          <span class="arrow_up"></span>
+        </span>
+      </span>
+    </span>
+  </span>
+  
+<div class="container currentMunicipality" style="position: relative;">
+<div *ngIf="idYear" class="current_year" style="top:26px;font-size: 16px;">( {{idYear}} {{"год."|translate}} )</div> 
+  <div style="width: 100%">
+    <div id="mypoimnik" class="activePoimnik">
+      <app-dictionary-button-page></app-dictionary-button-page>
+    </div>
+    <div id="mymap" class="activeMap">
+      <div id="removeBox" style="float:right;color: orange;padding: 10px;" class="btnClose">
+        <i class="fas fa-times-circle" (click)="removeBox()"></i></div>
+      <div class="titleMap">{{"tooltip_municipality_map"|translate}}</div>
+      <img src="/assets/img/map1.png" style="width: 100%;border-top: 1px solid #ededed;
+    border-bottom: 1px solid #ededed;">
+      <div style="padding: 10px;">{{"data_not_included"|translate}}.</div>
+    </div>
+  </div>
+  <!-- <div style="
+    position: absolute;
+    height: 100%;
+    right: 0px;
+    top:-51px;
+    ">
+ <div style="position: sticky;top:0px">
+ <span style="height:20px; width:20px;
+    background: orange;
+    display: block;border-radius: 50%"></span></div></div>
+
+    <div style="
+    position: absolute;
+    height: 100%;
+    right: 0px;
+    top:-51px;
+    ">
+ <div style="position: sticky;top:32px">
+ <span style="width: 20px;
+ height: 20px;
+    background: orange;
+    display: block;border-radius: 50%;"></span></div></div> -->
+  <h6 class="munTitle">{{"municipality"|translate}}: <span style="font-family: ArsenalB">{{municipalityDataSidebar.name | translate}}</span></h6>
+  <div class="row">
+    <div class="col-md-10">
+      <div class="munDomen" style="border-right: 1px solid #eeeeee;">
+        <div style="color: orange;
+    position: absolute;
+    width: 40%;z-index: 100">
+          <span id="poimnik" class="circleIcon poimnikIcon" (click)="showClass()">
+       <span class="mytooltip">{{"glossary"|translate}}</span>
+          <i class="fas fa-info" ></i>
+          </span>
+          <span id="mapa" class="circleIcon"  (click)="showMap()">
+       <span  class="circleIcon circleIn">
+           <span class="mytooltip">{{"tooltip_municipality_map"|translate}}</span>
+          </span>
+          <i class="far fa-window-alt"></i>
+          </span></div>
+        <ul class="dom">
+          <li *ngFor="let domenSubdomen of domenSubdomenList; let i=index" class="domen">
+            <div class="row list">
+              <div class="col-md-4  col-sm-4  col-3 name">
+                <div class="domenList">
+                  <div id="domen_indicator{{i}} " [routerLink]="['/dictionaryPage', 'domen_indicator'+i]">{{domenSubdomen.domenName | translate}}</div>
+                </div>
+              </div>
+              <div class="col-md-8 col-sm-7 col-9 ">
+                <!--  <div class="{{domenSubdomen.domenValue < 20 ? 'class_darkred' : domenSubdomen.domenValue > 30 ? 'class_orange': 'class_red' }} circleBox">
+                    <div class="text-circle">{{domenSubdomen.domenValue}}</div>
+                  </div> -->
+                <ul>
+                  <li *ngFor="let column of domenSubdomen.columns" style="display: inline-block;" class="columnsTable col-md-2 col-2 col-sm-2">
+                    <div style="height: 20px;">{{column.columnName | translate}}</div>
+                    <div class="{{column.columnName === 'Ранг' ? 'orangeText': column.columnName === 'Оценка' ? 'orangeText': column.columnName === 'Просек' ? 'orangeText':'simpleText' }} "> {{column.columnValue}}</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <ul>
+              <li *ngFor="let subdomen of domenSubdomen.subdomens; let s=index" class="subdomen">
+                <div class="row list">
+                  <div class="col-md-4 col-sm-4 col-3 name">
+                    <div class="subdomenList">
+                      <div id="{{subdomen.subdomenName}}">
+                        <div id="sub_indicator{{i}}" [routerLink]="['/dictionaryPage', 'domen_indicator'+i+'sub_indicator'+s]" class="subdomen">{{subdomen.subdomenName |translate}}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-8 col-sm-7  col-9 ">
+                    <!--  <div class="{{subdomen.subdomenValue < 20 ? 'class_darkred' : subdomen.subdomenValue > 30 ? 'class_orange': 'class_red' }} circleBox">
+                        <div class="text-circle">{{subdomen.subdomenValue}}</div>
+                      </div> -->
+                    <ul>
+                      <li *ngFor="let columnSub of subdomen.columns" style="display: inline-block; " class="columnsTable col-md-2 col-sm-2 col-2">
+                        <div id="{{subdomen.subdomenName}}">
+                          <div id="{{subdomen.subdomenName}}_{{columnSub.columnKey}}"><span id="{{columnSub.columnKey}}" >{{columnSub.columnValue |translate}}</span></div>
+
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div>
+      </div>
+      <div style="padding: 50px 0px; color: orange">{{"data_not_included"|translate}}.
+      </div>
+      <!-- <div class="description" sytle="margin-top:30px">
+          <div>Опис</div>
+          <div>
+            {{municipalityData.description}}
+          </div>
+        </div> -->
+    </div>
+    <div class="col-md-2 col-sm-12 profileMun">
+      <div class="row">
+        <div class="imageMun">
+          <div class="profileText">{{"profile_municilapity"|translate}}</div>
+          <div><img src="{{municipalityDataSidebar.image}}" width="150px"></div>
+          </div>
+          <div class="rangMun">
+            <div>{{"ge_index"|translate}}</div>
+            <div class="index" style="padding-right: 10px;">
+              <span>{{"grade"|translate}}: </span>
+              <span class="text" >{{municipalityData.scoreMun}}</span></div>
+            <div style="margin-top: 10px;" class="index">
+              <span>{{"rang"|translate}}: </span>
+              <span class="text">{{municipalityData.rangMun}}</span>
+            </div>
+          </div>
+          <div class="demograficData" style="margin-top: 30px">
+            <div class="region">
+              <span>{{"region"|translate}}: </span>
+              <span class="dataValue">{{regionName|translate}}</span>
+            </div>
+            <div class="area">
+              <span>{{"area"|translate}}: </span>
+              <span class="dataValue">{{municipalityDataSidebar.area}} км<sup>2</sup></span>
+            </div>
+            <div class="population">
+              <span>{{"number_populated _places"|translate}}: </span>
+              <span class="dataValue">{{municipalityDataSidebar.population}}</span>
+            </div>
+            <div class="women">
+              <span>{{"number_women"|translate}}: </span>
+              <span class="dataValue">{{municipalityData.women}}</span>
+            </div>
+            <div class="men">
+              <span>{{"number_men"|translate}}: </span>
+              <span class="dataValue">{{municipalityData.men}}</span>
+            </div>
+            <div class="plannedbudget">
+              <span>{{"total_planned_budget"|translate}} {{idYear}} {{year}}: <br/></span>
+              <span class="dataValue">{{municipalityData.plannedBudget}} ден</span>
+            </div>
+            <div class="budget">
+              <span>{{"total_realized_budget"|translate}} {{idYear}} {{year}}:<br/> </span>
+              <span class="dataValue">{{municipalityData.budget}} ден</span>
+            </div>
+            <div class="numberRateInfants" *ngIf="municipalityData.numberRateInfants!='/'">
+              <span>{{"infant_mortality_rate"|translate}}: </span>
+              <span class="dataValue">{{municipalityData.numberRateInfants}}</span>
+            </div>
+            <div class="numberRateMaternal" *ngIf="municipalityData.numberRateMaternal!='/'">
+              <span>{{"maternal_mortality_rate"|translate}}: </span>
+              <span class="dataValue">{{municipalityData.numberRateMaternal}}</span>
+            </div>
+            <div class="numberCompany" *ngIf="municipalityData.numberCompany!='/'">
+              <span>{{"number_company"|translate}}: </span>
+              <span class="dataValue">{{municipalityData.numberCompany}}</span>
+            </div>
+            <div class="numberPlot" *ngIf="municipalityData.numberPlot!='/'">
+              <span>{{"number_plots"|translate}}: </span>
+              <span class="dataValue">{{municipalityData.numberPlot}}</span>
+            </div>
+            <div class="numberObject" *ngIf="municipalityData.numberObject!='/'">
+              <span>{{"number_facilities"|translate}}: </span>
+              <span class="dataValue">{{municipalityData.numberObject}}</span>
+            </div>
+            <div class="numberFlat"*ngIf="municipalityData.numberFlat!='/'">
+              <span>{{"number_apartments"|translate}}: </span>
+              <span class="dataValue">{{municipalityData.numberFlat}}</span>
+            </div>
+            <br>
+            <br>
+            <div class="compare" style="width:200px">
+              <div style="font-size: 12px">{{"mun_compare"|translate}} <span class="dataValue">{{municipalityDataSidebar.name|translate}}</span> {{"with"|translate}}: </div>
+              <ss-multiselect-dropdown [options]="myOptions" [texts]="myTexts" [settings]="mySettings" [(ngModel)]="optionsModel" (ngModelChange)="onChange($event)"></ss-multiselect-dropdown><span class="button_compare" (click)="onClickDropdown()"><i class="fas fa-caret-up"></i></span>
+              <div class="error">{{error}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>

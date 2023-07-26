@@ -1,0 +1,280 @@
+<admin-navbar></admin-navbar>
+<div class="container-fluid" class="header-block"><a [routerLink]="['/admin']"> <span class="first">почетна</span></a> /<a [routerLink]="['/years', year]"><span> {{year}}</span></a> /</div>
+
+
+<div class="admin">
+  <div class="container">
+    <div class="block">
+      <div class="container-fluid"><h6 style="text-align: center;text-transform: uppercase;padding: 35px 0px ">Додади општина</h6></div>
+
+      <form>
+        <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="nameDomen">Општина</label>
+            </div>
+            <div class="col-md-4 checkbox-box">
+              <ul>
+                <li *ngFor="let mun of municipalities | async | orderByName">
+                  <input type="radio" name="num.val.name" (click)="getCheckboxValMun($event, mun.key, mun.val.name, mun.val.codeGraph, mun.val.colorGraph)">{{mun.val.name}}</li>
+                </ul>
+              </div>
+              <div class="col-md-1" class="required">*</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12 row">
+              <div class="col-md-4">
+                <label for="scoreMun">Скор на општината</label>
+              </div>
+              <div class="col-md-4">
+                <input id="scoreMun" type="number" [(ngModel)]="scoreMun" name="scoreMun" class="form-control">
+              </div>
+              <div class="col-md-1" class="required">*</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12 row">
+              <div class="col-md-4">
+                <label for="rangMun">Ранк на општината</label>
+              </div>
+              <div class="col-md-4">
+                <input id="rangMun" type="number" [(ngModel)]="rangMun" name="rangMun" class="form-control">
+              </div>
+              <div class="col-md-1" class="required">*</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12 row">
+              <div class="col-md-4">
+                <label for="numberMen">Број на мажи</label>
+              </div>
+              <div class="col-md-4">
+                <input id="numberMen" type="number" [(ngModel)]="numberMen" name="numberMen" class="form-control">
+              </div>
+              <div class="col-md-1" class="required">*</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12 row">
+              <div class="col-md-4">
+                <label for="numberWomen">Број на жени</label>
+              </div>
+              <div class="col-md-4">
+                <input id="numberWomen" type="number" [(ngModel)]="numberWomen" name="numberWomen" class="form-control">
+              </div>
+              <div class="col-md-1" class="required">*</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12 row">
+              <div class="col-md-4">
+                <label for="numberBudget">Вкупен планиран буџет на општината за {{year}}:</label>
+              </div>
+              <div class="col-md-4">
+                <input id="plannedBudget" type="text" [(ngModel)]="plannedBudget" name="plannedBudget" class="form-control">
+              </div>
+              <div class="col-md-1" class="required">*</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12 row">
+              <div class="col-md-4">
+                <label for="numberBudget">Вкупен реализиран буџет на општината за {{year}}:</label>
+              </div>
+              <div class="col-md-4">
+                <input id="numberBudget" type="text" [(ngModel)]="budget" name="budget" class="form-control">
+              </div>
+              <div class="col-md-1" class="required">*</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="info_circle"><i class="fas fa-info-circle"></i> * Во следниве полиња, доколку полињата се празни и не сакате да ги прикажите на фонтенд, ставете "/ "</div>
+
+          </div>
+
+
+          <div class="form-group">
+            <div class="col-md-12 row">
+              <div class="col-md-4">
+                <label for="numberRateInfants">Стапка на морталитет на доенчиња:</label>
+              </div>
+              <div class="col-md-4">
+                <input id="numberRateInfants" type="text" [(ngModel)]="numberRateInfants" name="numberRateInfants" class="form-control">
+              </div>
+<!--               <div class="col-md-1" class="required">*</div>
+-->            </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-md-12 row">
+                    <div class="col-md-4">
+                      <label for="numberRateMaternal">Стапка на матернален морталитет:</label>
+                    </div>
+                    <div class="col-md-4">
+                      <input id="numberRateMaternal" type="text" [(ngModel)]="numberRateMaternal" name="numberRateMaternal" class="form-control">
+                    </div>
+                <!--               <div class="col-md-1" class="required">*</div>
+                -->            </div>
+                </div>
+                  <div class="form-group">
+                    <div class="col-md-12 row">
+                      <div class="col-md-4">
+                        <label for="numberPlot">Број на парцели:</label>
+                      </div>
+                      <div class="col-md-4">
+                        <input id="numberPlot" type="text" [(ngModel)]="numberPlot" name="numberPlot" class="form-control">
+                      </div>
+                  <!--               <div class="col-md-1" class="required">*</div>
+                  -->            </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-12 row">
+                      <div class="col-md-4">
+                        <label for="numberObject">Број на објекти:</label>
+                      </div>
+                      <div class="col-md-4">
+                        <input id="numberObject" type="text" [(ngModel)]="numberObject" name="numberObject" class="form-control">
+                      </div>
+                  <!--               <div class="col-md-1" class="required">*</div>
+                  -->            </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-12 row">
+                      <div class="col-md-4">
+                        <label for="numberCompany">Број на фирми:</label>
+                      </div>
+                      <div class="col-md-4">
+                        <input id="numberCompany" type="text" [(ngModel)]="numberCompany" name="numberCompany" class="form-control">
+                      </div>
+                  <!--               <div class="col-md-1" class="required">*</div>
+                  -->            </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-12 row">
+                      <div class="col-md-4">
+                        <label for="numberFlat">Број на станови:</label>
+                      </div>
+                      <div class="col-md-4">
+                        <input id="numberFlat" type="text" [(ngModel)]="numberFlat" name="numberFlat" class="form-control">
+                      </div>
+                  <!--               <div class="col-md-1" class="required">*</div>
+                  -->            </div>
+                  </div>
+
+<!-- old -->
+          <!-- <div class="form-group">
+          <div style="padding: 30px 0px"><i class="fas fa-info-circle"></i> * Во полињата што следат, секаде што имате празно место или немате вредност поставете " - " и внимавајте секаде каде што имате полиња со label, во нив треба да ставите текст </div>
+            <div style="background: #eef4ff" for="nameDomenSubdomen">Домени и Поддомени</div>
+            <div class="domenSubdomen col-md-12 row">
+              <ul style="width: 100%" class="col-md-12">
+                <li *ngFor="let domenSubdomen of domeniSubdomeni" style="width:100%">
+                  <div class="row">
+                    <div class="col-md-4" style="font-family: ArsenalB"><span> {{domenSubdomen.val.name}}</span></div>
+                    <div class="col-md-4">
+                     <ul><li *ngFor="let column of Object.keys(domenSubdomen.val.columns)">
+                      <div class="row">
+                        <div class="col-md-4"><span>  {{domenSubdomen.val.columns[column]}}</span></div>
+                        <div class="col-md-4">
+                          <input type="text" id="id_{{domenSubdomen.key}}_{{column}}" [name]="column"  class="form-control">
+                        </div>
+                        <div class="col-md-1" class="required">*</div>
+                      </div>
+                    </li></ul>
+                  </div>
+                </div>
+                <ul style="width: 100%" *ngIf="domenSubdomen.val.subdomeni!=null">
+                  <li *ngFor="let subdomen of Object.keys(domenSubdomen.val.subdomeni);">
+                    <div class="row">
+                      <div class="col-md-4"><span>  {{domenSubdomen.val.subdomeni[subdomen].name}}</span></div>
+                      <div class="col-md-4">
+                       <ul>
+                       <li *ngFor="let column of Object.keys(domenSubdomen.val.subdomeni[subdomen].columns); let i=index">
+                        <div class="row">
+                          <div class="col-md-4"><span>  {{domenSubdomen.val.subdomeni[subdomen].columns[column]}}</span></div>
+                          <div class="col-md-4">
+                            <input type="text" id="id_{{subdomen}}_{{column}}" [name]="domenSubdomen.val.subdomeni[subdomen].columns[column]" #titleInput   class="form-control">
+                          </div>
+                          <div class="col-md-1" class="required">*</div>
+                        </div>
+                      </li>
+                      </ul>
+                    </div>
+                  </div> -->
+                  <!-- end old -->
+
+                  <div class="form-group">
+            <div class="info_circle"><i class="fas fa-info-circle"></i>
+            * Во полињата што следат, секаде што имате празно место или немате вредност поставете " - " и внимавајте секаде каде што имате полиња со label, во нив треба да ставите текст
+            </div>
+            </div>
+
+                  <div class="form-group">
+                   
+                    <div style="background: #eef4ff" for="nameDomenSubdomen">Домени и Поддомени</div>
+                    <div class="domenSubdomen col-md-12 row">
+                      <ul style="width: 100%" class="col-md-12">
+                        <li *ngFor="let domenSubdomen of domeniSubdomeni" style="width:100%">
+                          <div class="row">
+                            <div class="col-md-4" style="font-family: ArsenalB"><span> {{domenSubdomen.val.name}}</span></div>
+                            <div class="col-md-4">
+                             <ul><li *ngFor="let column of Object.keys(domenSubdomen.val.columns)">
+                              <div class="row">
+                                <div class="col-md-4"><span>  {{domenSubdomen.val.columns[column]}}</span></div>
+                                <div class="col-md-7">
+                                  <input type="text" id="id_{{domenSubdomen.key}}_{{column}}" [name]="column"  class="form-control">
+                                </div>
+                                <div class="col-md-1" class="required">*</div>
+                              </div>
+                            </li></ul>
+                          </div>
+                        </div>
+                        <ul style="width: 100%" *ngIf="domenSubdomen.val.subdomeni!=null" >
+                          <li *ngFor="let subdomen of Object.keys(domenSubdomen.val.subdomeni);" >
+                            <div class="row">
+                              <div class="col-md-4">
+                                <span>  {{domenSubdomen.val.subdomeni[subdomen].name}}</span>
+                              </div>
+                              <div class="col-md-4">
+                               <ul>
+                                 <li *ngFor="let column of Object.keys(domenSubdomen.val.subdomeni[subdomen].columns); let i=index ">
+                                  <div class="row">
+                                    <div class="col-md-4">
+                                      <span>  {{domenSubdomen.val.subdomeni[subdomen].columns[column]}}</span>
+                                    </div>
+                                    <div class="col-md-7">
+                                      <input type="text" id="id_{{subdomen}}_{{column}}" [name]="domenSubdomen.val.subdomeni[subdomen].columns[column]" #titleInput   class="form-control">
+                                    </div>
+                                    <div class="col-md-1" class="required">*</div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-md-12 row">
+                  <div class="col-md-4">
+                    <label for="description">Опис на општината</label>
+                  </div>
+                  <div class="col-md-7">
+                    <textarea id="description" type="text" [(ngModel)]="description" name="description" class="form-control"></textarea>
+                  </div>
+                  <div class="col-md-1" class="required">*</div>
+                </div>
+              </div>
+              <div class="col-md-12" style="margin-bottom: 100px">
+                <button (click)="saveAll( numberMen, numberWomen, plannedBudget, budget, numberRateInfants, numberRateMaternal, numberCompany, numberPlot, numberObject, numberFlat,  scoreMun, rangMun, description)" type="button" class="btn btn-default">Зачувај</button>
+                <div class=" error">{{error}}</div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>

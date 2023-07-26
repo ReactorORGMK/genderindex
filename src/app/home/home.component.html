@@ -1,0 +1,50 @@
+<app-navigation (languageEmit)="recieveLang($event)"></app-navigation>
+<div class="container-fluid homeClass">
+  <span class="offLoader" id="loaderData">
+    <span style="font-size: 12px">
+      <img src="./assets/img/three-dots.svg" width="30%"> ...{{"load_data"|translate}}...
+    </span>
+
+  </span>
+    
+  <span class="years_btn_position">
+    <span *ngFor="let year of years">
+      <span *ngIf="year.key!=lastYear" class="years_btn_style"(click)="changeYear(year.key)">
+        {{year.key}}
+        <span class="years_tooltip">{{'Click to view the data for'|translate}} {{year.key}} {{"год."|translate}}
+          <span class="arrow_up"></span>
+        </span>
+      </span>
+    </span>
+  </span>
+  <div *ngIf="lastYear" class="current_year">{{"Data for"|translate }} {{lastYear}} {{"год."|translate}}</div>  
+  <chart type="Map" [options]="options" (load)="saveChart($event.context)"></chart>
+  <div id="pullBox" class="pull_box">
+    <div class="pull" ></div>
+    <div id="pullIcon" class="pull_icon" (click)="close_open_Slider()"></div>
+    <div class="col-md-12 home_title"> <span class="">{{"ranging_evaluation_manu"|translate}}</span>
+    </div>
+    <div class="col-md-12 row">
+      <div class="col-md-8 homeSliderText">
+        <div style="margin-top: 10%" id="defaultIndex" (click)="getGeneralGrade($event.context)"><span style="text-transform: uppercase;">{{"index"|translate}}</span></div>
+        <ul style="width: 105%;margin-left: 5px">
+          <li *ngFor="let domenSubdomen of domeniSubdomeni | async;">
+            <span [class.active]="selectedDomen===domenSubdomen.key" (click)="getDomenId(domenSubdomen.key)"> {{domenSubdomen.val.name | translate}}</span>
+                <!-- <button (click)="addPoint($event.context)" style="position: relative;top:0">adsdsd</button>
+                 <ul>
+              <li *ngFor="let subdomen of Object.keys(domenSubdomen.val.subdomeni); ">
+                <span [class.active]="selectedSubdomen===subdomen" (click)="getSubdomenId(domenSubdomen.key,subdomen)">{{domenSubdomen.val.subdomeni[subdomen]}}</span>
+              </li>
+            </ul> -->
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-12 homeSliderText" style="margin-top:100px">
+        <div class="subject">{{name.name | translate}}</div>
+        <div class="description">{{description.description | translate}}</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<app-footer></app-footer>

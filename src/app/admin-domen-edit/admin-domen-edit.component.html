@@ -1,0 +1,72 @@
+<admin-navbar></admin-navbar>
+<div class="container-fluid" class="header-block"><a [routerLink]="['/admin']"> <span class="first">почетна</span> </a> /<a [routerLink]="['/admin-domen-list']"> <span> домени </span> /</a></div>
+<div class="admin">
+  <div class="container">
+    <div class="block">
+      <h1>{{ name  }}</h1>
+      <form>
+        <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="nameSubdomen">Име на поддомен</label>
+            </div>
+            <div class="col-md-8">
+              <input id="nameSubdomen" type="text" [(ngModel)]="domen" name="domen" class="form-control" placeholder="{{name}}">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="descriptionDomen">Опис</label>
+            </div>
+            <div class="col-md-8">
+              <textarea id="descriptionDomen" [(ngModel)]="descriptiondomen" type="text" name="description" class="form-control" placeholder="{{description}}">
+
+              </textarea>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="subdomen">Поддомен</label>
+            </div>
+            <div class="col-md-8 checkbox-box">
+              <ul>
+                <li *ngFor="let subdomen of subdomens | async">
+                  <span>
+             <input [checked]="frontCheckboxCheck.indexOf(subdomen.key) >= 0"  #f type="checkbox" [value]="subdomen" name="subdomen"  
+             (click)="getCheckboxVal($event, subdomen.key,  subdomen.val.name, subdomen.val.columns)" >
+               </span>
+                  <span> {{ subdomen.val.name }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12 row">
+              <div class="col-md-4">
+                <label for="subdomen">Колони за анализа</label>
+              </div>
+              <div class="col-md-5 checkbox-box">
+                <ul>
+                  <li *ngFor="let domen of domensColumns">
+                    <span>
+                      <input type="checkbox" [checked]="frontColumnChecked.indexOf(domen.key) >= 0"  #f type="checkbox" [value]="domen" name="domen"
+                       (click)="getCheckboxColumn($event, domen.key,  domen.subject)" ></span>
+                      <span> {{ domen.subject }}</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-1" class="required">*</div>
+              </div>
+            </div>
+        <div class="col-md-12">
+          <button class="btn btn-primary" (click)="updateData(idDomen, domen, descriptiondomen)"> Ажурирај</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

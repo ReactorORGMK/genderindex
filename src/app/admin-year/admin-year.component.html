@@ -1,0 +1,65 @@
+<admin-navbar></admin-navbar>
+<div class="container-fluid" class="header-block"><a [routerLink]="['/admin']"> <span class="first">почетна</span> </a> / 
+</div>
+
+<div class="admin">
+  <div class="container">
+    <div class="block">
+      <form>
+        <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="nameDomen">Година</label>
+            </div>
+            <div class="col-md-5">
+              <input id="nameDomen" type="number" [(ngModel)]="year" name="year" class="form-control">
+            </div>
+            <div class="col-md-1" class="required">*</div>
+          </div>
+
+        </div>
+        <div class="form-group">
+          <div class="col-md-12 info_circle"><i class="fas fa-info-circle"></i> * Тука ве молиме запазете го редоследот на селектирање на подомените, како ги селектирате, по тој редослед би се прикажувале на почетна страна </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="subdomen">Домен</label>
+            </div>
+            <div class="col-md-7 checkbox-box" style="height: 100%!important">
+              <ul >
+                <li *ngFor="let domen of domeni1; let i = index ">
+                  <span style="font-weight: bold;padding-bottom: 10px;display: block;background:#eff4fe"> 
+                 <!--   <input type="checkbox" (click)="getCheckboxValDomen($event, domen.key,  domen.val.name)"> -->
+
+                   {{domen.val.name}} </span>
+
+                   <ul style="padding-left: 10px"> 
+                    <li *ngFor="let subdomen of domen.subs">
+                      <input type="checkbox" (click)="getCheckboxValSubDomen($event, domen, subdomen, subdomen.key,  subdomen.value.name, domen.key, domen.val.name)">
+
+                      <span>{{subdomen.value.name}}</span>
+                    </li>
+                  </ul>
+
+
+
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-1" class="required">*</div>
+          </div>
+        </div>
+
+
+
+
+        <div class="error">{{error}}</div>
+
+        <div class="col-md-12">
+          <button class="btn btn-primary" (click)="addYear(year)">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

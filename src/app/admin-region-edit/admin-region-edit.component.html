@@ -1,0 +1,44 @@
+<admin-navbar></admin-navbar>
+<div class="container-fluid" class="header-block"><a [routerLink]="['/admin']"> <span class="first">почетна</span> </a> / 
+<a [routerLink]="['/admin-region-list']"> <span >региони</span></a> / </div><div class="admin">
+  <div class="container">
+    <div class="block">
+      <form>
+        <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="nameRegion">Регион</label>
+            </div>
+            <div class="col-md-8">
+              <input id="nameRegion" type="text" [(ngModel)]="nameRegion" name="nameRegion" class="form-control" placeholder="{{idRegion}}">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12 row">
+            <div class="col-md-4">
+              <label for="municipality">Општини</label>
+            </div>
+            <div class="col-md-8 checkbox-box">
+              <ul>
+                <li *ngFor="let mun of municipalityList | async">
+                  <span>
+             <input [checked]="checkedValue.indexOf(mun.key) >= 0"  #f type="checkbox"  name="mun"  
+             (click)="getCheckboxVal($event, mun.key,  mun.val.name, mun.val.code, mun.val.codeGraph, mun.val.colorGraph)" >
+               </span>
+                  <span> {{ mun.val.name }}</span>
+                  <!--  <span>
+              <input type="checkbox"  (click)="getCheckboxVal($event, domen.key,  domen.val.name)" ></span>
+                  <span> {{ domen.val.name }}</span> -->
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <button class="btn btn-primary" (click)="updateRegion(idRegion, nameRegion)">Зачувај</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

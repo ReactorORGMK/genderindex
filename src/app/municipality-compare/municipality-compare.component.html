@@ -1,0 +1,112 @@
+<app-navigation></app-navigation>
+<div class="container bottom" style="position: relative;">
+  <span class="years_btn_position">
+    <span *ngFor="let year of years">
+      <span *ngIf="year.key!=lastYear" class="years_btn_style"(click)="changeYear(year.key)">
+        {{year.key}}
+        <span class="years_tooltip">{{'Click to view the data for'|translate}} {{year.key}} {{"год."|translate}}
+          <span class="arrow_up"></span>
+        </span>
+      </span>
+    </span>
+  </span>
+  <h6 class="munTitle">{{"mun_compare"|translate}}</h6>
+  <div *ngIf="lastYear" class="current_year" style="top:26px;font-size: 16px;">( {{lastYear}} {{"год."|translate}} )</div> 
+  <div style="width: 100%">
+    <div id="mypoimnik" class="activePoimnik">
+      <app-dictionary-button-page></app-dictionary-button-page>
+    </div>
+    <div id="mymap" class="activeMap">
+
+     <div id="removeBox" style="float:right;color: orange;padding: 10px;" class="btnClose">
+      <i class="fas fa-times-circle" (click)="removeBox()"></i></div>
+      <div class="titleMap">{{"tooltip_municipality_map"|translate}}</div>
+      <img src="/assets/img/map2.png" style="width: 100%;border-top: 1px solid #ededed;
+      border-bottom: 1px solid #ededed;">
+      <div style="padding: 10px;">{{"data_not_included"|translate}}.</div> 
+    </div>
+  </div>
+  <div class="row munCompare">
+    <div class="col-md-5 col-6" style="margin-right: 0;padding-right: 0">
+    <div style="height: 35px;
+      color: orange;
+      padding: 10px 0px;
+      border-top: 1px solid #f2f2f2;">
+      <span id="poimnik" class="circleIcon poimnikIcon" (click)="showClass()">
+       <span class="mytooltip">{{"glossary"|translate}}</span>
+       <i class="fas fa-info"></i>
+     </span>
+     <span id="mapa" class="circleIcon"  (click)="showMap()">
+       <span  class="circleIcon circleIn">
+         <span class="mytooltip">{{"tooltip_municipality_map"|translate}}</span>
+       </span>
+       <i class="far fa-window-alt"></i>
+     </span></div>
+     <div>
+      <ul class="dom">
+        <li>
+          <div class="">
+            <div class="orangeText indexData">{{"ge_index"|translate}}</div>
+          </div>
+        </li>
+        <li *ngFor="let domenSubdomen of domenSubdomenList; let i=index" class="domen1">
+          <div id="domen_indicator{{i}} " class="orangeText domenData dataLink domenLink"  [routerLink]="['/dictionaryPage', 'domen_indicator'+i]" style="font-family: ArsenalB">{{domenSubdomen.domenName|translate}}</div>
+          <ul>
+            <li *ngFor="let subdomen of domenSubdomen.subdomeni; let s=index" class="subdomen">
+              <div id="{{subdomen.subdomenName}}" class="subdomenData">
+                <div id="domen_indicator{{i}}sub_indicator{{s}}" class="subdomen dataLink subdomenLink"  [routerLink]="['/dictionaryPage', 'domen_indicator'+i+'sub_indicator'+s]">{{subdomen.subdomenName|translate}}</div>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-7 col-6" style="text-align: center; margin-left: 0;padding-left: 0">
+    <ul class="dom row">
+      <li class="{{i < 3 ? 'col-md-6 col-6' : i > 3 ? 'col-md-3 col-3': 'col-md-4 col-4'}}" *ngFor="let m of mun; let i=count " style="padding: 0">
+        <div style="border-bottom: 1px solid #f2f2f2;border-top: 1px solid #f2f2f2;" class="munName">{{m.name|translate}}</div>
+        <div style="position: relative;">
+          <ul>
+            <div class="col-md-9 col-9" style="margin: 0 auto">
+              <li class="row">
+                <div  class="col-md-6 col-6">
+                  <div style="padding-top: 10px" >{{"rank"|translate}}</div>
+                  <div class="orangeText num indexRS">{{m.rangMun}}</div>
+                </div>
+                <div  class="col-md-6 col-6" >
+                 <div style="padding-top: 10px">{{"grade"|translate}}</div>
+                 <div class="orangeText num indexRS" >{{m.scoreMun}}</div>
+               </div>
+             </li>
+           </div>
+           <li *ngFor="let domenSubdomen of m.domenSubdomen" class="domen1">
+            <div class="lineMun"></div>
+            <div class="col-md-9 col-9" style="margin: 0 auto">
+              <ul class="row">
+
+                <li *ngFor="let column of domenSubdomen.columns" class="col-md-6 col-6" >
+                  <div class="{{column.columnName === 'Ранг' ? 'orangeText': column.columnName === 'Оценка' ? 'orangeText': column.columnName === 'Просек' ? 'orangeText':'simpleText' }} subdomen domenData" style="font-family: ArsenalB">{{column.columnValue}}</div>
+                </li>
+              </ul>
+              <ul>
+                <li *ngFor="let subdomen of domenSubdomen.subdomeni">
+                  <ul class="row">
+                    <li *ngFor="let sub of subdomen.columns" class="col-md-6 col-6" id="{{subdomen.subdomenName}}">
+                     <div id="{{subdomen.subdomenName}}" class="columnData">
+                      <div class="subdomen">{{sub.columnValue}}</div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </li>
+</ul>
+</div>
+</div>
+</div>
+<app-footer></app-footer>

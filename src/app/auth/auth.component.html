@@ -1,0 +1,25 @@
+<div class="admin">
+  <div class="admin-nav container-fluid">
+    <div class="row line_parts">
+      <div class="col-md-10">Добредојдовте! Родов индекс</div>
+      <div class="col-md-2">
+        <span><i class="fas fa-user-ninja"></i> {{ (authService.user | async)?.email }}!</span>
+        <span style="padding-left: 20px"><i class="fas fa-power-off" (click)="logout()" style=""></i></span>
+      </div>
+    </div>
+  </div>
+  <div class="fullBack fullHeight">
+    <a routerLink="/admin-subdomen-list"><span class="main_cat">Поддомени / Индикатори</span></a>
+    <a routerLink="/admin-domen-list"><span class="main_cat">Домени</span></a>
+    <a routerLink="/admin-year-list"><span class="main_cat">Години</span></a>
+    <a routerLink="/admin-municipality-list"><span class="main_cat">Општини</span></a>
+    <a routerLink="/admin-region-list"><span class="main_cat">Региони</span></a>
+    
+    <div class="grade-box line_parts">
+      <span class="col-md-12">Преглед низ години</span>
+    </div>
+    <ul>
+      <li *ngFor="let els of yearsEls" class="els_li"><a  [routerLink]="['/years', els.key]"><span class="main_cat">{{els.name}}</span></a></li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,1314 @@
+    @import '~bootstrap/dist/css/bootstrap.min.css';
+    @import '~@fortawesome/fontawesome-pro/css/all.css';
+
+    *:focus {
+      outline: none;
+    }
+
+
+    @font-face {
+      font-family: Arsenal;
+      src: url(./assets/fonts/Arsenal-Regular.otf);
+    }
+
+    @font-face {
+      font-family: ArsenalB;
+      src: url(./assets/fonts/Arsenal-Bold.otf);
+    }
+
+     @font-face {
+      font-family: FontAwesome;
+      src: url(./assets/fonts/fa-solid-900.ttf);
+    }
+
+
+    body {
+      font-family: Arsenal;
+    }
+
+    a {
+      color: #2d2c2c;
+
+      &:hover {
+        color: #7e7a7a !important;
+        text-decoration: none !important
+      }
+    }
+
+    .in {
+      display: block !important;
+      transition: height 2s;
+      height: 180px !important
+    }
+
+    .navbar-collapse {
+      transition: all 2s;
+    }
+
+    /*purple light*/
+
+    $base-admin:#eef4ff;
+    /*purple mid dark*/
+
+    $base-admin-mid-dark:#bccef0;
+    /*purple dark*/
+
+    $base-admin-dark:#566f9e;
+
+    [ng\:cloak],
+    [ng-cloak],
+    .ng-cloak {
+      display: none !important;
+    }
+
+    ul {
+      li {
+        list-style: none
+      }
+    }
+
+    .required {
+      color: red
+    }
+
+    .admin {
+      .fullBack {
+        background: $base-admin;
+
+        a {
+          color: $base-admin-dark;
+
+          &:hover {
+            text-decoration: none;
+
+            span {
+              background: #6d7b9814;
+            }
+          }
+        }
+
+        .main_cat {
+          padding: 5px 30px;
+          border-bottom: 1px solid $base-admin-dark;
+          display: block;
+
+          &:hover {
+            background: #6d7b9814;
+            cursor: pointer;
+          }
+        }
+      }
+
+
+      .admin-nav {
+        background: $base-admin-dark;
+        color: white;
+      }
+
+      .fullHeight {
+        position: relative;
+        height: 100vh;
+
+        .box {
+          width: 500px;
+          text-transform: center
+        }
+
+        .centerBox {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          margin: 0 auto;
+          right: 0;
+          transform: translate(-50%, -50%);
+
+          .loginForm {
+            padding: 27px;
+            background: white;
+            border-radius: .25rem;
+            border: 1px solid $base-admin-mid-dark;
+
+            label {
+              position: absolute;
+              line-height: 2.3;
+              padding: 0px 15px;
+
+              i {
+                color: $base-admin-mid-dark;
+              }
+            }
+
+            input {
+              padding-left: 40px;
+              border: 1px solid $base-admin-mid-dark;
+            }
+          }
+        }
+      }
+
+
+      .fa-power-off {
+        cursor: pointer;
+      }
+
+      .block {
+        margin-top: 20px;
+      }
+
+      textarea {
+
+        height: 150px
+      }
+
+
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+
+          margin: 20px 0 20px;
+        }
+      }
+
+      .action {
+        span[class*="action-"] {
+          margin: 0px 5px;
+        }
+      }
+
+      .btn {
+        padding: 0px 30px;
+      }
+
+      .error {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        margin: 5px;
+      }
+
+      .checkbox-box {
+        overflow-y: scroll;
+        height: 230px;
+
+        ul {
+          li {
+            border-bottom: 1px solid #d2dff7;
+            margin: 0px 0 3px;
+          }
+        }
+      }
+
+      .grade-box {
+        margin-top: 75px;
+        background: #566f9e;
+        color: white;
+
+      }
+      .els_li{
+        margin: 0;
+      }
+      .line_parts{
+        padding: 10px 0px;
+      }
+
+      button {
+        background: #566f9e !important;
+        color: white;
+      }
+
+    }
+
+    .header-block {
+      background: #eef4ff;
+      border-bottom: 1px solid #c3d4e5;
+
+      span.first {
+        padding-left: 15px
+      }
+    }
+
+    /*end admin*/
+    .bottom {
+      padding-bottom: 45px;
+    }
+
+    /*mapa*/
+
+    .highcharts-container {
+      margin: 0 auto;
+
+    }
+
+    .highcharts-background {
+      opacity: 0;
+    }
+
+
+    chart[type^="Map"] {
+      .highcharts-container {
+        margin: 0 auto;
+        width: 60% !important;
+
+        svg {
+          height: 92vh;
+          width: 100%;
+
+        }
+
+      }
+
+    }
+
+    .bg-light {
+      background-color: #f6f6f6 !important;
+    }
+    .myNav{
+      font-size: 16px;
+    text-transform: uppercase;
+    color: #000000; height: 1px; transition: height 2s;position: relative;z-index: 3
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+      color: black
+    }
+
+    .nav-link-in {
+      max-height: 0;
+      overflow: hidden;
+      position: absolute;
+      background: #f6f6f6 !important;
+      /* Set our transitions up. */
+      -webkit-transition: max-height 0.8s;
+      -moz-transition: max-height 0.8s;
+      transition: max-height 0.8s, color .2s;
+      li{
+        transition: max-height 0.8s, color .2s;
+        &:hover{
+           color: #f19a60 !important;
+        }
+      }
+    }
+
+    .nav-item {
+      cursor: pointer;
+
+
+      &:hover {
+        
+        .nav-link-in {
+          max-height: 200px;
+          background: #f6f6f6 !important;
+          
+        }
+      }
+    }
+
+    .nav-link {
+
+      color: black;
+      -webkit-transition: color .2s;
+      /* Safari */
+      transition: color .2s;
+
+      &:hover {
+
+        color: #f19a60 !important;
+
+
+      }
+
+
+    }
+
+    .highcharts-tooltip {
+      .map {
+        background: white;
+        width: 200px;
+        height: 158px;
+        box-shadow: 1px 1px 2px 1px #7272726e;
+        text-align: center;
+
+        .triangle {
+          width: 0;
+          height: 0;
+          border-left: 10px solid transparent;
+          border-right: 10px solid transparent;
+          border-top: 10px solid #fff;
+          margin: 0 auto;
+          position: relative;
+          top: 5px;
+        }
+
+        .name_mun {
+          font-size: 15px;
+          text-transform: uppercase;
+          padding-top: 17px;
+          font-family: ArsenalB;
+        }
+
+        .grades {
+          font-size: 15px;
+          text-transform: uppercase;
+          padding: 5px 0px;
+          font-family: Arsenal;
+          background: #770E2A;
+          color: white;
+          margin-top: 11px;
+        }
+      }
+
+
+      span {
+        span:first-child {
+          display: none;
+        }
+
+        span:nth-child(2) {
+          display: none;
+        }
+      }
+    }
+
+
+    ul {
+
+      margin: 0;
+      padding: 0;
+
+
+
+      .list {
+        padding-bottom: 10px
+      }
+
+
+
+    }
+
+    .active {
+      font-family: ArsenalB
+    }
+
+    ul.domenSubdomen {
+      li:last-child div:nth-child(2) {
+        border-right: 0 !important;
+      }
+    }
+
+
+    div.subdomenList {
+      margin-left: 5px;
+      display: table;
+      height: 100%;
+      font-size: 15px;
+
+      div {
+        display: table-cell;
+        vertical-align: middle;
+        cursor: pointer;
+      }
+
+
+    }
+
+    div[id^='label'] {
+      font-size: 10px;
+      line-height: 0.9;
+      .subdomen {
+        visibility: hidden;
+      }
+
+      div[id$='1rank'],
+      div[id$='2grade'],
+      div[id$='3avg'],
+      #label5_8population {
+        font-size: 10px;
+        line-height: 0.9;
+        visibility: hidden;
+      }
+    }
+
+    .columnsTable {
+      font-size: 14px;
+      text-align: center;
+
+    }
+
+
+
+    div.domenList {
+      font-family: ArsenalB;
+      display: table;
+      height: 100%;
+      color: #f19a60;
+
+      div {
+        display: table-cell;
+        vertical-align: middle;
+        padding-top: 60px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    }
+
+    .valueBox {
+      height: 55px;
+      position: relative;
+      border-bottom: 1px solid #eaeaea;
+
+      .valueBoxIn {
+        margin: 0 auto;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        right: 0
+      }
+    }
+
+    .municipality {
+
+
+      li:nth-child(-n+4),
+      li:nth-child(1n+4) {
+        width: 25%;
+        display: inline-block;
+      }
+
+      .list {
+        cursor: pointer;
+      }
+
+
+
+    }
+
+    .profileText {
+      text-transform: uppercase;
+      font-family: ArsenalB;
+      padding-bottom: 40px;
+      font-size: 14px;
+    }
+
+    .imageMun {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .profileMun {
+
+      .imageMun,
+      .rangMun,
+      .demograficData {
+        margin: 0 15px;
+        .area,
+        .population,
+        .women,
+        .men,
+        .budget,
+        .region,
+        .plannedbudget,
+        .numberRateInfants,
+        .numberRateMaternal,
+        .numberCompany,
+        .numberPlot,
+        .numberObject,
+        .numberFlat {
+          padding: 8px 0px;
+          font-size: 14px;
+        }
+
+        .dataValue{
+          font-family: ArsenalB;
+        }
+
+      }
+
+      .rangMun {
+        margin-top: 50px;
+
+        width: 100%;
+
+        .index {
+          display: inline-block;
+
+          .text {
+            color: #f19a60;
+            font-family: ArsenalB;
+            font-size: 26px;
+          }
+        }
+      }
+    }
+
+    .title {
+      text-align: center;
+      text-transform: uppercase;
+      padding: 15px 0px;
+      margin: 30px 0px;
+      font-family: ArsenalB;
+    }
+
+    .staticPage {
+    padding-bottom: 80px;
+      text-align: justify;
+
+    }
+    .contactPage{
+      .contact{
+        padding: 5px 0px;
+      }
+    }
+
+
+
+    .footer {
+      background: #f6f6f6 !important;
+      .mainText {
+        text-align: justify;
+        font-size: 12px;
+
+        .text {
+          font-size: 10px;
+          text-align: justify;
+          padding-top: 10px
+        }
+      }
+    }
+
+    .error404 {
+      font-size: 40px;
+      text-align: center;
+      padding-top: 100px;
+      font-weight: bold;
+    }
+
+    .mainGrades {
+      width: 50px !important;
+      height: 50px !important;
+    }
+    .munTitle {
+      text-align: center;
+      text-transform: uppercase;
+      padding: 15px 0px;
+      margin: 50px 0px;
+    }
+
+    .dom {
+      .domen .columnsTable div:nth-child(2) {
+        padding-top: 40px;
+      }
+
+      .domen:nth-child(n+2) {
+        margin-top: 80px;
+      }
+
+      .domen1:nth-child(n+3) {
+        margin-top: 80px;
+
+        .lineMun {
+          border-right: 1px solid #f2f2f2;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          height: auto;
+          right: 50%;
+
+          margin: auto;
+        }
+
+        .num {
+          font-size: 16px
+        }
+      }
+
+    }
+
+    .download_pdf {
+      width: 100%;
+      text-align: center;
+      font-size: 40px;
+    }
+    .region_name {
+      text-transform: uppercase;
+      font-family: ArsenalB;
+    }
+
+
+    .description {
+      text-align: justify;
+    }
+
+    .dropdown-item {
+      font-size: 11px
+    }
+
+
+    .munList{
+      .highcharts-column-series, .munCode{
+        text-transform: uppercase;
+      }
+      .highcharts-legend-nav-active{
+        fill:orange;
+      }
+    }
+
+
+    .currentMunicipality {
+      position: relative;
+
+         .domenList{
+          div{
+            &:hover{
+            color:#ffbc90;
+            }
+          }
+        }
+
+
+        .subdomenList{
+          div{
+            &:hover{
+            color:#7e7a7a !important;            }
+          }
+        }
+
+      .highcharts-container {
+        margin: 0 !important;
+        width: 100% !important;
+      }
+
+      .compare {
+        .input-group-text {
+          color: orange !important;
+          font-size: 0.8rem !important
+        }
+
+
+      }
+
+      .btn-primary {
+        color: #242424 !important;
+        background-color: #ffffff !important;
+        border-color: #dfdfdf !important;
+        padding: 3px 11px !important;
+      }
+    }
+
+    .orangeText {
+      color: #f19a60;
+      font-family: ArsenalB
+    }
+
+
+    .simpleText {}
+
+    .tooltipChart{
+      margin-left: 10px;
+     
+    }
+ .num{
+        font-family: ArsenalB
+      }
+    .mytooltip {
+     width: 170px;
+    position: absolute;
+    top: -36px;
+    padding: 4px 0px;
+    display: none;
+    font-size: 12px;
+    background: #f6f6f6;
+    text-align: center;
+    color: #363636;
+    border: 1px solid #ededed;
+
+      &:before {
+        content: "\f0d7";
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: inherit;
+        color: #ededed;
+    font-size: 20px;
+    padding-right: 0.5em;
+    position: absolute;
+    top: 13px;
+    left: 10px;
+      }
+    }
+
+    .activePoimnik {
+      width: 100%;
+
+      opacity: 1;
+      background: #f6f6f6;
+
+      opacity: 0;
+      position: absolute;
+      top: -300%;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      z-index: 150;
+      box-shadow: 1px 1px 4px 1px #d6d6d6;
+      transition: all 1s ease-in-out;
+    }
+
+     .activeMap {
+      width: 100%;
+
+      opacity: 1;
+      background: #f6f6f6;
+
+      opacity: 0;
+      position: absolute;
+      top: -300%;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      z-index: 150;
+      
+      box-shadow: 0px 0px 3px 1px #e2e2e2;
+      transition: all 1s ease-in-out;
+    }
+
+    .myclass {
+      top: 0;
+      opacity: 1;
+    }
+
+    #removeBox {
+      cursor: pointer;
+    }
+
+    #poimnik,
+    #mapa {
+      cursor: pointer;
+
+      &:hover {
+        .mytooltip {
+          display: block !important;
+        }
+
+
+      }
+    }
+
+    .titleMap, .titleDictionary{
+      text-align: center;
+    text-transform: uppercase;
+    padding: 10px;
+    }
+
+    .frameDictionary{
+      padding: 0px 40px;
+    border-top: 1px solid #ededed;
+    border-bottom: 1px solid #ededed;
+    background: white;margin-bottom: 40px;
+    }
+
+    .dictionary{
+      margin-top: 30px;
+      .orangeText{
+        font-size: 1rem;
+        text-transform: uppercase;
+      }
+    }
+    span[class^="indicator"], span[class^="technic"]{
+       cursor: pointer;
+       font-family: ArsenalB;
+      i{
+        color:#f19a60;
+      }
+      &:hover i{
+     
+
+      }
+    }
+
+    span[class^="domen_indicator"] {
+      cursor: pointer;
+
+    }
+
+    span[class^="subdomen_indicator"] {
+      cursor: pointer;
+    }
+
+    .indi {
+      margin: 10px 0px;
+      text-align: justify;
+    }
+
+    .openDictionary {
+      max-height: 500px;
+      /* opacity: 1; */
+      visibility: visible;
+      -webkit-transition: opacity .3s ease-in, max-height 0.3s ease-in;
+      -moz-transition: opacity .3s ease-in, max-height 0.3s ease-in;
+      transition: opacity .3s ease-in, max-height 0.3s ease-in;
+      overflow: visible;
+      padding: 5px 15px;
+    }
+
+    .closeDictionary {
+      overflow: hidden;
+      max-height: 0px;
+      opacity: 0;
+      visibility: hidden;
+      padding: 5px 15px;
+      -webkit-transition: opacity .5s ease-out, visibility .5s ease-out, max-height 0.5s ease-out;
+      -moz-transition: opacity .5s ease-out, visibility .5s ease-out, max-height 0.5s ease-out;
+      transition: opacity .5s ease-out, visibility .5s ease-out, max-height 0.5s ease-out;
+
+    }
+
+    .poimnikIcon {
+      margin-right: 5px;
+
+
+
+      i {
+        color: white;
+        font-size: 10px;
+        text-align: center;
+        width: 100%;
+        padding: 6px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        display: block;
+      }
+    }
+
+    .circleIcon {
+      width: 23px;
+      height: 23px;
+      border-radius: 50%;
+      display: inline-block;
+      background: orange;
+      position: relative;
+
+      i {
+        font-size: 10px;
+        text-align: center;
+        width: 100%;
+        padding: 7px 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        display: block;
+      }
+
+      .circleIn {
+        width: 21px;
+        height: 21px;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        background: white;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+
+      }
+    }
+
+    .munCompare {
+      font-size: 14px;
+
+      .dataLink{
+        cursor: pointer
+      }
+      .domenLink{
+        &:hover{
+          color:#ffbc90;
+        }
+      }
+        .subdomenLink{
+          &:hover{
+color:#7e7a7a !important;
+          }
+        }
+      
+
+      .indexData {
+        padding-top: 50px;
+        padding-bottom: 15px;
+        text-transform: uppercase;
+        margin-top: 7px;
+        border-top: 1px solid #eee;
+      }
+
+      .indexRS {
+        font-size: 20px;
+        padding-bottom: 15px;
+        padding-top: 10px;
+      }
+
+      .subdomenData,
+      .columnData,
+      .domenData {
+        padding-bottom: 15px;
+        line-height: 0.9;
+      }
+
+
+
+      div[id^='label'] {
+        font-size: 10px;
+        line-height: 0.9;
+        display: none;
+
+        .subdomen {
+          display: none;
+        }
+      }
+
+      .munName {
+        text-transform: uppercase;
+        font-family: ArsenalB;
+        padding: 10px;
+
+      }
+    }
+
+
+    /*home navigation*/
+    .navigationUp{
+      background: #f6f6f6 !important;
+    border-bottom: 1px solid #ededed;
+    z-index: 1000;
+    position: relative;
+    }
+
+    .homeClass{
+      background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;position: relative;height: 95vh;overflow: hidden;
+    .home_title {
+      margin-top: 20%;
+      background: #606060;
+      color: white;
+      text-transform: uppercase;
+      text-align: center;
+      height: 55px;
+      line-height: 3.3;
+
+    }
+    .homeSliderText {
+      margin: 0px 6%;
+      cursor: pointer;
+
+      .subject {
+        font-family: ArsenalB;
+        text-transform: uppercase;
+      }
+
+      .description,
+      .subject {
+        cursor: text;
+      }
+    }
+    }
+    
+
+    /*.domenSubdomen {
+      text-transform: uppercase;
+
+      span {
+        display: block;
+
+      }
+    }*/
+    
+
+
+
+
+    #loaderData{
+      visibility: hidden;
+      position: absolute;
+    right: 45px;
+    z-index: 10;
+    top: 26px;
+    }
+    .onLoader{
+      display: inline-block;
+      visibility: visible!important;
+    }
+    .offLoader{
+      display: none;
+      visibility: hidden;
+    }
+
+    .pull {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 2px;
+      background: #606060;
+    }
+
+    .pull_icon {
+      position: absolute;
+      top: 50%;
+      bottom: 50%;
+      left: -23px;
+      background: url(/../assets/img/pull_icon.png);
+      width: 50px;
+      height: 50px;
+      background-size: cover;
+      z-index: 1;
+      cursor: pointer;
+    }
+
+    .pull_icon1 {
+      position: absolute;
+      top: 50%;
+      bottom: 50%;
+      left: -23px;
+      background: url(/../assets/img/pull_icon1.png);
+      width: 50px;
+      height: 50px;
+      background-size: cover;
+      z-index: 1;
+      cursor: pointer;
+    }
+
+    .demograficData .area .population .women .men .budget .kindergartens .institutions .healthWomen .gynecologists {
+      padding: 5px 0px
+    }
+
+
+
+    .pull_box {
+      background: #ffffffbf;
+      position: absolute;
+      top: 0;
+      right: -398px;
+      bottom: 0;
+      width: 400px;
+      
+      transition: right 1s linear;
+      -webkit-trasnition: right 1s linear;
+    }
+
+    .pull_open {
+      background: #ffffffbf;
+      right: 0;
+      position: absolute;
+      top: 0;
+
+      bottom: 0;
+      width: 400px;
+      
+      transition: right 1s linear;
+
+      -webkit-trasnition: right 1s linear;
+    }
+
+    
+
+
+
+    @media screen and (max-width: 992px) {
+      chart[type^=Map] .highcharts-container {
+        width: 100% !important;
+      }
+      .navcontainer{
+        overflow: hidden;
+      }
+
+      .navbar-nav {
+        text-align: center;
+      }
+
+      .footer {
+        text-align: center;
+      }
+
+      .staticPage {
+        height: auto;
+        margin-bottom: 45px
+      }
+
+      .munCompare {
+
+
+        .columnData {
+
+          padding-bottom: 17px;
+        }
+
+
+
+      }
+
+
+       .nav-link-in {
+      
+      max-height: 0;
+  overflow: hidden;
+position: relative;
+font-size: 10px;
+background:#f6f6f6 !important;
+  /* Set our transitions up. */
+  -webkit-transition: max-height 0.8s;
+  -moz-transition: max-height 0.8s;
+  transition: max-height 0.8s;
+    }
+
+    .nav-item {
+      cursor: pointer;
+
+      &:hover {
+        .nav-link-in {
+          max-height: 200px;
+          background:#f6f6f6 !important;
+        }
+      }
+    }
+
+      .highcharts-container {
+        width: 100% !important;
+
+        svg {
+          width: 100%;
+
+        }
+      }
+
+      .compare {
+        height: auto;
+      }
+    }
+
+    @media screen and (max-width:500px) {
+      .col-2 {
+        font-size: 10px;
+        padding: 0 10px !important
+      }
+
+      .col-3 {
+        div.subdomenList {
+          font-size: 10px !important
+        }
+
+        div.domenList {
+          font-size: 10px !important
+        }
+
+      }
+
+      .munDomen {
+        border: none !important;
+     
+      }
+
+      .munCompare {
+        font-size: 10px;
+
+        .subdomenData {
+          font-size: 10px;
+        }
+
+        .columnData {
+          font-size: 10px;
+          padding-bottom: 18px;
+        }
+
+        .domenData {
+          font-size: 10px
+        }
+
+        .indexData {
+          padding-top: 35px;
+          padding-bottom: 15px;
+          text-transform: uppercase;
+        }
+
+        .indexRS {
+          font-size: 15px;
+          padding-bottom: 8px;
+          padding-top: 15px;
+        }
+      }
+    }
+
+    .button_compare {
+      width: 28px;
+      display: inline-block;
+      height: 31px;
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 1px;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      top: -2px;
+
+      i {
+        font-size: 12px;
+        color: orange;
+        cursor: pointer;
+      }
+    }
+
+    .error {
+      font-size: 15px;
+      line-height: 1;
+      color: red;
+    }
+
+    /*input*/
+
+    .form-control:focus {
+      border-color: $base-admin-mid-dark;
+      box-shadow: inset 0 0px 1px $base-admin-mid-dark, 0 0 1px $base-admin-mid-dark;
+    }
+
+    /*btn*/
+
+    .btn-primary.focus,
+    .btn-primary:focus {
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0) !important
+    }
+
+    .dropdown-item.active,
+    .dropdown-item:active {
+      color: #000 !important;
+      text-decoration: none;
+      background-color: #e4e4e4 !important;
+      font-size: 12px;
+    }
+
+    .btn-primary:not(:disabled):not(.disabled).active,
+    .btn-primary:not(:disabled):not(.disabled):active,
+    .show>.btn-primary.dropdown-toggle {
+      color: white;
+      background-color: $base-admin-dark;
+      border-color: #495368;
+
+    }
+
+    .btn-primary {
+      color: white;
+      background-color: $base-admin-dark;
+      border-color: #495368;
+
+      &:hover {
+        color: white;
+        background-color: #384050;
+        border-color: #495368;
+      }
+    }

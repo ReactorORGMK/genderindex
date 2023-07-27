@@ -1,11 +1,11 @@
 <admin-navbar></admin-navbar>
-<div class="container-fluid" class="header-block"><a [routerLink]="['/admin']"> <span class="first">почетна</span> </a> / 
+<div class="container-fluid" class="header-block"><a [routerLink]="['/admin']"> <span class="first">почетна</span> </a> /
 </div>
 <div class="admin">
   <div class="container">
     <div class="block">
       <div class="action">
-        <span class="action-1">  
+        <span class="action-1">
     <select class='select-option' [(ngModel)]='optionSelected'>
     	<option class='option' *ngFor='let option of dropdownOptions' [value]="option.id">{{option.name}}</option>
     </select>
@@ -17,9 +17,16 @@
       </div>
       <ul>
         <li *ngFor="let year of yearsList | async">
-          <span> 
+
+          <span>
 			<input type="checkbox"  (click)="getCheckboxVal($event, year.key)" ></span>
-          <a [routerLink]="['/admin-year',year.key]"><span> {{ year.val }}</span></a> 
+          <span *ngIf="year.val=='2016'">
+            <span style="color:grey"> {{ year.val }} - - -  немате пристап до 2016, во 2023 е одлучено да се смени структурата на сајтот, а со тоа и кодот</span>
+
+            </span>
+          <span *ngIf="year.val!='2016'">
+          <a [routerLink]="['/admin-year',year.key]"><span> {{ year.val }}</span></a>
+          </span>
         </li>
       </ul>
     </div>

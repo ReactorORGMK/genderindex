@@ -110,7 +110,7 @@ declare var require: any;
   AdminElsMunicipalityEditComponent,
   DictionaryPageComponent,
   DictionaryButtonPageComponent,
-  
+
   ],
   imports: [
   BrowserModule,
@@ -130,7 +130,7 @@ declare var require: any;
             }
         }),
   MultiselectDropdownModule,
-   
+
 
 
   RouterModule.forRoot([
@@ -164,17 +164,17 @@ declare var require: any;
    {
     path:'municipality-list/:idYear/:idMunicipality', component:MunicipalityComponent
   },
-  
+
   {
-    path:'municipalities-compare/:idMun /:idMun1 /:idMun2 /:idMun3 ', component:MunicipalityCompareComponent 
+    path:'municipalities-compare/:idMun /:idMun1 /:idMun2 /:idMun3 ', component:MunicipalityCompareComponent
   },
    {
-    path:'municipalities-compare/:idMun /:idMun1 /:idMun2', component:MunicipalityCompareComponent 
+    path:'municipalities-compare/:idMun /:idMun1 /:idMun2', component:MunicipalityCompareComponent
   },
    {
-    path:'municipalities-compare/:idMun /:idMun1 ', component:MunicipalityCompareComponent 
+    path:'municipalities-compare/:idMun /:idMun1 ', component:MunicipalityCompareComponent
   },
-   
+
   {
     path:'admin', component:AuthComponent
   },

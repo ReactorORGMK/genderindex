@@ -936,19 +936,22 @@ border: none;
     }
 
     .years_btn_position{
-          position: fixed;
-    top: 15%;
+    position: fixed;
+    top: 91px;
     z-index: 30;
     cursor: pointer;
     left: -8vh;
-    width: 200px;
+    width: 40%;
     text-align: right;
      
     }
 
      .years_tooltip{
+
 width: 125px;
     position: absolute;
+     left: 208px;
+     top:0;
     padding: 4px 0px;
     display: none;
     font-size: 12px;
@@ -957,36 +960,43 @@ width: 125px;
     color: #363636;
     border: 1px solid #ededed;
     display: none;
-    top: 64px;
-    left: 38%;
+    
     font-family: Arsenal;
     transition: visibility 0.3s linear,opacity 0.3s linear;
 
     }
 
-    .years_btn_position:hover .years_tooltip{
-    display: block!important
-    }
+    
 
-    .years_tooltip .arrow_up{
+    .years_tooltip .arrow_left{
 width: 0;
     height: 0;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-bottom: 7px solid #ededed;
+    border-top: 7px solid transparent;
+    border-right: 7px solid #ededed;
+    border-bottom: 7px solid transparent;
     position: absolute;
-    top: -17%;
-    right: 5%;
+    top:6px;
+    left: -7px;
     }
     .years_btn_style{
+      position: relative;
       background:orange;
       color:white;
       padding: 10px 10px;
-      margin: 2px 0px;
+      margin: 5px 0px;
       display: block;
       font-size: 23px;
+      width: 200px;
       font-family: ArsenalB;
 
+    }
+
+    .years_btn_style:hover{
+      background:#d28a3a;
+    }
+
+    .years_btn_style:hover .years_tooltip{
+    display: block!important
     }
  .container{
   position: relative;

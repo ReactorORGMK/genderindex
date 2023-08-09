@@ -151,7 +151,7 @@ async createChartMap(year){
 						'<div style="padding-top:8px"><img src="'+this.properties.mun_img+'" width="90px"/></div>'+
 						'<div class="name_mun">'+that.translate.instant(this.name)+'</div>'+
 						'<div class="grades">'+
-						that.translate.instant('Ранг')+':'+this.properties.mun_rang+'  |  '+that.translate.instant('Оценка')+':'+ this.properties.mun_score+'</div>'+
+						that.translate.instant('Ранг')+':'+this.properties.mun_rang+'  |  '+that.translate.instant('Оценка')+':'+ this.properties.mun_score+'/100</div>'+
 						'<div class="triangle"></div></div>';
 						return tooltop
 					},
@@ -507,6 +507,7 @@ getAllYears(){
 changeYear(changeyear){
 	this.lastYear=changeyear;
 	this.createChartMap(changeyear);
+	console.log(changeyear);
 
 
 }

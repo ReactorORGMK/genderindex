@@ -1,10 +1,10 @@
 <app-navigation (languageEmit)="recieveLang($event)"></app-navigation>
 <span class="years_btn_position">
     <span *ngFor="let year of years">
-      <span *ngIf="year.key!=lastYear" class="years_btn_style"(click)="changeYear(year.key)">
+      <span class="years_btn_style"(click)="changeYear(year.key)" [ngStyle]="{'background':year.key ==lastYear ? '#f5b233' : 'rgb(245 179 51 / 42%)'}">
         {{year.key}}
         <span class="years_tooltip">{{'Click to view the data for'|translate}} {{year.key}} {{"год."|translate}}
-          <span class="arrow_up"></span>
+          <span class="arrow_left"></span>
         </span>
       </span>
     </span>

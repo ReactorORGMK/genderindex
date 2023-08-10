@@ -939,7 +939,6 @@ border: none;
     position: fixed;
     top: 91px;
     z-index: 30;
-    cursor: pointer;
     left: -8vh;
     width: 40%;
     text-align: right;
@@ -988,6 +987,7 @@ width: 0;
       font-size: 23px;
       width: 200px;
       font-family: ArsenalB;
+      cursor: pointer;
 
     }
 

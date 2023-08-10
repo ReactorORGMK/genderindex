@@ -7,17 +7,6 @@
 
   </span>
     
-  <!-- <span class="years_btn_position">
-    <span *ngFor="let year of years">
-      <span *ngIf="year.key!=lastYear" class="years_btn_style"(click)="changeYear(year.key)">
-        {{year.key}}
-        <span class="years_tooltip">{{'Click to view the data for'|translate}} {{year.key}} {{"год."|translate}}
-          <span class="arrow_up"></span>
-        </span>
-      </span>
-    </span>
-  </span> -->
-
   <span class="years_btn_position">
     <span *ngFor="let year of years">
       <span class="years_btn_style"(click)="changeYear(year.key)" [ngStyle]="{'background':year.key ==lastYear ? '#f5b233' : 'rgb(245 179 51 / 42%)'}">

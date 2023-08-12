@@ -4206,7 +4206,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-navigation (languageEmit)=\"recieveLang($event)\"></app-navigation>\n<div class=\"container-fluid homeClass\">\n  <span class=\"offLoader\" id=\"loaderData\">\n    <span style=\"font-size: 12px\">\n      <img src=\"./assets/img/three-dots.svg\" width=\"30%\"> ...{{\"load_data\"|translate}}...\n    </span>\n\n  </span>\n    \n  <span class=\"years_btn_position\">\n    <span *ngFor=\"let year of years\">\n      <span class=\"years_btn_style\"(click)=\"changeYear(year.key)\" [ngStyle]=\"{'background':year.key ==lastYear ? '#f5b233' : 'rgb(245 179 51 / 42%)'}\">\n        {{year.key}}\n        <span class=\"years_tooltip\">{{'Click to view the data for'|translate}} {{year.key}} {{\"год.\"|translate}}\n          <span class=\"arrow_left\"></span>\n        </span>\n      </span>\n    </span>\n  </span>\n  <div *ngIf=\"lastYear\" class=\"current_year\">{{\"Data for\"|translate }} {{lastYear}} {{\"год.\"|translate}}</div>  \n  <chart type=\"Map\" [options]=\"options\" (load)=\"saveChart($event.context)\"></chart>\n  <div id=\"pullBox\" class=\"pull_box\">\n    <div class=\"pull\" ></div>\n    <div id=\"pullIcon\" class=\"pull_icon\" (click)=\"close_open_Slider()\"></div>\n    <div class=\"col-md-12 home_title\"> <span class=\"\">{{\"ranging_evaluation_manu\"|translate}}</span>\n    </div>\n    <div class=\"col-md-12 row\">\n      <div class=\"col-md-8 homeSliderText\">\n        <div style=\"margin-top: 10%\" id=\"defaultIndex\" (click)=\"getGeneralGrade($event.context)\"><span style=\"text-transform: uppercase;\">{{\"index\"|translate}}</span></div>\n        <ul style=\"width: 105%;margin-left: 5px\">\n          <li *ngFor=\"let domenSubdomen of domeniSubdomeni | async;\">\n            <span [class.active]=\"selectedDomen===domenSubdomen.key\" (click)=\"getDomenId(domenSubdomen.key)\"> {{domenSubdomen.val.name | translate}}</span>\n                <!-- <button (click)=\"addPoint($event.context)\" style=\"position: relative;top:0\">adsdsd</button>\n                 <ul>\n              <li *ngFor=\"let subdomen of Object.keys(domenSubdomen.val.subdomeni); \">\n                <span [class.active]=\"selectedSubdomen===subdomen\" (click)=\"getSubdomenId(domenSubdomen.key,subdomen)\">{{domenSubdomen.val.subdomeni[subdomen]}}</span>\n              </li>\n            </ul> -->\n          </li>\n        </ul>\n      </div>\n      <div class=\"col-md-12 homeSliderText\" style=\"margin-top:100px\">\n        <div class=\"subject\">{{name.name | translate}}</div>\n        <div class=\"description\">{{description.description | translate}}</div>\n      </div>\n    </div>\n  </div>\n\n</div>\n<app-footer></app-footer>\n"
+module.exports = "<app-navigation (languageEmit)=\"recieveLang($event)\"></app-navigation>\n<div class=\"container-fluid homeClass\">\n  <span class=\"offLoader\" id=\"loaderData\">\n    <span style=\"font-size: 12px\">\n      <img src=\"./assets/img/three-dots.svg\" width=\"30%\"> ...{{\"load_data\"|translate}}...\n    </span>\n\n  </span>\n    \n  <span class=\"years_btn_position\">\n    <span *ngFor=\"let year of years\">\n      <span class=\"years_btn_style\"(click)=\"changeYear(year.key)\" [ngStyle]=\"{'background':year.key ==lastYear ? '#f5b233' : 'rgb(245 179 51 / 42%)'}\">\n        {{year.key}}\n        <span class=\"years_tooltip\">{{'Click to view the data for'|translate}} {{year.key}} {{\"год.\"|translate}}\n          <span class=\"arrow_left\"></span>\n        </span>\n      </span>\n    </span>\n  </span>\n  <div *ngIf=\"lastYear\" class=\"current_year\">{{\"Data for\"|translate }} {{lastYear}} {{\"год.\"|translate}}</div>  \n  <chart type=\"Map\" [options]=\"options\" (load)=\"saveChart($event.context)\">\n    \n  </chart>\n  <div id=\"pullBox\" class=\"pull_box\">\n    <div class=\"pull\" ></div>\n    <div id=\"pullIcon\" class=\"pull_icon\" (click)=\"close_open_Slider()\"></div>\n    <div class=\"col-md-12 home_title\"> <span class=\"\">{{\"ranging_evaluation_manu\"|translate}}</span>\n    </div>\n    <div class=\"col-md-12 row\">\n      <div class=\"col-md-8 homeSliderText\">\n        <div style=\"margin-top: 10%\" id=\"defaultIndex\" (click)=\"getGeneralGrade($event.context)\"><span style=\"text-transform: uppercase;\">{{\"index\"|translate}}</span></div>\n        <ul style=\"width: 105%;margin-left: 5px\">\n          <li *ngFor=\"let domenSubdomen of domeniSubdomeni | async;\">\n            <span [class.active]=\"selectedDomen===domenSubdomen.key\" (click)=\"getDomenId(domenSubdomen.key)\"> {{domenSubdomen.val.name | translate}}</span>\n                <!-- <button (click)=\"addPoint($event.context)\" style=\"position: relative;top:0\">adsdsd</button>\n                 <ul>\n              <li *ngFor=\"let subdomen of Object.keys(domenSubdomen.val.subdomeni); \">\n                <span [class.active]=\"selectedSubdomen===subdomen\" (click)=\"getSubdomenId(domenSubdomen.key,subdomen)\">{{domenSubdomen.val.subdomeni[subdomen]}}</span>\n              </li>\n            </ul> -->\n          </li>\n        </ul>\n      </div>\n      <div class=\"col-md-12 homeSliderText\" style=\"margin-top:100px\">\n        <div class=\"subject\">{{name.name | translate}}</div>\n        <div class=\"description\">{{description.description | translate}}</div>\n      </div>\n    </div>\n  </div>\n  \n    <span class=\"info_icon\" style=\"position:absolute;top: 77vh;left: 0;width: 39px;height: 50px;background: #f5b333;display: block;color: white;text-align: center;font-size: 33px;cursor: pointer\">ℹ</span>\n    <div class=\"info_text\" style=\"padding: 20px\">Тука ставаме текст, не е дизајнирано ова</div>\n  \n  \n\n</div>\n<app-footer></app-footer>\n"
 
 /***/ }),
 
@@ -4313,6 +4313,8 @@ var HomeComponent = /** @class */ (function () {
         this.defaultData = [];
         this.dataClasses = [];
         this.mapSeriesData = [];
+        this.dataClassesScale2016 = [];
+        this.dataClassesScale2021 = [];
         //constructor	
     }
     HomeComponent.prototype.ngOnInit = function () {
@@ -4338,6 +4340,38 @@ var HomeComponent = /** @class */ (function () {
                             });
                         });
                         this.getAllYears();
+                        //default numbers for the color scale 
+                        this.dataClassesScale2016 = [{
+                                name: that.translate.instant('Ниско рангирани'),
+                                to: 16,
+                                color: "#B40013",
+                            }, {
+                                name: that.translate.instant('Средно рангирани'),
+                                from: 17,
+                                to: 38,
+                                color: "#F19722",
+                            }, {
+                                name: that.translate.instant('Високо рангирани'),
+                                from: 39,
+                                color: '#F2BE54'
+                            }];
+                        //up from 2021
+                        this.dataClassesScale2021 = [{
+                                name: that.translate.instant('Ниско рангирани'),
+                                color: "#B40013",
+                                from: 0,
+                                to: 50,
+                            }, {
+                                name: that.translate.instant('Средно рангирани'),
+                                color: "#F19722",
+                                from: 51,
+                                to: 74
+                            }, {
+                                name: that.translate.instant('Високо рангирани'),
+                                color: '#F2BE54',
+                                from: 75,
+                                to: 100
+                            }];
                         return [2 /*return*/];
                 }
             });
@@ -4345,18 +4379,40 @@ var HomeComponent = /** @class */ (function () {
     };
     HomeComponent.prototype.mainDataChartLabels = function () {
         var that = this;
-        that.dataClasses = [{ name: that.translate.instant('Ниско рангирани'),
-                to: 16,
-                color: "#B40013",
-            }, {
-                name: that.translate.instant('Средно рангирани'),
-                from: 17,
-                to: 38,
-                color: "#F19722",
-            }, { name: that.translate.instant('Високо рангирани'),
-                from: 39,
-                color: '#F2BE54'
-            }];
+        if (this.lastYear == "2016") {
+            that.dataClasses = that.dataClassesScale2016;
+            // 	that.dataClasses=[{name:that.translate.instant('Ниско рангирани'),
+            // 	to: 16,
+            // 	color: "#B40013",
+            // }, {
+            // 	name:that.translate.instant('Средно рангирани'),
+            // 	from: 17,
+            // 	to: 38,
+            // 	color: "#F19722",
+            // }, {name:that.translate.instant('Високо рангирани'),
+            // from: 39,
+            // color: '#F2BE54'
+            //}];
+        }
+        else {
+            that.dataClasses = that.dataClassesScale2021;
+            // 	that.dataClasses=[{
+            // 	name:that.translate.instant('Ниско рангирани'),
+            // 	color: "#B40013",
+            // 	from:0,
+            // 	to: 50,
+            // }, {
+            // 	name:that.translate.instant('Средно рангирани'),
+            // 	color: "#F19722",
+            // 	from: 51,
+            // 	to: 74
+            // }, {
+            // 	name:that.translate.instant('Високо рангирани'),
+            // 	color: '#F2BE54',
+            // 	from: 75,
+            // 	to:100
+            // }];
+        }
     };
     HomeComponent.prototype.createChartMap = function (year) {
         return __awaiter(this, void 0, void 0, function () {
@@ -4445,6 +4501,8 @@ var HomeComponent = /** @class */ (function () {
                                         }
                                     },
                                     colorAxis: {
+                                        min: 1,
+                                        max: 100,
                                         dataClasses: that.dataClasses,
                                     },
                                     credits: {
@@ -4511,28 +4569,10 @@ var HomeComponent = /** @class */ (function () {
     };
     /*get general grade - индекс*/
     HomeComponent.prototype.getGeneralGrade = function (elem) {
+        this.dataClasses = [];
         var that = this;
         document.getElementById('defaultIndex').setAttribute('class', 'active');
         this.selectedDomen = null;
-        if (this.defaultData.length === 81) {
-            that.chart.series[0].setData(that.defaultData);
-            that.chart.colorAxis[0].update({
-                dataClasses: [{
-                        to: 16,
-                        color: "#B40013",
-                        name: that.translate.instant('Ниско рангирани')
-                    }, {
-                        from: 17,
-                        to: 38,
-                        color: "#F19722",
-                        name: that.translate.instant('Средно рангирани')
-                    }, {
-                        from: 39,
-                        color: '#F2BE54',
-                        name: that.translate.instant('Високо рангирани'),
-                    }]
-            });
-        }
     };
     /*on click get domenData*/
     HomeComponent.prototype.getDomenId = function (id) {
@@ -4541,6 +4581,8 @@ var HomeComponent = /** @class */ (function () {
         var rankData = [];
         var domenMap = [];
         this.selectedDomen = id;
+        that.dataClasses = [];
+        //console.log(that.chart.colorAxis[0].dataClasses=[]);
         document.getElementById('defaultIndex').setAttribute('class', ' ');
         this.serviceDomen.getDomen(id).subscribe(function (a) {
             _this.description = a;
@@ -4565,67 +4607,135 @@ var HomeComponent = /** @class */ (function () {
             /*ColorAxis - бои како оцени*/
             /*first domen*/
             if (id === '-LQsYG2Wf30xOMNPuxeJ') {
-                that.chart.colorAxis[0].update({
-                    dataClasses: [{
-                            from: 1,
-                            to: 17,
-                            color: '#F2BE54',
-                            name: that.translate.instant('Високо рангирани'),
-                        }, {
-                            from: 18,
-                            to: 63,
-                            color: '#F19722',
-                            name: that.translate.instant('Средно рангирани')
-                        }, {
-                            from: 64,
-                            to: 81,
-                            color: '#B40013',
-                            name: that.translate.instant('Ниско рангирани')
-                        },]
-                });
+                if (this.lastYear == "2016") {
+                    that.chart.colorAxis[0].update({
+                        dataClasses: [{
+                                from: 1,
+                                to: 17,
+                                color: '#F2BE54',
+                                name: that.translate.instant('Високо рангирани'),
+                            }, {
+                                from: 18,
+                                to: 63,
+                                color: '#F19722',
+                                name: that.translate.instant('Средно рангирани')
+                            }, {
+                                from: 64,
+                                to: 81,
+                                color: '#B40013',
+                                name: that.translate.instant('Ниско рангирани')
+                            }]
+                    });
+                }
+                else {
+                    that.chart.colorAxis[0].update({
+                        dataClasses: [{
+                                name: that.translate.instant('Ниско рангирани'),
+                                color: "#B40013",
+                                from: 0,
+                                to: 50,
+                            }, {
+                                name: that.translate.instant('Средно рангирани'),
+                                color: "#F19722",
+                                from: 51,
+                                to: 74
+                            }, {
+                                name: that.translate.instant('Високо рангирани'),
+                                color: '#F2BE54',
+                                from: 75,
+                                to: 81
+                            }],
+                    });
+                }
+                that.chart.series[0].setData(domenMap);
             }
             else if (id === '-LQsYSYceSCpupl-VqtH') {
-                that.chart.colorAxis[0].update({
-                    dataClasses: [
-                        {
-                            from: 1,
-                            to: 18,
-                            color: '#F2BE54',
-                            name: that.translate.instant('Високо рангирани'),
-                        }, {
-                            from: 19,
-                            to: 38,
-                            color: '#F19722',
-                            name: that.translate.instant('Средно рангирани')
-                        }, {
-                            from: 59,
-                            to: 81,
-                            color: '#B40013',
-                            name: that.translate.instant('Ниско рангирани')
-                        }
-                    ]
-                });
+                if (this.lastYear == "2016") {
+                    that.chart.colorAxis[0].update({
+                        dataClasses: [
+                            {
+                                from: 1,
+                                to: 18,
+                                color: '#F2BE54',
+                                name: that.translate.instant('Високо рангирани'),
+                            }, {
+                                from: 19,
+                                to: 38,
+                                color: '#F19722',
+                                name: that.translate.instant('Средно рангирани')
+                            }, {
+                                from: 59,
+                                to: 81,
+                                color: '#B40013',
+                                name: that.translate.instant('Ниско рангирани')
+                            }
+                        ]
+                    });
+                }
+                else {
+                    that.chart.colorAxis[0].update({
+                        dataClasses: [{
+                                name: that.translate.instant('Ниско рангирани'),
+                                color: "#B40013",
+                                from: 0,
+                                to: 50
+                            }, {
+                                name: that.translate.instant('Средно рангирани'),
+                                color: "#F19722",
+                                from: 51,
+                                to: 74
+                            }, {
+                                name: that.translate.instant('Високо рангирани'),
+                                color: '#F2BE54',
+                                from: 75,
+                                to: 81
+                            }],
+                    });
+                    that.chart.series[0].setData(domenMap);
+                }
             }
             else {
-                //that.chart.colorAxis[0].dataClasses=[];
-                that.chart.colorAxis[0].update({
-                    dataClasses: [{
-                            from: 1,
-                            to: 16,
-                            color: '#F2BE54',
-                            name: that.translate.instant('Високо рангирани'),
-                        }, {
-                            from: 17,
-                            to: 54,
-                            color: '#F19722',
-                            name: that.translate.instant('Средно рангирани')
-                        }, {
-                            from: 55,
-                            to: 81,
-                            color: '#B40013',
-                            name: that.translate.instant('Ниско рангирани')
-                        }]
-                });
+                if (this.lastYear == "2016") {
+                    that.chart.colorAxis[0].update({
+                        dataClasses: [{
+                                from: 1,
+                                to: 16,
+                                color: '#F2BE54',
+                                name: that.translate.instant('Високо рангирани'),
+                            }, {
+                                from: 17,
+                                to: 54,
+                                color: '#F19722',
+                                name: that.translate.instant('Средно рангирани')
+                            }, {
+                                from: 55,
+                                to: 81,
+                                color: '#B40013',
+                                name: that.translate.instant('Ниско рангирани')
+                            }]
+                    });
+                }
+                else {
+                    that.chart.colorAxis[0].update({
+                        dataClasses: [{
+                                name: that.translate.instant('Ниско рангирани'),
+                                color: "#B40013",
+                                from: 0,
+                                to: 50
+                            }, {
+                                name: that.translate.instant('Средно рангирани'),
+                                color: "#F19722",
+                                from: 51,
+                                to: 74
+                            }, {
+                                name: that.translate.instant('Високо рангирани'),
+                                color: '#F2BE54',
+                                from: 75,
+                                to: 81
+                            }],
+                    });
+                    that.chart.series[0].setData(domenMap);
+                }
             }
         }
         else {
@@ -4765,7 +4875,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-navigation></app-navigation>\n<div class=\"container\" style=\"text-align: justify;\">\n  <h6 class=\"title\">{{\"methodology\"|translate}}</h6>\n  <div class=\"col-md-12\" [innerHTML]=\"'methodology_text'|translate\">\n    \n  </div>\n  <div class=\"col-md-12\">\n    <h6 class=\"title orangeText\">{{\"methodology_frame_title\"|translate}}</h6>\n    <p>{{\"methodology_frame\"|translate}}.</p>\n    <p><span style=\"font-family: ArsenalB;cursor: pointer\" [routerLink]=\"['/dictionaryPage', 'domen_indicator0']\">{{\"gender_gap\"|translate}}.</span> {{\"methodology_gender_gap_desc\"|translate}}:</p>\n    <ol [innerHTML]=\"'methodology_gender_gap_indicators'|translate\"></ol>\n    <p><span style=\"font-family: ArsenalB; cursor:pointer;\" [routerLink]=\"['/dictionaryPage', 'domen_indicator1']\">{{\"enabling_conditions\"|translate}}. </span>{{\"methodology_enabling_conditions\"|translate}}: </p>\n    <ol [innerHTML]=\"'methodology_enabling_conditions_indicators'|translate\">\n      \n    </ol>\n    <p><span style=\"font-family: ArsenalB;cursor: pointer;\" [routerLink]=\"['/dictionaryPage', 'domen_indicator1']\">{{\"gender_responsive_mun\"|translate}}. </span>{{\"methodology_gender_responsive_mun\"|translate}}:</p>\n    <ol [innerHTML]=\"'methodology_gender_responsive_mun_indicators'|translate\">\n    </ol>\n  </div>\n  <div class=\"col-md-12\">\n    <h6 class=\"title orangeText\">{{\"methodology_index_calc\"|translate}}</h6>\n    <div [innerHTML]=\"'methodology_index_1_calc'|translate\"></div>\n      \n    <div [innerHTML]=\"'methodology_index_2_calc'|translate\">\n      \n    </div>\n    <div [innerHTML]=\"'methodology_index_3_calc'|translate\">\n      \n    </div>\n  </div>\n  <div class=\"\" style=\"margin: 50px;\n    font-size: 8px;\n    margin-left: 15px;\"> <sup>1</sup> Joint Research Centre-European Commission. (2008). Handbook on constructing composite indicators: methodology and user guide. OECD publishing.</div>\n</div>\n<app-footer></app-footer>\n"
+module.exports = "<app-navigation></app-navigation>\n<div class=\"container\" style=\"text-align: justify;\">\n  <h6 class=\"title\">{{\"methodology\"|translate}}</h6>\n  <div class=\"col-md-12\" [innerHTML]=\"'methodology_text'|translate\">\n    \n  </div>\n  <div class=\"col-md-12\">\n    <h6 class=\"title orangeText\">{{\"methodology_frame_title\"|translate}}</h6>\n    <p>{{\"methodology_frame\"|translate}}</p>\n    <p><span style=\"font-family: ArsenalB;cursor: pointer\" [routerLink]=\"['/dictionaryPage', 'domen_indicator0']\">{{\"gender_gap\"|translate}}.</span> {{\"methodology_gender_gap_desc\"|translate}}:</p>\n    <ol [innerHTML]=\"'methodology_gender_gap_indicators'|translate\"></ol>\n    <p><span style=\"font-family: ArsenalB; cursor:pointer;\" [routerLink]=\"['/dictionaryPage', 'domen_indicator1']\">{{\"enabling_conditions\"|translate}}. </span>{{\"methodology_enabling_conditions\"|translate}}: </p>\n    <ol [innerHTML]=\"'methodology_enabling_conditions_indicators'|translate\">\n      \n    </ol>\n    <p><span style=\"font-family: ArsenalB;cursor: pointer;\" [routerLink]=\"['/dictionaryPage', 'domen_indicator1']\">{{\"gender_responsive_mun\"|translate}}. </span>{{\"methodology_gender_responsive_mun\"|translate}}:</p>\n    <ol [innerHTML]=\"'methodology_gender_responsive_mun_indicators'|translate\">\n    </ol>\n  </div>\n  <div class=\"col-md-12\">\n    <h6 class=\"title orangeText\">{{\"methodology_index_calc\"|translate}}</h6>\n    <div [innerHTML]=\"'methodology_index_1_calc'|translate\"></div>\n      \n    <div [innerHTML]=\"'methodology_index_2_calc'|translate\">\n      \n    </div>\n    <div [innerHTML]=\"'methodology_index_3_calc'|translate\">\n      \n    </div>\n  </div>\n  <div class=\"\" style=\"margin: 50px;\n    font-size: 8px;\n    margin-left: 15px;\"> <sup>1</sup> Joint Research Centre-European Commission. (2008). Handbook on constructing composite indicators: methodology and user guide. OECD publishing.</div>\n</div>\n<app-footer></app-footer>\n"
 
 /***/ }),
 
@@ -5256,7 +5366,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-navigation (languageEmit)=\"recieveLang($event)\"></app-navigation>\n<span class=\"years_btn_position\">\n    <span *ngFor=\"let year of years\">\n      <span class=\"years_btn_style\"(click)=\"changeYear(year.key)\" [ngStyle]=\"{'background':year.key ==idYear ? '#f5b233' : 'rgb(245 179 51 / 42%)'}\">\n        {{year.key}}\n        <span class=\"years_tooltip\">{{'Click to view the data for'|translate}} {{year.key}} {{\"год.\"|translate}}\n          <span class=\"arrow_left\"></span>\n        </span>\n      </span>\n    </span>\n  </span>\n\n<div class=\"container currentMunicipality\" style=\"position: relative;\">\n<div *ngIf=\"idYear\" class=\"current_year\" style=\"top:26px;font-size: 16px;\">( {{idYear}} {{\"год.\"|translate}} )</div>\n  <div style=\"width: 100%\">\n    <div id=\"mypoimnik\" class=\"activePoimnik\">\n      <app-dictionary-button-page></app-dictionary-button-page>\n    </div>\n    <div id=\"mymap\" class=\"activeMap\">\n      <div id=\"removeBox\" style=\"float:right;color: orange;padding: 10px;\" class=\"btnClose\">\n        <i class=\"fas fa-times-circle\" (click)=\"removeBox()\"></i></div>\n      <div class=\"titleMap\">{{\"tooltip_municipality_map\"|translate}}</div>\n      <img src=\"/assets/img/map1.png\" style=\"width: 100%;border-top: 1px solid #ededed;\n    border-bottom: 1px solid #ededed;\">\n      <div style=\"padding: 10px;\">{{\"data_not_included\"|translate}}.</div>\n    </div>\n  </div>\n  <!-- <div style=\"\n    position: absolute;\n    height: 100%;\n    right: 0px;\n    top:-51px;\n    \">\n <div style=\"position: sticky;top:0px\">\n <span style=\"height:20px; width:20px;\n    background: orange;\n    display: block;border-radius: 50%\"></span></div></div>\n\n    <div style=\"\n    position: absolute;\n    height: 100%;\n    right: 0px;\n    top:-51px;\n    \">\n <div style=\"position: sticky;top:32px\">\n <span style=\"width: 20px;\n height: 20px;\n    background: orange;\n    display: block;border-radius: 50%;\"></span></div></div> -->\n  <h6 class=\"munTitle\">{{\"municipality\"|translate}}: <span style=\"font-family: ArsenalB\">{{municipalityDataSidebar.name | translate}}</span></h6>\n  <div class=\"row\">\n    <div class=\"col-md-10\">\n      <div class=\"munDomen\" style=\"border-right: 1px solid #eeeeee;\">\n        <div style=\"color: orange;\n    position: absolute;\n    width: 40%;z-index: 100\">\n          <span id=\"poimnik\" class=\"circleIcon poimnikIcon\" (click)=\"showClass()\">\n       <span class=\"mytooltip\">{{\"glossary\"|translate}}</span>\n          <i class=\"fas fa-info\" ></i>\n          </span>\n          <span id=\"mapa\" class=\"circleIcon\"  (click)=\"showMap()\">\n       <span  class=\"circleIcon circleIn\">\n           <span class=\"mytooltip\">{{\"tooltip_municipality_map\"|translate}}</span>\n          </span>\n          <i class=\"far fa-window-alt\"></i>\n          </span></div>\n        <ul class=\"dom\">\n          <li *ngFor=\"let domenSubdomen of domenSubdomenList; let i=index\" class=\"domen\">\n            <div class=\"row list\">\n              <div class=\"col-md-4  col-sm-4  col-3 name\">\n                <div class=\"domenList\">\n                  <div id=\"domen_indicator{{i}} \" [routerLink]=\"['/dictionaryPage', 'domen_indicator'+i]\">{{domenSubdomen.domenName | translate}}</div>\n                </div>\n              </div>\n              <div class=\"col-md-8 col-sm-7 col-9 \">\n                <!--  <div class=\"{{domenSubdomen.domenValue < 20 ? 'class_darkred' : domenSubdomen.domenValue > 30 ? 'class_orange': 'class_red' }} circleBox\">\n                    <div class=\"text-circle\">{{domenSubdomen.domenValue}}</div>\n                  </div> -->\n                <ul>\n                  <li *ngFor=\"let column of domenSubdomen.columns\" style=\"display: inline-block;\" class=\"columnsTable col-md-2 col-2 col-sm-2\">\n                    <div style=\"height: 20px;\">{{column.columnName | translate}}</div>\n                    <div class=\"{{column.columnName === 'Ранг' ? 'orangeText': column.columnName === 'Оценка' ? 'orangeText': column.columnName === 'Просек' ? 'orangeText':'simpleText' }} \"> {{column.columnValue}}</div>\n                  </li>\n                </ul>\n              </div>\n            </div>\n            <ul>\n              <li *ngFor=\"let subdomen of domenSubdomen.subdomens; let s=index\" class=\"subdomen\">\n                <div class=\"row list\">\n                  <div class=\"col-md-4 col-sm-4 col-3 name\">\n                    <div class=\"subdomenList\">\n                      <div id=\"{{subdomen.subdomenName}}\">\n                        <div id=\"sub_indicator{{i}}\" [routerLink]=\"['/dictionaryPage', 'domen_indicator'+i+'sub_indicator'+s]\" class=\"subdomen\">{{subdomen.subdomenName |translate}}</div>\n                      </div>\n                    </div>\n                  </div>\n                  <div class=\"col-md-8 col-sm-7  col-9 \">\n                    <!--  <div class=\"{{subdomen.subdomenValue < 20 ? 'class_darkred' : subdomen.subdomenValue > 30 ? 'class_orange': 'class_red' }} circleBox\">\n                        <div class=\"text-circle\">{{subdomen.subdomenValue}}</div>\n                      </div> -->\n                    <ul>\n                      <li *ngFor=\"let columnSub of subdomen.columns\" style=\"display: inline-block; \" class=\"columnsTable col-md-2 col-sm-2 col-2\">\n                        <div id=\"{{subdomen.subdomenName}}\">\n                          <div id=\"{{subdomen.subdomenName}}_{{columnSub.columnKey}}\"><span id=\"{{columnSub.columnKey}}\" >{{columnSub.columnValue |translate}}</span></div>\n\n                        </div>\n                      </li>\n                    </ul>\n                  </div>\n                </div>\n              </li>\n            </ul>\n          </li>\n        </ul>\n      </div>\n      <div>\n      </div>\n      <div style=\"padding: 50px 0px; color: orange\">{{\"data_not_included\"|translate}}.\n      </div>\n      <!-- <div class=\"description\" sytle=\"margin-top:30px\">\n          <div>Опис</div>\n          <div>\n            {{municipalityData.description}}\n          </div>\n        </div> -->\n    </div>\n    <div class=\"col-md-2 col-sm-12 profileMun\">\n      <div class=\"row\">\n        <div class=\"imageMun\">\n          <div class=\"profileText\">{{\"profile_municilapity\"|translate}}</div>\n          <div><img src=\"{{municipalityDataSidebar.image}}\" width=\"150px\"></div>\n          </div>\n          <div class=\"rangMun\">\n            <div>{{\"ge_index\"|translate}}</div>\n            <div class=\"index\" style=\"padding-right: 10px;\">\n              <span>{{\"grade\"|translate}}: </span>\n              <span class=\"text\" >{{municipalityData.scoreMun}}</span></div>\n            <div style=\"margin-top: 10px;\" class=\"index\">\n              <span>{{\"rang\"|translate}}: </span>\n              <span class=\"text\">{{municipalityData.rangMun}}</span>\n            </div>\n          </div>\n          <div class=\"demograficData\" style=\"margin-top: 30px\">\n            <div class=\"region\">\n              <span>{{\"region\"|translate}}: </span>\n              <span class=\"dataValue\">{{regionName|translate}}</span>\n            </div>\n            <div class=\"area\">\n              <span>{{\"area\"|translate}}: </span>\n              <span class=\"dataValue\">{{municipalityDataSidebar.area}} км<sup>2</sup></span>\n            </div>\n            <div class=\"population\">\n              <span>{{\"number_populated _places\"|translate}}: </span>\n              <span class=\"dataValue\">{{municipalityDataSidebar.population}}</span>\n            </div>\n            <div class=\"women\">\n              <span>{{\"number_women\"|translate}}: </span>\n              <span class=\"dataValue\">{{municipalityData.women}}</span>\n            </div>\n            <div class=\"men\">\n              <span>{{\"number_men\"|translate}}: </span>\n              <span class=\"dataValue\">{{municipalityData.men}}</span>\n            </div>\n            <div class=\"plannedbudget\">\n              <span>{{\"total_planned_budget\"|translate}} {{idYear}} {{year}}: <br/></span>\n              <span class=\"dataValue\">{{municipalityData.plannedBudget}} ден</span>\n            </div>\n            <div class=\"budget\">\n              <span>{{\"total_realized_budget\"|translate}} {{idYear}} {{year}}:<br/> </span>\n              <span class=\"dataValue\">{{municipalityData.budget}} ден</span>\n            </div>\n            <div class=\"numberRateInfants\" *ngIf=\"municipalityData.numberRateInfants!='/'\">\n              <span>{{\"infant_mortality_rate\"|translate}}: </span>\n              <span class=\"dataValue\">{{municipalityData.numberRateInfants}}</span>\n            </div>\n            <div class=\"numberRateMaternal\" *ngIf=\"municipalityData.numberRateMaternal!='/'\">\n              <span>{{\"maternal_mortality_rate\"|translate}}: </span>\n              <span class=\"dataValue\">{{municipalityData.numberRateMaternal}}</span>\n            </div>\n            <div class=\"numberCompany\" *ngIf=\"municipalityData.numberCompany!='/'\">\n              <span>{{\"number_company\"|translate}}: </span>\n              <span class=\"dataValue\">{{municipalityData.numberCompany}}</span>\n            </div>\n            <div class=\"numberPlot\" *ngIf=\"municipalityData.numberPlot!='/'\">\n              <span>{{\"number_plots\"|translate}}: </span>\n              <span class=\"dataValue\">{{municipalityData.numberPlot}}</span>\n            </div>\n            <div class=\"numberObject\" *ngIf=\"municipalityData.numberObject!='/'\">\n              <span>{{\"number_facilities\"|translate}}: </span>\n              <span class=\"dataValue\">{{municipalityData.numberObject}}</span>\n            </div>\n            <div class=\"numberFlat\"*ngIf=\"municipalityData.numberFlat!='/'\">\n              <span>{{\"number_apartments\"|translate}}: </span>\n              <span class=\"dataValue\">{{municipalityData.numberFlat}}</span>\n            </div>\n            <br>\n            <br>\n            <div class=\"compare\" style=\"width:200px\">\n              <div style=\"font-size: 12px\">{{\"mun_compare\"|translate}} <span class=\"dataValue\">{{municipalityDataSidebar.name|translate}}</span> {{\"with\"|translate}}: </div>\n              <ss-multiselect-dropdown [options]=\"myOptions\" [texts]=\"myTexts\" [settings]=\"mySettings\" [(ngModel)]=\"optionsModel\" (ngModelChange)=\"onChange($event)\"></ss-multiselect-dropdown><span class=\"button_compare\" (click)=\"onClickDropdown()\"><i class=\"fas fa-caret-up\"></i></span>\n              <div class=\"error\">{{error}}</div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <app-footer></app-footer>\n"
+module.exports = "<app-navigation (languageEmit)=\"recieveLang($event)\"></app-navigation>\n<span class=\"years_btn_position\">\n    <span *ngFor=\"let year of years\">\n      <span class=\"years_btn_style\"(click)=\"changeYear(year.key)\" [ngStyle]=\"{'background':year.key ==idYear ? '#f5b233' : 'rgb(245 179 51 / 42%)'}\">\n        {{year.key}}\n        <span class=\"years_tooltip\">{{'Click to view the data for'|translate}} {{year.key}} {{\"год.\"|translate}}\n          <span class=\"arrow_left\"></span>\n        </span>\n      </span>\n    </span>\n  </span>\n\n<div class=\"container currentMunicipality\" style=\"position: relative;\">\n<div *ngIf=\"idYear\" class=\"current_year\" style=\"top:26px;font-size: 16px;\">( {{idYear}} {{\"год.\"|translate}} )</div>\n  <div style=\"width: 100%\">\n    <div id=\"mypoimnik\" class=\"activePoimnik\">\n      <app-dictionary-button-page></app-dictionary-button-page>\n    </div>\n    <div id=\"mymap\" class=\"activeMap\">\n      <div id=\"removeBox\" style=\"float:right;color: orange;padding: 10px;\" class=\"btnClose\">\n        <i class=\"fas fa-times-circle\" (click)=\"removeBox()\"></i></div>\n      <div class=\"titleMap\">{{\"tooltip_municipality_map\"|translate}}</div>\n      <img src=\"/assets/img/map1.png\" style=\"width: 100%;border-top: 1px solid #ededed;\n    border-bottom: 1px solid #ededed;\">\n      <div style=\"padding: 10px;\">{{\"data_not_included\"|translate}}.</div>\n    </div>\n  </div>\n  <!-- <div style=\"\n    position: absolute;\n    height: 100%;\n    right: 0px;\n    top:-51px;\n    \">\n <div style=\"position: sticky;top:0px\">\n <span style=\"height:20px; width:20px;\n    background: orange;\n    display: block;border-radius: 50%\"></span></div></div>\n\n    <div style=\"\n    position: absolute;\n    height: 100%;\n    right: 0px;\n    top:-51px;\n    \">\n <div style=\"position: sticky;top:32px\">\n <span style=\"width: 20px;\n height: 20px;\n    background: orange;\n    display: block;border-radius: 50%;\"></span></div></div> -->\n  <h6 class=\"munTitle\">{{\"municipality\"|translate}}: <span style=\"font-family: ArsenalB\">{{municipalityDataSidebar.name | translate}}</span></h6>\n  <div class=\"row\">\n    <div class=\"col-md-10\">\n      <div class=\"munDomen\" style=\"border-right: 1px solid #eeeeee;\">\n        <div style=\"color: orange;\n    position: absolute;\n    width: 40%;z-index: 100\">\n          <span id=\"poimnik\" class=\"circleIcon poimnikIcon\" (click)=\"showClass()\">\n       <span class=\"mytooltip\">{{\"glossary\"|translate}}</span>\n          <i class=\"fas fa-info\" ></i>\n          </span>\n          <span id=\"mapa\" class=\"circleIcon\"  (click)=\"showMap()\">\n       <span  class=\"circleIcon circleIn\">\n           <span class=\"mytooltip\">{{\"tooltip_municipality_map\"|translate}}</span>\n          </span>\n          <i class=\"far fa-window-alt\"></i>\n          </span>\n\n          <span id=\"context\" class=\"circleIcon\">\n          <a href=\"./assets/policy_brief.pdf\" target=\"_blank\" style=\"color:orange\">\n            <span  class=\"circleIcon circleIn\">\n           <span class=\"mytooltip\" style=\"width: 414px;\">{{\"policy_brief\"|translate}}</span>\n          </span>\n          <i class=\"far fa-file-alt\" style=\"font-size: 13px;\n    padding: 5px;\"></i>\n          </a>\n       \n          </span>\n\n          </div>\n        <ul class=\"dom\">\n          <li *ngFor=\"let domenSubdomen of domenSubdomenList; let i=index\" class=\"domen\">\n            <div class=\"row list\">\n              <div class=\"col-md-4  col-sm-4  col-3 name\">\n                <div class=\"domenList\">\n                  <div id=\"domen_indicator{{i}} \" [routerLink]=\"['/dictionaryPage', 'domen_indicator'+i]\">{{domenSubdomen.domenName | translate}}</div>\n                </div>\n              </div>\n              <div class=\"col-md-8 col-sm-7 col-9 \">\n                <!--  <div class=\"{{domenSubdomen.domenValue < 20 ? 'class_darkred' : domenSubdomen.domenValue > 30 ? 'class_orange': 'class_red' }} circleBox\">\n                    <div class=\"text-circle\">{{domenSubdomen.domenValue}}</div>\n                  </div> -->\n                <ul>\n                  <li *ngFor=\"let column of domenSubdomen.columns\" style=\"display: inline-block;\" class=\"columnsTable col-md-2 col-2 col-sm-2\">\n                    <div style=\"height: 20px;\">{{column.columnName | translate}}</div>\n                    <div class=\"{{column.columnName === 'Ранг' ? 'orangeText': column.columnName === 'Оценка' ? 'orangeText': column.columnName === 'Просек' ? 'orangeText':'simpleText' }} \"> {{column.columnValue}}</div>\n                  </li>\n                </ul>\n              </div>\n            </div>\n            <ul>\n              <li *ngFor=\"let subdomen of domenSubdomen.subdomens; let s=index\" class=\"subdomen\">\n                <div class=\"row list\">\n                  <div class=\"col-md-4 col-sm-4 col-3 name\">\n                    <div class=\"subdomenList\">\n                      <div id=\"{{subdomen.subdomenName}}\">\n                        <div id=\"sub_indicator{{i}}\" [routerLink]=\"['/dictionaryPage', 'domen_indicator'+i+'sub_indicator'+s]\" class=\"subdomen\">{{subdomen.subdomenName |translate}}</div>\n                      </div>\n                    </div>\n                  </div>\n                  <div class=\"col-md-8 col-sm-7  col-9 \">\n                    <!--  <div class=\"{{subdomen.subdomenValue < 20 ? 'class_darkred' : subdomen.subdomenValue > 30 ? 'class_orange': 'class_red' }} circleBox\">\n                        <div class=\"text-circle\">{{subdomen.subdomenValue}}</div>\n                      </div> -->\n                    <ul>\n                      <li *ngFor=\"let columnSub of subdomen.columns\" style=\"display: inline-block; \" class=\"columnsTable col-md-2 col-sm-2 col-2\">\n                        <div id=\"{{subdomen.subdomenName}}\">\n                          <div id=\"{{subdomen.subdomenName}}_{{columnSub.columnKey}}\"><span id=\"{{columnSub.columnKey}}\" >{{columnSub.columnValue |translate}}</span></div>\n\n                        </div>\n                      </li>\n                    </ul>\n                  </div>\n                </div>\n              </li>\n            </ul>\n          </li>\n        </ul>\n      </div>\n      <div>\n      </div>\n      <div style=\"padding: 50px 0px; color: orange\">{{\"data_not_included\"|translate}}.\n      </div>\n      <!-- <div class=\"description\" sytle=\"margin-top:30px\">\n          <div>Опис</div>\n          <div>\n            {{municipalityData.description}}\n          </div>\n        </div> -->\n    </div>\n    <div class=\"col-md-2 col-sm-12 profileMun\">\n      <div class=\"row\">\n        <div class=\"imageMun\">\n          <div class=\"profileText\">{{\"profile_municilapity\"|translate}}</div>\n          <div><img src=\"{{municipalityDataSidebar.image}}\" width=\"150px\"></div>\n          </div>\n          <div class=\"rangMun\">\n            <div>{{\"ge_index\"|translate}}</div>\n            <div class=\"index\" style=\"padding-right: 10px;\">\n              <span>{{\"grade\"|translate}}: </span>\n              <span class=\"text\" >{{municipalityData.scoreMun}}</span></div>\n            <div style=\"margin-top: 10px;\" class=\"index\">\n              <span>{{\"rang\"|translate}}: </span>\n              <span class=\"text\">{{municipalityData.rangMun}}</span>\n            </div>\n          </div>\n          <div class=\"demograficData\" style=\"margin-top: 30px\">\n            <div class=\"region\">\n              <span>{{\"region\"|translate}}: </span>\n              <span class=\"dataValue\">{{regionName|translate}}</span>\n            </div>\n            <div class=\"area\">\n              <span>{{\"area\"|translate}}: </span>\n              <span class=\"dataValue\">{{municipalityDataSidebar.area}} км<sup>2</sup></span>\n            </div>\n            <div class=\"population\">\n              <span>{{\"number_populated _places\"|translate}}: </span>\n              <span class=\"dataValue\">{{municipalityDataSidebar.population}}</span>\n            </div>\n            <div class=\"women\">\n              <span>{{\"number_women\"|translate}}: </span>\n              <span class=\"dataValue\">{{municipalityData.women}}</span>\n            </div>\n            <div class=\"men\">\n              <span>{{\"number_men\"|translate}}: </span>\n              <span class=\"dataValue\">{{municipalityData.men}}</span>\n            </div>\n            <div class=\"plannedbudget\">\n              <span>{{\"total_planned_budget\"|translate}} {{idYear}} {{year}}: <br/></span>\n              <span class=\"dataValue\">{{municipalityData.plannedBudget}} ден</span>\n            </div>\n            <div class=\"budget\">\n              <span>{{\"total_realized_budget\"|translate}} {{idYear}} {{year}}:<br/> </span>\n              <span class=\"dataValue\">{{municipalityData.budget}} ден</span>\n            </div>\n            <div class=\"numberRateInfants\" *ngIf=\"municipalityData.numberRateInfants!='/'\">\n              <span>{{\"infant_mortality_rate\"|translate}}: </span>\n              <span class=\"dataValue\">{{municipalityData.numberRateInfants}}</span>\n            </div>\n            <div class=\"numberRateMaternal\" *ngIf=\"municipalityData.numberRateMaternal!='/'\">\n              <span>{{\"maternal_mortality_rate\"|translate}}: </span>\n              <span class=\"dataValue\">{{municipalityData.numberRateMaternal}}</span>\n            </div>\n            <div class=\"numberCompany\" *ngIf=\"municipalityData.numberCompany!='/'\">\n              <span>{{\"number_company\"|translate}}: </span>\n              <span class=\"dataValue\">{{municipalityData.numberCompany}}</span>\n            </div>\n            <div class=\"numberPlot\" *ngIf=\"municipalityData.numberPlot!='/'\">\n              <span>{{\"number_plots\"|translate}}: </span>\n              <span class=\"dataValue\">{{municipalityData.numberPlot}}</span>\n            </div>\n            <div class=\"numberObject\" *ngIf=\"municipalityData.numberObject!='/'\">\n              <span>{{\"number_facilities\"|translate}}: </span>\n              <span class=\"dataValue\">{{municipalityData.numberObject}}</span>\n            </div>\n            <div class=\"numberFlat\"*ngIf=\"municipalityData.numberFlat!='/'\">\n              <span>{{\"number_apartments\"|translate}}: </span>\n              <span class=\"dataValue\">{{municipalityData.numberFlat}}</span>\n            </div>\n            <br>\n            <br>\n            <div class=\"compare\" style=\"width:200px\">\n              <div style=\"font-size: 12px\">{{\"mun_compare\"|translate}} <span class=\"dataValue\">{{municipalityDataSidebar.name|translate}}</span> {{\"with\"|translate}}: </div>\n              <ss-multiselect-dropdown [options]=\"myOptions\" [texts]=\"myTexts\" [settings]=\"mySettings\" [(ngModel)]=\"optionsModel\" (ngModelChange)=\"onChange($event)\"></ss-multiselect-dropdown><span class=\"button_compare\" (click)=\"onClickDropdown()\"><i class=\"fas fa-caret-up\"></i></span>\n              <div class=\"error\">{{error}}</div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <app-footer></app-footer>\n"
 
 /***/ }),
 

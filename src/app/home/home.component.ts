@@ -46,6 +46,8 @@ export class HomeComponent implements OnInit{
 	listenerYears
 	myCurrentYear;
 	mapSeriesData=[];
+	dataClassesScale2016=[];
+	dataClassesScale2021=[];
 	constructor(private http: HttpClient, 
 		public serviceDomen:AdminDomenService, 
 		public serviceSub:AdminSubdomenService, 
@@ -80,237 +82,287 @@ export class HomeComponent implements OnInit{
 
 		
 		this.getAllYears();
-		
+
+		//default numbers for the color scale 
+		this.dataClassesScale2016=[{
+			name:that.translate.instant('Ниско рангирани'),
+			to: 16,
+			color: "#B40013",
+
+		}, {
+			name:that.translate.instant('Средно рангирани'),
+			from: 17,
+			to: 38,
+			color: "#F19722",
+
+		}, {
+			name:that.translate.instant('Високо рангирани'),
+			from: 39,
+			color: '#F2BE54'
+		}];
+
+
+		//up from 2021
+		this.dataClassesScale2021=[{
+			name:that.translate.instant('Ниско рангирани'),
+			color: "#B40013",
+			from:0,
+			to: 50,
+			
+		}, {
+			name:that.translate.instant('Средно рангирани'),
+			color: "#F19722",
+			from: 51,
+			to: 74
+			
+
+		}, {
+			name:that.translate.instant('Високо рангирани'),
+			color: '#F2BE54',
+			from: 75,
+			to:100
+			
+		}];
 	}
 
 
-	
+
 
 	mainDataChartLabels(){
 		var that=this;
-		that.dataClasses=[{name:that.translate.instant('Ниско рангирани'),
-		to: 16,
-		color: "#B40013",
+		if(this.lastYear=="2016"){
+			that.dataClasses=that.dataClassesScale2016
+	// 	that.dataClasses=[{name:that.translate.instant('Ниско рангирани'),
+	// 	to: 16,
+	// 	color: "#B40013",
 
-	}, {
-		name:that.translate.instant('Средно рангирани'),
-		from: 17,
-		to: 38,
-		color: "#F19722",
+	// }, {
+	// 	name:that.translate.instant('Средно рангирани'),
+	// 	from: 17,
+	// 	to: 38,
+	// 	color: "#F19722",
 
-	}, {name:that.translate.instant('Високо рангирани'),
-	from: 39,
-	color: '#F2BE54'
-}];
-}
+	// }, {name:that.translate.instant('Високо рангирани'),
+	// from: 39,
+	// color: '#F2BE54'
+//}];
+		}else{
 
-async createChartMap(year){
-	this.myCurrentYear=year;
-	await this.translate.get('dummyTranslation').toPromise().then();
-	var that=this;
-	this.dataClasses=[];
-	that.mainDataChartLabels();
-	setTimeout(function(){
-		document.getElementById('pullBox').setAttribute("class", "pull_open");
-		document.getElementById('pullIcon').setAttribute("class", "pull_icon1");
-	},1500);
+			that.dataClasses=that.dataClassesScale2021
+		// 	that.dataClasses=[{
+		// 	name:that.translate.instant('Ниско рангирани'),
+		// 	color: "#B40013",
+		// 	from:0,
+		// 	to: 50,
+			
+		// }, {
+		// 	name:that.translate.instant('Средно рангирани'),
+		// 	color: "#F19722",
+		// 	from: 51,
+		// 	to: 74
+			
 
-	if(this.listener){
-		this.listener.unsubscribe();
+		// }, {
+		// 	name:that.translate.instant('Високо рангирани'),
+		// 	color: '#F2BE54',
+		// 	from: 75,
+		// 	to:100
+			
+		// }];
+		}
 	}
 
-	this.listener=this.serviecMunEls.getElsMunicipalityYearId(year).subscribe((mun)=>{
-		this.newData = mun.map((mun1) => {
-			return [mun1.key, mun1.val.scoreMun];
-		});
+	async createChartMap(year){
+		this.myCurrentYear=year;
+		await this.translate.get('dummyTranslation').toPromise().then();
+		var that=this;
+		this.dataClasses=[];
+		that.mainDataChartLabels();
+		setTimeout(function(){
+			document.getElementById('pullBox').setAttribute("class", "pull_open");
+			document.getElementById('pullIcon').setAttribute("class", "pull_icon1");
+		},1500);
 
-		// Replace ./data.json with your JSON feed
-		fetch('./assets/map_'+year+'.json').then(response => {
-			return response.json();
+		if(this.listener){
+			this.listener.unsubscribe();
+		}
+
+		this.listener=this.serviecMunEls.getElsMunicipalityYearId(year).subscribe((mun)=>{
+			this.newData = mun.map((mun1) => {
+				return [mun1.key, mun1.val.scoreMun];
+			});
+
+			// Replace ./data.json with your JSON feed
+			fetch('./assets/map_'+year+'.json').then(response => {
+				return response.json();
 
 
-		}).then(dat => {
+			}).then(dat => {
 
-			that.options = {
-				chart: {
-					width: 1400,
-					height:920,
-				},
-
-				tooltip: {
-					backgroundColor: null,
-					borderWidth: 0,
-					shadow: false,
-					useHTML: true,
-					padding: 0,
-					
-					pointFormatter: function() {
-
-						//console.log(this);
-						var tooltop='<div class="map">'+
-						'<div style="padding-top:8px"><img src="'+this.properties.mun_img+'" width="90px"/></div>'+
-						'<div class="name_mun">'+that.translate.instant(this.name)+'</div>'+
-						'<div class="grades">'+
-						that.translate.instant('Ранг')+':'+this.properties.mun_rang+'  |  '+that.translate.instant('Оценка')+':'+ this.properties.mun_score+'/100</div>'+
-						'<div class="triangle"></div></div>';
-						return tooltop
+				that.options = {
+					chart: {
+						width: 1400,
+						height:920,
 					},
 
-				},
+					tooltip: {
+						backgroundColor: null,
+						borderWidth: 0,
+						shadow: false,
+						useHTML: true,
+						padding: 0,
 
+						pointFormatter: function() {
 
-				title: {
-					text: ' '
-				},
-
-				subtitle: {
-					text: ' '
-				},
-				legend: {
-					borderWidth: 0,
-					layout: 'vertical',
-					align: 'left',
-					verticalAlign: 'middle',
-					x:-20,
-					y:150,
-				},
-
-				mapNavigation: {
-					enabled: true,
-					buttonOptions: {
-						theme: {
-							fill: 'white',
-							'stroke-width': 1,
-							stroke: 'silver',
-							r: 0,
-							states: {
-								hover: {
-									fill: 'silver'
-								},
-								select: {
-									stroke: 'silver',
-									fill: 'silver'
-								}
-							}
+							//console.log(this);
+							var tooltop='<div class="map">'+
+							'<div style="padding-top:8px"><img src="'+this.properties.mun_img+'" width="90px"/></div>'+
+							'<div class="name_mun">'+that.translate.instant(this.name)+'</div>'+
+							'<div class="grades">'+
+							that.translate.instant('Ранг')+':'+this.properties.mun_rang+'  |  '+that.translate.instant('Оценка')+':'+ this.properties.mun_score+'/100</div>'+
+							'<div class="triangle"></div></div>';
+							return tooltop
 						},
-						verticalAlign: 'bottom'
-					}
-				},
 
-				colorAxis: {
-					dataClasses:that.dataClasses,
-				},
-				credits: {
-					enabled: false
-				},
-
-				plotOptions: {
-					series: {
-						cursor: 'pointer',
-						point: {
-							events: {
-								click: function() { 
-									that.router.navigate(['/municipality-list/'+that.myCurrentYear+'/'+this.properties.code]);
-								}
-							}
-						}
-					}
-				},
-				series : [{
-					data: that.newData,
-					mapData:dat,
-					cursor: 'pointer',
-					name: 'РИ',
-					states: {
-						hover: {
-							color: '#770e20',
-							borderColor:'#fff',
-							borderWidth:3,
-						}
 					},
-					dataLabels: {
+
+
+					title: {
+						text: ' '
+					},
+
+					subtitle: {
+						text: ' '
+					},
+					legend: {
+						borderWidth: 0,
+						layout: 'vertical',
+						align: 'left',
+						verticalAlign: 'middle',
+						x:-20,
+						y:150,
+					},
+
+					mapNavigation: {
 						enabled: true,
+						buttonOptions: {
+							theme: {
+								fill: 'white',
+								'stroke-width': 1,
+								stroke: 'silver',
+								r: 0,
+								states: {
+									hover: {
+										fill: 'silver'
+									},
+									select: {
+										stroke: 'silver',
+										fill: 'silver'
+									}
+								}
+							},
+							verticalAlign: 'bottom'
+						}
+					},
 
+					colorAxis: {
+						min: 1,
+                max: 100,
+						dataClasses:that.dataClasses,
+					},
+					credits: {
+						enabled: false
+					},
 
-						//format: '{point.name}',
-						style: {
-							fontFamily :'Arsenal',
-							fontSize:14,
-							textTransform:'uppercase',
-							color: 'white',
-							textOutline: 'white'
-						},
-
-						formatter:function() {
-
-							let name = this.point.name;
-							if (name){
-								return that.translate.instant(this.point.name);			
-							}else{
-								// console.log(this);
-								return "";
+					plotOptions: {
+						series: {
+							cursor: 'pointer',
+							point: {
+								events: {
+									click: function() { 
+										that.router.navigate(['/municipality-list/'+that.myCurrentYear+'/'+this.properties.code]);
+									}
+								}
 							}
-
-
+						}
+					},
+					series : [{
+						data: that.newData,
+						mapData:dat,
+						cursor: 'pointer',
+						name: 'РИ',
+						states: {
+							hover: {
+								color: '#770e20',
+								borderColor:'#fff',
+								borderWidth:3,
+							}
 						},
+						dataLabels: {
+							enabled: true,
 
 
-					}
-				}],
-			};
-		}).catch(err => {
-			console.log(err)
-		});
-	})
-}
+							//format: '{point.name}',
+							style: {
+								fontFamily :'Arsenal',
+								fontSize:14,
+								textTransform:'uppercase',
+								color: 'white',
+								textOutline: 'white'
+							},
 
-/*load the Map and inilitalize the chart for the later update*/
-options: Object;
-chart: any;
-saveChart(chart) {
-	this.chart = chart;
-}
+							formatter:function() {
 
-
-
-
-
-
-/*get general grade - индекс*/
-getGeneralGrade(elem){
-	var that=this;
-	document.getElementById('defaultIndex').setAttribute('class','active');
-	this.selectedDomen=null;
+								let name = this.point.name;
+								if (name){
+									return that.translate.instant(this.point.name);			
+								}else{
+									// console.log(this);
+									return "";
+								}
 
 
-	if(this.defaultData.length===81){
-		that.chart.series[0].setData(that.defaultData);	
-		that.chart.colorAxis[0].update({
-			dataClasses:[{
-				to: 16,
-				color: "#B40013",
-				name:that.translate.instant('Ниско рангирани')
-			}, {
-				from: 17,
-				to: 38,
-				color: "#F19722",
-				name:that.translate.instant('Средно рангирани')
-			}, {
-				from: 39,
-				color: '#F2BE54',
+							},
 
-				name:that.translate.instant('Високо рангирани'),
-			}]
+
+						}
+					}],
+				};
+			}).catch(err => {
+				console.log(err)
+			});
 		})
 	}
-}
 
-/*on click get domenData*/
+	/*load the Map and inilitalize the chart for the later update*/
+	options: Object;
+	chart: any;
+	saveChart(chart) {
+		this.chart = chart;
+	}
+
+
+
+
+
+
+	/*get general grade - индекс*/
+	getGeneralGrade(elem){
+		this.dataClasses=[];
+		var that=this;
+		document.getElementById('defaultIndex').setAttribute('class','active');
+		this.selectedDomen=null;
+
+	}
+
+	/*on click get domenData*/
 getDomenId(id){
 	var that=this;
 	var rankData=[];
 	var domenMap=[];
 	this.selectedDomen = id;
+	that.dataClasses=[];
+	//console.log(that.chart.colorAxis[0].dataClasses=[]);
 
 	document.getElementById('defaultIndex').setAttribute('class',' ');
 	this.serviceDomen.getDomen(id).subscribe(a=>{
@@ -339,7 +391,8 @@ getDomenId(id){
 		
 		if(id==='-LQsYG2Wf30xOMNPuxeJ'){
 
-			that.chart.colorAxis[0].update({
+			if(this.lastYear=="2016"){
+				that.chart.colorAxis[0].update({
 				dataClasses:[{
 					from: 1,
 					to:17,
@@ -356,13 +409,42 @@ getDomenId(id){
 					to: 81,
 					color: '#B40013',
 					name:that.translate.instant('Ниско рангирани')
-				}, ]
+				}]
 			});
 
+			}else{
+
+				that.chart.colorAxis[0].update({
+				dataClasses:[{
+			name:that.translate.instant('Ниско рангирани'),
+			color: "#B40013",
+			from:0,
+			to: 50,
+			
+		}, {
+			name:that.translate.instant('Средно рангирани'),
+			color: "#F19722",
+			from: 51,
+			to: 74
+			
+
+		}, {
+			name:that.translate.instant('Високо рангирани'),
+			color: '#F2BE54',
+			from: 75,
+			to:81
+			
+		}],
+			});
+
+			}
+that.chart.series[0].setData(domenMap);
 		}
+
 		/*second domen*/
 		else if(id==='-LQsYSYceSCpupl-VqtH'){
-			that.chart.colorAxis[0].update({
+			if(this.lastYear=="2016"){
+				that.chart.colorAxis[0].update({
 				dataClasses:[
 				{
 					from: 1,
@@ -382,11 +464,42 @@ getDomenId(id){
 					name:that.translate.instant('Ниско рангирани')
 				}]
 			});
+
+			}else{
+
+				that.chart.colorAxis[0].update({
+				dataClasses:[{
+			name:that.translate.instant('Ниско рангирани'),
+			color: "#B40013",
+			from:0,
+			to: 50
+			
+		}, {
+			name:that.translate.instant('Средно рангирани'),
+			color: "#F19722",
+			from: 51,
+			to: 74
+			
+
+		}, {
+			name:that.translate.instant('Високо рангирани'),
+			color: '#F2BE54',
+			from: 75,
+			to:81
+			
+		}],
+			});
+
+			
+that.chart.series[0].setData(domenMap);
 		}
+	}
 		/*third domen*/
 		else{
-		//that.chart.colorAxis[0].dataClasses=[];
-			that.chart.colorAxis[0].update({
+
+
+			if(this.lastYear=="2016"){
+				that.chart.colorAxis[0].update({
 				dataClasses:[{
 					from: 1,
 					to:16,
@@ -405,7 +518,37 @@ getDomenId(id){
 					name:that.translate.instant('Ниско рангирани')
 				} ]
 			});
+
+			}else{
+
+				that.chart.colorAxis[0].update({
+				dataClasses:[{
+			name:that.translate.instant('Ниско рангирани'),
+			color: "#B40013",
+			from:0,
+			to: 50
+			
+		}, {
+			name:that.translate.instant('Средно рангирани'),
+			color: "#F19722",
+			from: 51,
+			to: 74
+			
+
+		}, {
+			name:that.translate.instant('Високо рангирани'),
+			color: '#F2BE54',
+			from: 75,
+			to:81
+			
+		}],
+			});
+
+			
+that.chart.series[0].setData(domenMap);
 		}
+	}
+		
 	}else{
 		that.chart.series[0].setData(that.newData);
 	}
@@ -413,104 +556,105 @@ getDomenId(id){
 
 
 
-/*slider window*/
-close_open_Slider()
-{
-	if(document.querySelector("#pullBox").classList.contains("pull_open")){
-		document.getElementById('pullBox').setAttribute("class", "pull_box");
-		document.getElementById('pullIcon').setAttribute("class", "pull_icon");
-	}else if(document.querySelector("#pullBox").classList.contains("pull_box")){
-		document.getElementById('pullBox').setAttribute("class", "pull_open");
-		document.getElementById('pullIcon').setAttribute("class", "pull_icon1");
+
+	/*slider window*/
+	close_open_Slider()
+	{
+		if(document.querySelector("#pullBox").classList.contains("pull_open")){
+			document.getElementById('pullBox').setAttribute("class", "pull_box");
+			document.getElementById('pullIcon').setAttribute("class", "pull_icon");
+		}else if(document.querySelector("#pullBox").classList.contains("pull_box")){
+			document.getElementById('pullBox').setAttribute("class", "pull_open");
+			document.getElementById('pullIcon').setAttribute("class", "pull_icon1");
+		}
 	}
-}
 
 
 
 
 
 
-/*onInit - get currentYear*/
-getCurrentYear(){
-	var that=this;
-	this.serviceYear.getLastYear().subscribe(a=>{
-		a.forEach(function(b){
-			that.lastYear=b.key;
-			that.getDomen(b.key);
-			that.getDefaultScore(b.key);	
-		})
-	});
-}
-
-/*onInit - get domen data*/
-getDomen(year){
-	var that=this;
-	this.service.getDomenId(year).take(1).subscribe(domen=>{
-
-		domen.forEach(function(n){
-			that.service.getRank(that.lastYear,n.key).subscribe(domeni=>{
-				that.domenMapData.push({key:n.key,domeni:domeni});
-				if(that.domenMapData.length===81){
-					document.querySelector("#loaderData").setAttribute("class", "offLoader");
-				}else{
-					document.querySelector("#loaderData").setAttribute("class", "onLoader");
-
-				}
-			})
-		});
-	});
-
-}
-
-
-
-/*onInit - get defaultGrades*/
-getDefaultScore(domenId){
-	var that=this;
-	this.defaultScore=this.service.getDefaultGrades(domenId).subscribe((a:any)=>{
-		a.forEach(function (mun) {
-			that.defaultData.push([mun.key,Number(mun.val)]);
-		});
-	})
-}
-
-async recieveLang($event){
-	var that=this;
-	await this.translate.get('dummyTranslation').toPromise().then();
-	this.currentLang=$event;
-	this.dataClasses=[];
-	//this.mainDataChartLabels();
-
-if(this.myCurrentYear!=undefined){
-
-	this.serviceYear.getLastYear().subscribe(a=>{
+	/*onInit - get currentYear*/
+	getCurrentYear(){
+		var that=this;
+		this.serviceYear.getLastYear().subscribe(a=>{
 			a.forEach(function(b){
-				that.createChartMap(b.key);	
+				that.lastYear=b.key;
+				that.getDomen(b.key);
+				that.getDefaultScore(b.key);	
 			})
 		});
-}else{
+	}
 
-	this.createChartMap(this.myCurrentYear);
-}
-}
+	/*onInit - get domen data*/
+	getDomen(year){
+		var that=this;
+		this.service.getDomenId(year).take(1).subscribe(domen=>{
 
-getAllYears(){
-	var that=this;
-	this.listenerYears=that.serviceYear.getYearList().subscribe(year=>{
-		year.forEach(function(y){
-			that.years.push(y);
+			domen.forEach(function(n){
+				that.service.getRank(that.lastYear,n.key).subscribe(domeni=>{
+					that.domenMapData.push({key:n.key,domeni:domeni});
+					if(that.domenMapData.length===81){
+						document.querySelector("#loaderData").setAttribute("class", "offLoader");
+					}else{
+						document.querySelector("#loaderData").setAttribute("class", "onLoader");
+
+					}
+				})
+			});
+		});
+
+	}
+
+
+
+	/*onInit - get defaultGrades*/
+	getDefaultScore(domenId){
+		var that=this;
+		this.defaultScore=this.service.getDefaultGrades(domenId).subscribe((a:any)=>{
+			a.forEach(function (mun) {
+				that.defaultData.push([mun.key,Number(mun.val)]);
+			});
 		})
-		this.listenerYears.unsubscribe();
-	})
-}
+	}
 
-changeYear(changeyear){
-	this.lastYear=changeyear;
-	this.createChartMap(changeyear);
-	console.log(changeyear);
+	async recieveLang($event){
+		var that=this;
+		await this.translate.get('dummyTranslation').toPromise().then();
+		this.currentLang=$event;
+		this.dataClasses=[];
+		//this.mainDataChartLabels();
+
+		if(this.myCurrentYear!=undefined){
+
+			this.serviceYear.getLastYear().subscribe(a=>{
+				a.forEach(function(b){
+					that.createChartMap(b.key);	
+				})
+			});
+		}else{
+
+			this.createChartMap(this.myCurrentYear);
+		}
+	}
+
+	getAllYears(){
+		var that=this;
+		this.listenerYears=that.serviceYear.getYearList().subscribe(year=>{
+			year.forEach(function(y){
+				that.years.push(y);
+			})
+			this.listenerYears.unsubscribe();
+		})
+	}
+
+	changeYear(changeyear){
+		this.lastYear=changeyear;
+		this.createChartMap(changeyear);
+		console.log(changeyear);
 
 
-}
+	}
 }
 
 

@@ -387,7 +387,7 @@ firebase@5.4.2
 Apache-2.0
 Apache-2.0
 
-highcharts@6.1.4
+highcharts@10.0.0
 https://www.highcharts.com/license
 https://www.highcharts.com/license
 

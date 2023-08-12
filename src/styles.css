@@ -540,8 +540,12 @@ div.domenList {
 #mapa {
   cursor: pointer; }
   #poimnik:hover .mytooltip,
-  #mapa:hover .mytooltip {
+  #mapa:hover .mytooltip, #context:hover .mytooltip {
     display: block !important; }
+
+    #context a:hover{
+      color:orange!important;
+    }
 
 .titleMap, .titleDictionary {
   text-align: center;
@@ -597,8 +601,7 @@ span[class^="subdomen_indicator"] {
   -moz-transition: opacity .5s ease-out, visibility .5s ease-out, max-height 0.5s ease-out;
   transition: opacity .5s ease-out, visibility .5s ease-out, max-height 0.5s ease-out; }
 
-.poimnikIcon {
-  margin-right: 5px; }
+
   .poimnikIcon i {
     color: white;
     font-size: 10px;
@@ -617,7 +620,9 @@ span[class^="subdomen_indicator"] {
   border-radius: 50%;
   display: inline-block;
   background: orange;
-  position: relative; }
+  position: relative;
+margin-right: 10px;
+   }
   .circleIcon i {
     font-size: 10px;
     text-align: center;
@@ -1015,6 +1020,22 @@ width: 0;
     right: 0;
     margin: 0 auto;
   color: #606060;
+ }
+ .info_text{
+  display: none;
+ }
+
+ .info_icon:hover +.info_text{
+    display: block;
+    width: 40%;
+    height: 255px;
+    background: #fff;
+    position: absolute;
+    top: 363px;
+    left: 40px;
+    box-shadow: 0px 0px 3px 1px #e2e2e2;
+    z-index: 2;
+
  }
 
 /*# sourceMappingURL=styles.css.map */

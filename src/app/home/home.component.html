@@ -18,7 +18,9 @@
     </span>
   </span>
   <div *ngIf="lastYear" class="current_year">{{"Data for"|translate }} {{lastYear}} {{"год."|translate}}</div>  
-  <chart type="Map" [options]="options" (load)="saveChart($event.context)"></chart>
+  <chart type="Map" [options]="options" (load)="saveChart($event.context)">
+    
+  </chart>
   <div id="pullBox" class="pull_box">
     <div class="pull" ></div>
     <div id="pullIcon" class="pull_icon" (click)="close_open_Slider()"></div>
@@ -45,6 +47,11 @@
       </div>
     </div>
   </div>
+  
+    <span class="info_icon" style="position:absolute;top: 77vh;left: 0;width: 39px;height: 50px;background: #f5b333;display: block;color: white;text-align: center;font-size: 33px;cursor: pointer">ℹ</span>
+    <div class="info_text" style="padding: 20px">Тука ставаме текст, не е дизајнирано ова</div>
+  
+  
 
 </div>
 <app-footer></app-footer>

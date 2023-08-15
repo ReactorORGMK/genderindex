@@ -132,43 +132,9 @@ export class HomeComponent implements OnInit{
 		var that=this;
 		if(this.lastYear=="2016"){
 			that.dataClasses=that.dataClassesScale2016
-	// 	that.dataClasses=[{name:that.translate.instant('Ниско рангирани'),
-	// 	to: 16,
-	// 	color: "#B40013",
-
-	// }, {
-	// 	name:that.translate.instant('Средно рангирани'),
-	// 	from: 17,
-	// 	to: 38,
-	// 	color: "#F19722",
-
-	// }, {name:that.translate.instant('Високо рангирани'),
-	// from: 39,
-	// color: '#F2BE54'
-//}];
 		}else{
 
 			that.dataClasses=that.dataClassesScale2021
-		// 	that.dataClasses=[{
-		// 	name:that.translate.instant('Ниско рангирани'),
-		// 	color: "#B40013",
-		// 	from:0,
-		// 	to: 50,
-			
-		// }, {
-		// 	name:that.translate.instant('Средно рангирани'),
-		// 	color: "#F19722",
-		// 	from: 51,
-		// 	to: 74
-			
-
-		// }, {
-		// 	name:that.translate.instant('Високо рангирани'),
-		// 	color: '#F2BE54',
-		// 	from: 75,
-		// 	to:100
-			
-		// }];
 		}
 	}
 
@@ -267,7 +233,7 @@ export class HomeComponent implements OnInit{
 
 					colorAxis: {
 						min: 1,
-                max: 100,
+						max: 100,
 						dataClasses:that.dataClasses,
 					},
 					credits: {
@@ -356,203 +322,203 @@ export class HomeComponent implements OnInit{
 	}
 
 	/*on click get domenData*/
-getDomenId(id){
-	var that=this;
-	var rankData=[];
-	var domenMap=[];
-	this.selectedDomen = id;
-	that.dataClasses=[];
-	//console.log(that.chart.colorAxis[0].dataClasses=[]);
+	getDomenId(id){
+		var that=this;
+		var rankData=[];
+		var domenMap=[];
+		this.selectedDomen = id;
+		that.dataClasses=[];
+		//console.log(that.chart.colorAxis[0].dataClasses=[]);
 
-	document.getElementById('defaultIndex').setAttribute('class',' ');
-	this.serviceDomen.getDomen(id).subscribe(a=>{
-		this.description=a;
-		this.name=a;
-	});
-	this.domenMapData.forEach(function(v){
-		for(var domeniKey in v.domeni){
-			if(domeniKey===id){
-				for(var objects in v.domeni[domeniKey]){
-					for(var rank in v.domeni[domeniKey].columns){
-						if(rank==='1rank'){
-							rankData=v.domeni[domeniKey].columns[rank].columnValue;
+		document.getElementById('defaultIndex').setAttribute('class',' ');
+		this.serviceDomen.getDomen(id).subscribe(a=>{
+			this.description=a;
+			this.name=a;
+		});
+		this.domenMapData.forEach(function(v){
+			for(var domeniKey in v.domeni){
+				if(domeniKey===id){
+					for(var objects in v.domeni[domeniKey]){
+						for(var rank in v.domeni[domeniKey].columns){
+							if(rank==='1rank'){
+								rankData=v.domeni[domeniKey].columns[rank].columnValue;
+							}
 						}
 					}
 				}
+			}							
+			domenMap.push([v.key, rankData]);
+
+		});
+		if(domenMap.length===81){
+			that.chart.series[0].setData(domenMap);
+			/*ColorAxis - бои како оцени*/
+			/*first domen*/
+			
+			if(id==='-LQsYG2Wf30xOMNPuxeJ'){
+
+				if(this.lastYear=="2016"){
+					that.chart.colorAxis[0].update({
+						dataClasses:[{
+							from: 1,
+							to:17,
+							color: '#F2BE54',
+							name:that.translate.instant('Високо рангирани'),
+							
+						}, {
+							from: 18,
+							to: 63,
+							color: '#F19722',
+							name:that.translate.instant('Средно рангирани')
+						},{
+							from:64,
+							to: 81,
+							color: '#B40013',
+							name:that.translate.instant('Ниско рангирани')
+						}]
+					});
+
+				}else{
+
+					that.chart.colorAxis[0].update({
+						dataClasses:[{
+							name:that.translate.instant('Ниско рангирани'),
+							color: "#B40013",
+							from:0,
+							to: 50,
+							
+						}, {
+							name:that.translate.instant('Средно рангирани'),
+							color: "#F19722",
+							from: 51,
+							to: 74
+							
+
+						}, {
+							name:that.translate.instant('Високо рангирани'),
+							color: '#F2BE54',
+							from: 75,
+							to:81
+							
+						}],
+					});
+
+				}
+				that.chart.series[0].setData(domenMap);
 			}
-		}							
-		domenMap.push([v.key, rankData]);
 
-	});
-	if(domenMap.length===81){
-		that.chart.series[0].setData(domenMap);
-		/*ColorAxis - бои како оцени*/
-		/*first domen*/
-		
-		if(id==='-LQsYG2Wf30xOMNPuxeJ'){
+			/*second domen*/
+			else if(id==='-LQsYSYceSCpupl-VqtH'){
+				if(this.lastYear=="2016"){
+					that.chart.colorAxis[0].update({
+						dataClasses:[
+						{
+							from: 1,
+							to:18,
+							color: '#F2BE54',
+							name:that.translate.instant('Високо рангирани'),
+							
+						}, {
+							from: 19,
+							to: 38,
+							color: '#F19722',
+							name:that.translate.instant('Средно рангирани')
+						},{
+							from:59,
+							to: 81,
+							color: '#B40013',
+							name:that.translate.instant('Ниско рангирани')
+						}]
+					});
 
-			if(this.lastYear=="2016"){
-				that.chart.colorAxis[0].update({
-				dataClasses:[{
-					from: 1,
-					to:17,
-					color: '#F2BE54',
-					name:that.translate.instant('Високо рангирани'),
+				}else{
+
+					that.chart.colorAxis[0].update({
+						dataClasses:[{
+							name:that.translate.instant('Ниско рангирани'),
+							color: "#B40013",
+							from:0,
+							to: 50
+							
+						}, {
+							name:that.translate.instant('Средно рангирани'),
+							color: "#F19722",
+							from: 51,
+							to: 74
+							
+
+						}, {
+							name:that.translate.instant('Високо рангирани'),
+							color: '#F2BE54',
+							from: 75,
+							to:81
+							
+						}],
+					});
+
 					
-				}, {
-					from: 18,
-					to: 63,
-					color: '#F19722',
-					name:that.translate.instant('Средно рангирани')
-				},{
-					from:64,
-					to: 81,
-					color: '#B40013',
-					name:that.translate.instant('Ниско рангирани')
-				}]
-			});
-
-			}else{
-
-				that.chart.colorAxis[0].update({
-				dataClasses:[{
-			name:that.translate.instant('Ниско рангирани'),
-			color: "#B40013",
-			from:0,
-			to: 50,
-			
-		}, {
-			name:that.translate.instant('Средно рангирани'),
-			color: "#F19722",
-			from: 51,
-			to: 74
-			
-
-		}, {
-			name:that.translate.instant('Високо рангирани'),
-			color: '#F2BE54',
-			from: 75,
-			to:81
-			
-		}],
-			});
-
+					that.chart.series[0].setData(domenMap);
+				}
 			}
-that.chart.series[0].setData(domenMap);
-		}
+			/*third domen*/
+			else{
 
-		/*second domen*/
-		else if(id==='-LQsYSYceSCpupl-VqtH'){
-			if(this.lastYear=="2016"){
-				that.chart.colorAxis[0].update({
-				dataClasses:[
-				{
-					from: 1,
-					to:18,
-					color: '#F2BE54',
-					name:that.translate.instant('Високо рангирани'),
+
+				if(this.lastYear=="2016"){
+					that.chart.colorAxis[0].update({
+						dataClasses:[{
+							from: 1,
+							to:16,
+							color: '#F2BE54',
+							name:that.translate.instant('Високо рангирани'),
+							
+						}, {
+							from: 17,
+							to: 54,
+							color: '#F19722',
+							name:that.translate.instant('Средно рангирани')
+						},{
+							from: 55,
+							to:81,
+							color: '#B40013',
+							name:that.translate.instant('Ниско рангирани')
+						} ]
+					});
+
+				}else{
+
+					that.chart.colorAxis[0].update({
+						dataClasses:[{
+							name:that.translate.instant('Ниско рангирани'),
+							color: "#B40013",
+							from:0,
+							to: 50
+							
+						}, {
+							name:that.translate.instant('Средно рангирани'),
+							color: "#F19722",
+							from: 51,
+							to: 74
+							
+
+						}, {
+							name:that.translate.instant('Високо рангирани'),
+							color: '#F2BE54',
+							from: 75,
+							to:81
+							
+						}],
+					});
+
 					
-				}, {
-					from: 19,
-					to: 38,
-					color: '#F19722',
-					name:that.translate.instant('Средно рангирани')
-				},{
-					from:59,
-					to: 81,
-					color: '#B40013',
-					name:that.translate.instant('Ниско рангирани')
-				}]
-			});
-
-			}else{
-
-				that.chart.colorAxis[0].update({
-				dataClasses:[{
-			name:that.translate.instant('Ниско рангирани'),
-			color: "#B40013",
-			from:0,
-			to: 50
+					that.chart.series[0].setData(domenMap);
+				}
+			}
 			
-		}, {
-			name:that.translate.instant('Средно рангирани'),
-			color: "#F19722",
-			from: 51,
-			to: 74
-			
-
-		}, {
-			name:that.translate.instant('Високо рангирани'),
-			color: '#F2BE54',
-			from: 75,
-			to:81
-			
-		}],
-			});
-
-			
-that.chart.series[0].setData(domenMap);
+		}else{
+			that.chart.series[0].setData(that.newData);
 		}
 	}
-		/*third domen*/
-		else{
-
-
-			if(this.lastYear=="2016"){
-				that.chart.colorAxis[0].update({
-				dataClasses:[{
-					from: 1,
-					to:16,
-					color: '#F2BE54',
-					name:that.translate.instant('Високо рангирани'),
-					
-				}, {
-					from: 17,
-					to: 54,
-					color: '#F19722',
-					name:that.translate.instant('Средно рангирани')
-				},{
-					from: 55,
-					to:81,
-					color: '#B40013',
-					name:that.translate.instant('Ниско рангирани')
-				} ]
-			});
-
-			}else{
-
-				that.chart.colorAxis[0].update({
-				dataClasses:[{
-			name:that.translate.instant('Ниско рангирани'),
-			color: "#B40013",
-			from:0,
-			to: 50
-			
-		}, {
-			name:that.translate.instant('Средно рангирани'),
-			color: "#F19722",
-			from: 51,
-			to: 74
-			
-
-		}, {
-			name:that.translate.instant('Високо рангирани'),
-			color: '#F2BE54',
-			from: 75,
-			to:81
-			
-		}],
-			});
-
-			
-that.chart.series[0].setData(domenMap);
-		}
-	}
-		
-	}else{
-		that.chart.series[0].setData(that.newData);
-	}
-}
 
 
 

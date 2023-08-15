@@ -23,6 +23,8 @@
 	"technical_terms": "Technical terms",
 	"first_m": "First measurment",
 	"first_m_text": "The measurement of the municipality conditions using the Gender Equality Index started with the data about the municipalities for 2016",
+	"second_m":"Second measurement",
+	"second_m_text":"Второто мерење на состојбите преку Индекс на родова еднаквост на општините продолжува со податоци за општините за 2021 година.",
 	"indicators": "Indicators",
 	"indicators_text": "Obtained by raw data calculation in a way that enables comparison of the municipalities. For instance, by calculating the correlation between employed women and men, the municipalities could be compared with regard to equality, although they defer with regard to the size of (employed) population.",
 	"domains": "Domains",

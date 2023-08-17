@@ -1025,6 +1025,21 @@ width: 0;
   display: none;
  }
 
+ .info_icon{
+  position:absolute;
+  top: 77vh;
+  left: 0;
+  width: 39px;
+  height: 50px;
+  background: #f5b333;
+  display: block;
+  color: white;
+  text-align: center;
+  font-size: 33px;
+  cursor: pointer
+ }
+
+
  .info_icon:hover +.info_text{
     display: block;
     width: 40%;

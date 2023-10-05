@@ -83,46 +83,7 @@ export class HomeComponent implements OnInit{
 		
 		this.getAllYears();
 
-		//default numbers for the color scale 
-		this.dataClassesScale2016=[{
-			name:that.translate.instant('Ниско рангирани'),
-			to: 16,
-			color: "#B40013",
-
-		}, {
-			name:that.translate.instant('Средно рангирани'),
-			from: 17,
-			to: 38,
-			color: "#F19722",
-
-		}, {
-			name:that.translate.instant('Високо рангирани'),
-			from: 39,
-			color: '#F2BE54'
-		}];
-
-
-		//up from 2021
-		this.dataClassesScale2021=[{
-			name:that.translate.instant('Ниско рангирани'),
-			color: "#B40013",
-			from:0,
-			to: 50,
-			
-		}, {
-			name:that.translate.instant('Средно рангирани'),
-			color: "#F19722",
-			from: 51,
-			to: 74
-			
-
-		}, {
-			name:that.translate.instant('Високо рангирани'),
-			color: '#F2BE54',
-			from: 75,
-			to:100
-			
-		}];
+		
 	}
 
 
@@ -131,10 +92,44 @@ export class HomeComponent implements OnInit{
 	mainDataChartLabels(){
 		var that=this;
 		if(this.lastYear=="2016"){
-			that.dataClasses=that.dataClassesScale2016
-		}else{
+			//default numbers for the color scale 
+			//only for 2016
+			that.dataClasses=[{
+				name:that.translate.instant('Ниско рангирани'),
+				to: 16,
+				color: "#B40013",
 
-			that.dataClasses=that.dataClassesScale2021
+			}, {
+				name:that.translate.instant('Средно рангирани'),
+				from: 17,
+				to: 38,
+				color: "#F19722",
+
+			}, {
+				name:that.translate.instant('Високо рангирани'),
+				from: 39,
+				color: '#F2BE54'
+			}];
+
+		}else{
+			//up from 2021
+			that.dataClasses=[{
+				color: "#B40013",
+				from:0,
+				to: 50,
+				name:that.translate.instant('Ниско рангирани')
+			}, {
+				color: "#F19722",
+				from: 51,
+				to: 74,
+				name:that.translate.instant('Средно рангирани')
+			}, {
+				color: '#F2BE54',
+				from: 75,
+				to:100,
+				name:that.translate.instant('Високо рангирани')
+
+			}];	
 		}
 	}
 
@@ -144,6 +139,8 @@ export class HomeComponent implements OnInit{
 		var that=this;
 		this.dataClasses=[];
 		that.mainDataChartLabels();
+
+
 		setTimeout(function(){
 			document.getElementById('pullBox').setAttribute("class", "pull_open");
 			document.getElementById('pullIcon').setAttribute("class", "pull_icon1");
@@ -162,7 +159,6 @@ export class HomeComponent implements OnInit{
 			fetch('./assets/map_'+year+'.json').then(response => {
 				return response.json();
 
-
 			}).then(dat => {
 
 				that.options = {
@@ -177,7 +173,6 @@ export class HomeComponent implements OnInit{
 						shadow: false,
 						useHTML: true,
 						padding: 0,
-
 						pointFormatter: function() {
 
 							//console.log(this);
@@ -294,10 +289,13 @@ export class HomeComponent implements OnInit{
 						}
 					}],
 				};
+
 			}).catch(err => {
 				console.log(err)
 			});
-		})
+
+
+		});
 	}
 
 	/*load the Map and inilitalize the chart for the later update*/
@@ -307,17 +305,70 @@ export class HomeComponent implements OnInit{
 		this.chart = chart;
 	}
 
-
-
-
-
-
 	/*get general grade - индекс*/
 	getGeneralGrade(elem){
 		this.dataClasses=[];
 		var that=this;
 		document.getElementById('defaultIndex').setAttribute('class','active');
 		this.selectedDomen=null;
+
+		if(elem==='2016'){
+			//only for 2016
+			that.chart.colorAxis[0].update({
+				dataClasses:[{
+					name:that.translate.instant('Ниско рангирани'),
+					to: 16,
+					color: "#B40013",
+
+				}, {
+					name:that.translate.instant('Средно рангирани'),
+					from: 17,
+					to: 38,
+					color: "#F19722",
+
+				}, {
+					name:that.translate.instant('Високо рангирани'),
+					from: 39,
+					color: '#F2BE54'
+				}];
+			});
+
+		}else{
+			
+			//up from 2021
+
+			that.chart.colorAxis[0].update({
+				dataClasses:[{
+					color: "#B40013",
+					from:0,
+					to: 50,
+					name:that.translate.instant('Ниско рангирани')
+				}, {
+					color: "#F19722",
+					from: 51,
+					to: 74,
+					name:that.translate.instant('Средно рангирани')
+				}, {
+					color: '#F2BE54',
+					from: 75,
+					to:100,
+					name:that.translate.instant('Високо рангирани')
+
+				}];	
+			});
+		}
+
+		
+		this.service.getDefaultGrades(elem).subscribe((a:any)=>{
+			a.forEach(function (mun) {
+				that.defaultData.push([mun.key,Number(mun.val)]);
+			});
+		});
+
+		that.chart.series[0].setData(that.defaultData);
+
+		// that.defaultData=[];
+		that.domenMap=[];
 
 	}
 
@@ -348,33 +399,32 @@ export class HomeComponent implements OnInit{
 				}
 			}							
 			domenMap.push([v.key, rankData]);
-
 		});
 		if(domenMap.length===81){
 			that.chart.series[0].setData(domenMap);
 			/*ColorAxis - бои како оцени*/
 			/*first domen*/
-			
+
 			if(id==='-LQsYG2Wf30xOMNPuxeJ'){
 
 				if(this.lastYear=="2016"){
 					that.chart.colorAxis[0].update({
 						dataClasses:[{
-							from: 1,
-							to:17,
-							color: '#F2BE54',
-							name:that.translate.instant('Високо рангирани'),
-							
+							from:64,
+							to: 81,
+							color: '#B40013',
+							name:that.translate.instant('Ниско рангирани')
 						}, {
 							from: 18,
 							to: 63,
 							color: '#F19722',
 							name:that.translate.instant('Средно рангирани')
 						},{
-							from:64,
-							to: 81,
-							color: '#B40013',
-							name:that.translate.instant('Ниско рангирани')
+							from: 1,
+							to:17,
+							color: '#F2BE54',
+							name:that.translate.instant('Високо рангирани'),
+
 						}]
 					});
 
@@ -386,20 +436,17 @@ export class HomeComponent implements OnInit{
 							color: "#B40013",
 							from:0,
 							to: 50,
-							
 						}, {
 							name:that.translate.instant('Средно рангирани'),
 							color: "#F19722",
 							from: 51,
 							to: 74
-							
-
 						}, {
 							name:that.translate.instant('Високо рангирани'),
 							color: '#F2BE54',
 							from: 75,
 							to:81
-							
+
 						}],
 					});
 
@@ -413,21 +460,21 @@ export class HomeComponent implements OnInit{
 					that.chart.colorAxis[0].update({
 						dataClasses:[
 						{
-							from: 1,
-							to:18,
-							color: '#F2BE54',
-							name:that.translate.instant('Високо рангирани'),
-							
-						}, {
+							from:59,
+							to: 81,
+							color: '#B40013',
+							name:that.translate.instant('Ниско рангирани')
+						},{
 							from: 19,
 							to: 38,
 							color: '#F19722',
 							name:that.translate.instant('Средно рангирани')
 						},{
-							from:59,
-							to: 81,
-							color: '#B40013',
-							name:that.translate.instant('Ниско рангирани')
+							from: 1,
+							to:18,
+							color: '#F2BE54',
+							name:that.translate.instant('Високо рангирани'),
+
 						}]
 					});
 
@@ -439,49 +486,48 @@ export class HomeComponent implements OnInit{
 							color: "#B40013",
 							from:0,
 							to: 50
-							
+
 						}, {
 							name:that.translate.instant('Средно рангирани'),
 							color: "#F19722",
 							from: 51,
 							to: 74
-							
+
 
 						}, {
 							name:that.translate.instant('Високо рангирани'),
 							color: '#F2BE54',
 							from: 75,
 							to:81
-							
+
 						}],
 					});
 
-					
+
 					that.chart.series[0].setData(domenMap);
 				}
 			}
 			/*third domen*/
 			else{
 
-
 				if(this.lastYear=="2016"){
 					that.chart.colorAxis[0].update({
 						dataClasses:[{
-							from: 1,
-							to:16,
-							color: '#F2BE54',
-							name:that.translate.instant('Високо рангирани'),
-							
-						}, {
+							from: 55,
+							to:81,
+							color: '#B40013',
+							name:that.translate.instant('Ниско рангирани')
+						},{
 							from: 17,
 							to: 54,
 							color: '#F19722',
 							name:that.translate.instant('Средно рангирани')
 						},{
-							from: 55,
-							to:81,
-							color: '#B40013',
-							name:that.translate.instant('Ниско рангирани')
+							from: 1,
+							to:16,
+							color: '#F2BE54',
+							name:that.translate.instant('Високо рангирани'),
+
 						} ]
 					});
 
@@ -493,28 +539,27 @@ export class HomeComponent implements OnInit{
 							color: "#B40013",
 							from:0,
 							to: 50
-							
+
 						}, {
 							name:that.translate.instant('Средно рангирани'),
 							color: "#F19722",
 							from: 51,
 							to: 74
-							
+
 
 						}, {
 							name:that.translate.instant('Високо рангирани'),
 							color: '#F2BE54',
 							from: 75,
 							to:81
-							
+
 						}],
 					});
 
-					
 					that.chart.series[0].setData(domenMap);
 				}
 			}
-			
+
 		}else{
 			that.chart.series[0].setData(that.newData);
 		}
@@ -580,15 +625,17 @@ export class HomeComponent implements OnInit{
 		this.defaultScore=this.service.getDefaultGrades(domenId).subscribe((a:any)=>{
 			a.forEach(function (mun) {
 				that.defaultData.push([mun.key,Number(mun.val)]);
+
 			});
-		})
+		});
+
 	}
 
 	async recieveLang($event){
 		var that=this;
 		await this.translate.get('dummyTranslation').toPromise().then();
 		this.currentLang=$event;
-		this.dataClasses=[];
+		//this.dataClasses=[];
 		//this.mainDataChartLabels();
 
 		if(this.myCurrentYear!=undefined){
@@ -598,8 +645,8 @@ export class HomeComponent implements OnInit{
 					that.createChartMap(b.key);	
 				})
 			});
-		}else{
 
+		}else{
 			this.createChartMap(this.myCurrentYear);
 		}
 	}
@@ -617,8 +664,6 @@ export class HomeComponent implements OnInit{
 	changeYear(changeyear){
 		this.lastYear=changeyear;
 		this.createChartMap(changeyear);
-		console.log(changeyear);
-
 
 	}
 }

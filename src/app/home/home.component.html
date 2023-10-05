@@ -28,7 +28,7 @@
     </div>
     <div class="col-md-12 row">
       <div class="col-md-8 homeSliderText">
-        <div style="margin-top: 10%" id="defaultIndex" (click)="getGeneralGrade($event.context)"><span style="text-transform: uppercase;">{{"index"|translate}}</span></div>
+        <div style="margin-top: 10%" id="defaultIndex" (click)="getGeneralGrade(lastYear)"><span style="text-transform: uppercase;">{{"index"|translate}}</span></div>
         <ul style="width: 105%;margin-left: 5px">
           <li *ngFor="let domenSubdomen of domeniSubdomeni | async;">
             <span [class.active]="selectedDomen===domenSubdomen.key" (click)="getDomenId(domenSubdomen.key)"> {{domenSubdomen.val.name | translate}}</span>

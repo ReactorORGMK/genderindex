@@ -4206,7 +4206,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-navigation (languageEmit)=\"recieveLang($event)\"></app-navigation>\n<div class=\"container-fluid homeClass\">\n  <span class=\"offLoader\" id=\"loaderData\">\n    <span style=\"font-size: 12px\">\n      <img src=\"./assets/img/three-dots.svg\" width=\"30%\"> ...{{\"load_data\"|translate}}...\n    </span>\n\n  </span>\n    \n  <span class=\"years_btn_position\">\n    <span *ngFor=\"let year of years\">\n      <span class=\"years_btn_style\"(click)=\"changeYear(year.key)\" [ngStyle]=\"{'background':year.key ==lastYear ? '#f5b233' : 'rgb(245 179 51 / 42%)'}\">\n        {{year.key}}\n        <span class=\"years_tooltip\">{{'Click to view the data for'|translate}} {{year.key}} {{\"год.\"|translate}}\n          <span class=\"arrow_left\"></span>\n        </span>\n      </span>\n    </span>\n  </span>\n  <div *ngIf=\"lastYear\" class=\"current_year\">{{\"Data for\"|translate }} {{lastYear}} {{\"год.\"|translate}}</div>  \n  <chart type=\"Map\" [options]=\"options\" (load)=\"saveChart($event.context)\">\n    \n  </chart>\n  <div id=\"pullBox\" class=\"pull_box\">\n    <div class=\"pull\" ></div>\n    <div id=\"pullIcon\" class=\"pull_icon\" (click)=\"close_open_Slider()\"></div>\n    <div class=\"col-md-12 home_title\"> <span class=\"\">{{\"ranging_evaluation_manu\"|translate}}</span>\n    </div>\n    <div class=\"col-md-12 row\">\n      <div class=\"col-md-8 homeSliderText\">\n        <div style=\"margin-top: 10%\" id=\"defaultIndex\" (click)=\"getGeneralGrade($event.context)\"><span style=\"text-transform: uppercase;\">{{\"index\"|translate}}</span></div>\n        <ul style=\"width: 105%;margin-left: 5px\">\n          <li *ngFor=\"let domenSubdomen of domeniSubdomeni | async;\">\n            <span [class.active]=\"selectedDomen===domenSubdomen.key\" (click)=\"getDomenId(domenSubdomen.key)\"> {{domenSubdomen.val.name | translate}}</span>\n                <!-- <button (click)=\"addPoint($event.context)\" style=\"position: relative;top:0\">adsdsd</button>\n                 <ul>\n              <li *ngFor=\"let subdomen of Object.keys(domenSubdomen.val.subdomeni); \">\n                <span [class.active]=\"selectedSubdomen===subdomen\" (click)=\"getSubdomenId(domenSubdomen.key,subdomen)\">{{domenSubdomen.val.subdomeni[subdomen]}}</span>\n              </li>\n            </ul> -->\n          </li>\n        </ul>\n      </div>\n      <div class=\"col-md-12 homeSliderText\" style=\"margin-top:100px\">\n        <div class=\"subject\">{{name.name | translate}}</div>\n        <div class=\"description\">{{description.description | translate}}</div>\n      </div>\n    </div>\n  </div>\n  \n    <span class=\"info_icon\" style=\"position:absolute;top: 77vh;left: 0;width: 39px;height: 50px;background: #f5b333;display: block;color: white;text-align: center;font-size: 33px;cursor: pointer\">ℹ</span>\n    <div class=\"info_text\" style=\"padding: 20px\">Тука ставаме текст, не е дизајнирано ова</div>\n  \n  \n\n</div>\n<app-footer></app-footer>\n"
+module.exports = "<app-navigation (languageEmit)=\"recieveLang($event)\"></app-navigation>\n<div class=\"container-fluid homeClass\">\n  <span class=\"offLoader\" id=\"loaderData\">\n    <span style=\"font-size: 12px\">\n      <img src=\"./assets/img/three-dots.svg\" width=\"30%\"> ...{{\"load_data\"|translate}}...\n    </span>\n\n  </span>\n    \n  <span class=\"years_btn_position\">\n    <span *ngFor=\"let year of years\">\n      <span class=\"years_btn_style\"(click)=\"changeYear(year.key)\" [ngStyle]=\"{'background':year.key ==lastYear ? '#f5b233' : 'rgb(245 179 51 / 42%)'}\">\n        {{year.key}}\n        <span class=\"years_tooltip\">{{'Click to view the data for'|translate}} {{year.key}} {{\"год.\"|translate}}\n          <span class=\"arrow_left\"></span>\n        </span>\n      </span>\n    </span>\n  </span>\n  <div *ngIf=\"lastYear\" class=\"current_year\">{{\"Data for\"|translate }} {{lastYear}} {{\"год.\"|translate}}</div>  \n  <chart type=\"Map\" [options]=\"options\" (load)=\"saveChart($event.context)\">\n    \n  </chart>\n  <div id=\"pullBox\" class=\"pull_box\">\n    <div class=\"pull\" ></div>\n    <div id=\"pullIcon\" class=\"pull_icon\" (click)=\"close_open_Slider()\"></div>\n    <div class=\"col-md-12 home_title\"> <span class=\"\">{{\"ranging_evaluation_manu\"|translate}}</span>\n    </div>\n    <div class=\"col-md-12 row\">\n      <div class=\"col-md-8 homeSliderText\">\n        <div style=\"margin-top: 10%\" id=\"defaultIndex\" (click)=\"getGeneralGrade($event.context)\"><span style=\"text-transform: uppercase;\">{{\"index\"|translate}}</span></div>\n        <ul style=\"width: 105%;margin-left: 5px\">\n          <li *ngFor=\"let domenSubdomen of domeniSubdomeni | async;\">\n            <span [class.active]=\"selectedDomen===domenSubdomen.key\" (click)=\"getDomenId(domenSubdomen.key)\"> {{domenSubdomen.val.name | translate}}</span>\n                <!-- <button (click)=\"addPoint($event.context)\" style=\"position: relative;top:0\">adsdsd</button>\n                 <ul>\n              <li *ngFor=\"let subdomen of Object.keys(domenSubdomen.val.subdomeni); \">\n                <span [class.active]=\"selectedSubdomen===subdomen\" (click)=\"getSubdomenId(domenSubdomen.key,subdomen)\">{{domenSubdomen.val.subdomeni[subdomen]}}</span>\n              </li>\n            </ul> -->\n          </li>\n        </ul>\n      </div>\n      <div class=\"col-md-12 homeSliderText\" style=\"margin-top:100px\">\n        <div class=\"subject\">{{name.name | translate}}</div>\n        <div class=\"description\">{{description.description | translate}}</div>\n      </div>\n    </div>\n  </div>\n  \n    <span class=\"info_icon\"><i class=\"fa fa-info\"></i></span>\n    <div class=\"info_text\" style=\"padding: 20px\">Тука ставаме текст, не е дизајнирано ова</div>\n  \n  \n\n</div>\n<app-footer></app-footer>\n"
 
 /***/ }),
 
@@ -4381,37 +4381,10 @@ var HomeComponent = /** @class */ (function () {
         var that = this;
         if (this.lastYear == "2016") {
             that.dataClasses = that.dataClassesScale2016;
-            // 	that.dataClasses=[{name:that.translate.instant('Ниско рангирани'),
-            // 	to: 16,
-            // 	color: "#B40013",
-            // }, {
-            // 	name:that.translate.instant('Средно рангирани'),
-            // 	from: 17,
-            // 	to: 38,
-            // 	color: "#F19722",
-            // }, {name:that.translate.instant('Високо рангирани'),
-            // from: 39,
-            // color: '#F2BE54'
-            //}];
         }
         else {
             that.dataClasses = that.dataClassesScale2021;
-            // 	that.dataClasses=[{
-            // 	name:that.translate.instant('Ниско рангирани'),
-            // 	color: "#B40013",
-            // 	from:0,
-            // 	to: 50,
             // }, {
-            // 	name:that.translate.instant('Средно рангирани'),
-            // 	color: "#F19722",
-            // 	from: 51,
-            // 	to: 74
-            // }, {
-            // 	name:that.translate.instant('Високо рангирани'),
-            // 	color: '#F2BE54',
-            // 	from: 75,
-            // 	to:100
-            // }];
         }
     };
     HomeComponent.prototype.createChartMap = function (year) {

@@ -72,7 +72,10 @@ export class MunicipalityListComponent implements OnInit {
 			});
 
 			copyArrayA.forEach(function (b) {
-				that.serieData.push({name:that.translate.instant(b.val.code), data:[{y:b.val.scoreMun,munName:b.val.name}], color:b.val.colorGraph});	
+				that.serieData.push({name:that.translate.instant(b.val.code), data:[{y:b.val.scoreMun,munName:b.val.name}], color:b.val.colorGraph, 
+					marker: {
+					symbol: 'triangle'}
+				});	
 			});
 			//console.log(that.serieData);
 

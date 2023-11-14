@@ -1,5 +1,5 @@
 <app-navigation></app-navigation>
-<div class="container" style="text-align: justify;">
+<div class="container methodology" style="text-align: justify;">
   <h6 class="title">{{"methodology"|translate}}</h6>
   <div class="col-md-12" [innerHTML]="'methodology_text'|translate">
     
@@ -7,13 +7,25 @@
   <div class="col-md-12">
     <h6 class="title orangeText">{{"methodology_frame_title"|translate}}</h6>
     <p>{{"methodology_frame"|translate}}</p>
-    <p><span style="font-family: ArsenalB;cursor: pointer" [routerLink]="['/dictionaryPage', 'domen_indicator0']">{{"gender_gap"|translate}}.</span> {{"methodology_gender_gap_desc"|translate}}:</p>
+    <p><span style="font-family: ArsenalB;cursor: pointer" [routerLink]="['/dictionaryPage', 'domen_indicator0']">{{"gender_gap"|translate}}.</span> 
+
+    <span [innerHtml]="'methodology_gender_gap_desc'|translate">:</span></p>
     <ol [innerHTML]="'methodology_gender_gap_indicators'|translate"></ol>
-    <p><span style="font-family: ArsenalB; cursor:pointer;" [routerLink]="['/dictionaryPage', 'domen_indicator1']">{{"enabling_conditions"|translate}}. </span>{{"methodology_enabling_conditions"|translate}}: </p>
+      <p>{{"methodology_not_included_in_21"|translate}}</p>
+    <ol [innerHTML]="'methodology_not_included_in_21_indicators'|translate"> 
+      
+    </ol>
+    <p>{{"methodology_not_included_in_21_indicators_des"|translate}}</p>
+
+    <p><span style="font-family: ArsenalB; cursor:pointer;" [routerLink]="['/dictionaryPage', 'domen_indicator1']">{{"enabling_conditions"|translate}}. </span></p>
+    <p [innerHTML]="'methodology_enabling_conditions'|translate"> </p>
     <ol [innerHTML]="'methodology_enabling_conditions_indicators'|translate">
       
     </ol>
-    <p><span style="font-family: ArsenalB;cursor: pointer;" [routerLink]="['/dictionaryPage', 'domen_indicator1']">{{"gender_responsive_mun"|translate}}. </span>{{"methodology_gender_responsive_mun"|translate}}:</p>
+    <p>{{"methodology_enabling_conditions_indicators_desc"|translate}}</p>
+   
+    <p><span style="font-family: ArsenalB;cursor: pointer;" [routerLink]="['/dictionaryPage', 'domen_indicator1']">{{"gender_responsive_mun"|translate}}. </span>
+    <span [innerHtml]="'methodology_gender_responsive_mun'|translate"></span>:</p>
     <ol [innerHTML]="'methodology_gender_responsive_mun_indicators'|translate">
     </ol>
   </div>
@@ -27,9 +39,12 @@
     <div [innerHTML]="'methodology_index_3_calc'|translate">
       
     </div>
+    <div [innerHTML]="'methodology_index_4_calc'|translate">
+      
+    </div>
   </div>
   <div class="" style="margin: 50px;
     font-size: 8px;
-    margin-left: 15px;"> <sup>1</sup> Joint Research Centre-European Commission. (2008). Handbook on constructing composite indicators: methodology and user guide. OECD publishing.</div>
+    margin-left: 15px;"> <sup>1</sup>Joint Research Centre-European Commission. (2008). Handbook on constructing composite indicators: methodology and user guide. OECD publishing.</div>
 </div>
 <app-footer></app-footer>

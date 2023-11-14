@@ -1,5 +1,6 @@
 <app-navigation (languageEmit)="recieveLang($event)"></app-navigation>
-<span class="years_btn_position">
+<!-- da definirame -->
+<!-- <span class="years_btn_position">
     <span *ngFor="let year of years">
       <span class="years_btn_style"(click)="changeYear(year.key)" [ngStyle]="{'background':year.key ==idYear ? '#f5b233' : 'rgb(245 179 51 / 42%)'}">
         {{year.key}}
@@ -8,7 +9,7 @@
         </span>
       </span>
     </span>
-  </span>
+  </span> -->
 
 <div class="container currentMunicipality" style="position: relative;">
 <div *ngIf="idYear" class="current_year" style="top:26px;font-size: 16px;">( {{idYear}} {{"год."|translate}} )</div>
@@ -25,28 +26,7 @@
       <div style="padding: 10px;">{{"data_not_included"|translate}}.</div>
     </div>
   </div>
-  <!-- <div style="
-    position: absolute;
-    height: 100%;
-    right: 0px;
-    top:-51px;
-    ">
- <div style="position: sticky;top:0px">
- <span style="height:20px; width:20px;
-    background: orange;
-    display: block;border-radius: 50%"></span></div></div>
-
-    <div style="
-    position: absolute;
-    height: 100%;
-    right: 0px;
-    top:-51px;
-    ">
- <div style="position: sticky;top:32px">
- <span style="width: 20px;
- height: 20px;
-    background: orange;
-    display: block;border-radius: 50%;"></span></div></div> -->
+  
   <h6 class="munTitle">{{"municipality"|translate}}: <span style="font-family: ArsenalB">{{municipalityDataSidebar.name | translate}}</span></h6>
   <div class="row">
     <div class="col-md-10">

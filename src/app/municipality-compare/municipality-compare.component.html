@@ -1,6 +1,7 @@
 <app-navigation></app-navigation>
 <div class="container bottom" style="position: relative;">
-  <span class="years_btn_position">
+<!-- da definirame -->
+  <!-- <span class="years_btn_position">
     <span *ngFor="let year of years">
       <span class="years_btn_style"(click)="changeYear(year.key)" [ngStyle]="{'background':year.key ==lastYear ? '#f5b233' : 'rgb(245 179 51 / 42%)'}">
         {{year.key}}
@@ -9,7 +10,7 @@
         </span>
       </span>
     </span>
-  </span>
+  </span> -->
   <h6 class="munTitle">{{"mun_compare"|translate}}</h6>
   <div *ngIf="lastYear" class="current_year" style="top:26px;font-size: 16px;">( {{lastYear}} {{"год."|translate}} )</div> 
   <div style="width: 100%">
@@ -95,6 +96,8 @@
                     <li *ngFor="let sub of subdomen.columns" class="col-md-6 col-6" id="{{subdomen.subdomenName}}">
                      <div id="{{subdomen.subdomenName}}" class="columnData">
                       <div class="subdomen">{{sub.columnValue}}</div>
+                                        
+
                     </div>
                   </li>
                 </ul>

@@ -59,7 +59,7 @@ export class MunicipalityCompareComponent implements OnInit {
 							for(var key1 in b.domenSubdomen[key].subdomens) {
 								var myColumn=[];
 								for(var col in b.domenSubdomen[key].subdomens[key1].columns){
-									if(col=='1rank' || col=="2grade"){
+									if(col=='1rang' || col=="2grade"){
 										myColumn.push({columnName:b.domenSubdomen[key].subdomens[key1].columns[col].columnName, columnValue:b.domenSubdomen[key].subdomens[key1].columns[col].columnValue});
 									}
 								}
@@ -67,7 +67,7 @@ export class MunicipalityCompareComponent implements OnInit {
 							}
 							var mydomenCol=[];
 							for(var colDomen in b.domenSubdomen[key].columns){
-								if(colDomen=='1rank' || colDomen=="2grade"){
+								if(colDomen=='1rang' || colDomen=="2grade"){
 									mydomenCol.push({columnName:b.domenSubdomen[key].columns[colDomen].columnName, columnValue:b.domenSubdomen[key].columns[colDomen].columnValue})
 								}
 							}
@@ -123,7 +123,7 @@ export class MunicipalityCompareComponent implements OnInit {
 								for(var key1 in b.domenSubdomen[key].subdomens) {
 									var myColumn=[];
 									for(var col in b.domenSubdomen[key].subdomens[key1].columns){
-										if(col=='1rank' || col=="2grade"){
+										if(col=='1rang' || col=="2grade"){
 
 											myColumn.push({columnName:b.domenSubdomen[key].subdomens[key1].columns[col].columnName, columnValue:b.domenSubdomen[key].subdomens[key1].columns[col].columnValue});
 										}
@@ -135,7 +135,7 @@ export class MunicipalityCompareComponent implements OnInit {
 
 								for(var colDomen in b.domenSubdomen[key].columns){
 
-									if(colDomen=='1rank' || colDomen=="2grade"){
+									if(colDomen=='1rang' || colDomen=="2grade"){
 										mydomenCol.push({columnName:b.domenSubdomen[key].columns[colDomen].columnName, columnValue:b.domenSubdomen[key].columns[colDomen].columnValue})
 									}
 

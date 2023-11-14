@@ -5,14 +5,15 @@
 export const environment = {
   production: false,
   firebase:{
-  apiKey: "AIzaSyCENt0gLxbPS9YVXkhBJCmVMDN4GWHubPI",
-  authDomain: "test-rodov-index-84019.firebaseapp.com",
-  databaseURL: "https://test-rodov-index-84019-default-rtdb.firebaseio.com",
-  projectId: "test-rodov-index-84019",
-  storageBucket: "test-rodov-index-84019.appspot.com",
-  messagingSenderId: "872032953857",
-  appId: "1:872032953857:web:527a6d3a25467f67d44200",
-  measurementId: "G-N56FM0XPDF"
+ 
+  apiKey: "AIzaSyBq7k6mvxEOoGd0-GmBvAFmETURfIPVgiw",
+  authDomain: "rodov-index-2021-up.firebaseapp.com",
+  databaseURL: "https://rodov-index-2021-up-default-rtdb.firebaseio.com/",
+  projectId: "rodov-index-2021-up",
+  storageBucket: "rodov-index-2021-up.appspot.com",
+  messagingSenderId: "418082676313",
+  appId: "1:418082676313:web:b794bdc29e36a940be5b48",
+  measurementId: "G-RPMTR34XDR"
   }
 };
 

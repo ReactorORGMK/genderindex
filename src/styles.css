@@ -565,6 +565,10 @@ div.domenList {
     font-size: 1rem;
     text-transform: uppercase; }
 
+    .dictionary a, .methodology a, .about_pro a{
+      color: orange
+    }
+
 span[class^="indicator"], span[class^="technic"] {
   cursor: pointer;
   font-family: ArsenalB; }
@@ -1051,6 +1055,14 @@ width: 0;
     box-shadow: 0px 0px 3px 1px #e2e2e2;
     z-index: 2;
 
+ }
+
+ .myCenter{
+  margin: 0;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
  }
 
 /*# sourceMappingURL=styles.css.map */

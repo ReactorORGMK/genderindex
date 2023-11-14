@@ -6,8 +6,10 @@
     </span>
 
   </span>
+
+  <!-- button for year change -->
     
-  <span class="years_btn_position">
+ <!--  <span class="years_btn_position">
     <span *ngFor="let year of years">
       <span class="years_btn_style"(click)="changeYear(year.key)" [ngStyle]="{'background':year.key ==lastYear ? '#f5b233' : 'rgb(245 179 51 / 42%)'}">
         {{year.key}}
@@ -16,7 +18,7 @@
         </span>
       </span>
     </span>
-  </span>
+  </span> -->
   <div *ngIf="lastYear" class="current_year">{{"Data for"|translate }} {{lastYear}} {{"год."|translate}}</div>  
   <chart type="Map" [options]="options" (load)="saveChart($event.context)">
     
@@ -47,10 +49,12 @@
       </div>
     </div>
   </div>
-  
+
+  <!-- da definirame -->
+  <!-- 
     <span class="info_icon"><i class="fa fa-info"></i></span>
     <div class="info_text" style="padding: 20px">Тука ставаме текст, не е дизајнирано ова</div>
-  
+   -->
   
 
 </div>

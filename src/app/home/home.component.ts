@@ -95,18 +95,18 @@ export class HomeComponent implements OnInit{
 			//default numbers for the color scale 
 			//only for 2016
 			that.dataClasses=[{
-				name:that.translate.instant('Ниско рангирани'),
+				name:that.translate.instant('Ниска оценка'),
 				to: 16,
 				color: "#B40013",
 
 			}, {
-				name:that.translate.instant('Средно рангирани'),
+				name:that.translate.instant('Средна оценка'),
 				from: 17,
 				to: 38,
 				color: "#F19722",
 
 			}, {
-				name:that.translate.instant('Високо рангирани'),
+				name:that.translate.instant('Висока оценка'),
 				from: 39,
 				color: '#F2BE54'
 			}];
@@ -117,17 +117,17 @@ export class HomeComponent implements OnInit{
 				color: "#B40013",
 				from:0,
 				to: 50,
-				name:that.translate.instant('Ниско рангирани')
+				name:that.translate.instant('Ниска оценка')
 			}, {
 				color: "#F19722",
 				from: 51,
 				to: 74,
-				name:that.translate.instant('Средно рангирани')
+				name:that.translate.instant('Средна оценка')
 			}, {
 				color: '#F2BE54',
 				from: 75,
 				to:100,
-				name:that.translate.instant('Високо рангирани')
+				name:that.translate.instant('Висока оценка')
 
 			}];	
 		}
@@ -312,63 +312,39 @@ export class HomeComponent implements OnInit{
 		document.getElementById('defaultIndex').setAttribute('class','active');
 		this.selectedDomen=null;
 
-		if(elem==='2016'){
-			//only for 2016
-			that.chart.colorAxis[0].update({
-				dataClasses:[{
-					name:that.translate.instant('Ниско рангирани'),
-					to: 16,
-					color: "#B40013",
 
-				}, {
-					name:that.translate.instant('Средно рангирани'),
-					from: 17,
-					to: 38,
-					color: "#F19722",
+		that.chart.colorAxis[0].update({
+			dataClasses:[{
+				color: "#B40013",
+				from:0,
+				to: 50,
+				name:that.translate.instant('Ниска оценка')
+			}, {
+				color: "#F19722",
+				from: 51,
+				to: 74,
+				name:that.translate.instant('Средна оценка')
+			}, {
+				color: '#F2BE54',
+				from: 75,
+				to:100,
+				name:that.translate.instant('Висока оценка')
 
-				}, {
-					name:that.translate.instant('Високо рангирани'),
-					from: 39,
-					color: '#F2BE54'
-				}];
-			});
-
-		}else{
-			
-			//up from 2021
-
-			that.chart.colorAxis[0].update({
-				dataClasses:[{
-					color: "#B40013",
-					from:0,
-					to: 50,
-					name:that.translate.instant('Ниско рангирани')
-				}, {
-					color: "#F19722",
-					from: 51,
-					to: 74,
-					name:that.translate.instant('Средно рангирани')
-				}, {
-					color: '#F2BE54',
-					from: 75,
-					to:100,
-					name:that.translate.instant('Високо рангирани')
-
-				}];	
-			});
-		}
+			}]
+		});
 
 		
-		this.service.getDefaultGrades(elem).subscribe((a:any)=>{
+		var listener=this.service.getDefaultGrades(elem).subscribe((a:any)=>{
 			a.forEach(function (mun) {
 				that.defaultData.push([mun.key,Number(mun.val)]);
 			});
+			listener.unsubscribe();
 		});
 
 		that.chart.series[0].setData(that.defaultData);
 
 		// that.defaultData=[];
-		that.domenMap=[];
+		//that.domenMap=[];
 
 	}
 
@@ -376,10 +352,10 @@ export class HomeComponent implements OnInit{
 	getDomenId(id){
 		var that=this;
 		var rankData=[];
+		var gradeData=[];
 		var domenMap=[];
 		this.selectedDomen = id;
-		that.dataClasses=[];
-		//console.log(that.chart.colorAxis[0].dataClasses=[]);
+		this.dataClasses=[];
 
 		document.getElementById('defaultIndex').setAttribute('class',' ');
 		this.serviceDomen.getDomen(id).subscribe(a=>{
@@ -387,178 +363,26 @@ export class HomeComponent implements OnInit{
 			this.name=a;
 		});
 		this.domenMapData.forEach(function(v){
+			
 			for(var domeniKey in v.domeni){
 				if(domeniKey===id){
 					for(var objects in v.domeni[domeniKey]){
-						for(var rank in v.domeni[domeniKey].columns){
-							if(rank==='1rank'){
-								rankData=v.domeni[domeniKey].columns[rank].columnValue;
+						for(var grade in v.domeni[domeniKey].columns){
+							if(grade==='2grade'){
+								gradeData=v.domeni[domeniKey].columns[grade].columnValue;
 							}
 						}
 					}
 				}
-			}							
-			domenMap.push([v.key, rankData]);
+			}	
+
+
+			domenMap.push([v.key, gradeData]);
+			console.log(domenMap);
 		});
 		if(domenMap.length===81){
-			that.chart.series[0].setData(domenMap);
 			/*ColorAxis - бои како оцени*/
-			/*first domen*/
-
-			if(id==='-LQsYG2Wf30xOMNPuxeJ'){
-
-				if(this.lastYear=="2016"){
-					that.chart.colorAxis[0].update({
-						dataClasses:[{
-							from:64,
-							to: 81,
-							color: '#B40013',
-							name:that.translate.instant('Ниско рангирани')
-						}, {
-							from: 18,
-							to: 63,
-							color: '#F19722',
-							name:that.translate.instant('Средно рангирани')
-						},{
-							from: 1,
-							to:17,
-							color: '#F2BE54',
-							name:that.translate.instant('Високо рангирани'),
-
-						}]
-					});
-
-				}else{
-
-					that.chart.colorAxis[0].update({
-						dataClasses:[{
-							name:that.translate.instant('Ниско рангирани'),
-							color: "#B40013",
-							from:0,
-							to: 50,
-						}, {
-							name:that.translate.instant('Средно рангирани'),
-							color: "#F19722",
-							from: 51,
-							to: 74
-						}, {
-							name:that.translate.instant('Високо рангирани'),
-							color: '#F2BE54',
-							from: 75,
-							to:81
-
-						}],
-					});
-
-				}
-				that.chart.series[0].setData(domenMap);
-			}
-
-			/*second domen*/
-			else if(id==='-LQsYSYceSCpupl-VqtH'){
-				if(this.lastYear=="2016"){
-					that.chart.colorAxis[0].update({
-						dataClasses:[
-						{
-							from:59,
-							to: 81,
-							color: '#B40013',
-							name:that.translate.instant('Ниско рангирани')
-						},{
-							from: 19,
-							to: 38,
-							color: '#F19722',
-							name:that.translate.instant('Средно рангирани')
-						},{
-							from: 1,
-							to:18,
-							color: '#F2BE54',
-							name:that.translate.instant('Високо рангирани'),
-
-						}]
-					});
-
-				}else{
-
-					that.chart.colorAxis[0].update({
-						dataClasses:[{
-							name:that.translate.instant('Ниско рангирани'),
-							color: "#B40013",
-							from:0,
-							to: 50
-
-						}, {
-							name:that.translate.instant('Средно рангирани'),
-							color: "#F19722",
-							from: 51,
-							to: 74
-
-
-						}, {
-							name:that.translate.instant('Високо рангирани'),
-							color: '#F2BE54',
-							from: 75,
-							to:81
-
-						}],
-					});
-
-
-					that.chart.series[0].setData(domenMap);
-				}
-			}
-			/*third domen*/
-			else{
-
-				if(this.lastYear=="2016"){
-					that.chart.colorAxis[0].update({
-						dataClasses:[{
-							from: 55,
-							to:81,
-							color: '#B40013',
-							name:that.translate.instant('Ниско рангирани')
-						},{
-							from: 17,
-							to: 54,
-							color: '#F19722',
-							name:that.translate.instant('Средно рангирани')
-						},{
-							from: 1,
-							to:16,
-							color: '#F2BE54',
-							name:that.translate.instant('Високо рангирани'),
-
-						} ]
-					});
-
-				}else{
-
-					that.chart.colorAxis[0].update({
-						dataClasses:[{
-							name:that.translate.instant('Ниско рангирани'),
-							color: "#B40013",
-							from:0,
-							to: 50
-
-						}, {
-							name:that.translate.instant('Средно рангирани'),
-							color: "#F19722",
-							from: 51,
-							to: 74
-
-
-						}, {
-							name:that.translate.instant('Високо рангирани'),
-							color: '#F2BE54',
-							from: 75,
-							to:81
-
-						}],
-					});
-
-					that.chart.series[0].setData(domenMap);
-				}
-			}
+			that.chart.series[0].setData(domenMap);
 
 		}else{
 			that.chart.series[0].setData(that.newData);
@@ -600,7 +424,7 @@ export class HomeComponent implements OnInit{
 	/*onInit - get domen data*/
 	getDomen(year){
 		var that=this;
-		this.service.getDomenId(year).take(1).subscribe(domen=>{
+		var listener=this.service.getDomenId(year).take(1).subscribe(domen=>{
 
 			domen.forEach(function(n){
 				that.service.getRank(that.lastYear,n.key).subscribe(domeni=>{
@@ -613,7 +437,11 @@ export class HomeComponent implements OnInit{
 					}
 				})
 			});
+
+			listener.unsubscribe()
 		});
+		
+
 
 	}
 

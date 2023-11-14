@@ -6,12 +6,9 @@
       <p class="orangeText">{{"technical_terms"|translate}}</p>
       <div class="indi">
         <span style="font-family: ArsenalB" class="technic"> <i class="fas fa-caret-right" style="color:orange"></i>{{"first_m"|translate}}</span><br>
-        <div>{{"first_m_text"|translate}}</div>
+        <div [innerHTML]="'first_m_text'|translate"></div>
       </div>
-      <div class="indi">
-        <span style="font-family: ArsenalB" class="technic"> <i class="fas fa-caret-right" style="color:orange"></i>{{"second_m"|translate}}</span><br>
-        <div>{{"second_m_text"|translate}}</div>
-      </div>
+      
       <div class="indi">
         <span style="font-family: ArsenalB" class="technic"> <i class="fas fa-caret-right" style="color:orange"></i> {{"indicators"|translate}}</span><br>
         <div>{{"indicators_text"|translate}}</div>
@@ -34,7 +31,7 @@
       </div>
       <div class="indi">
         <span style="font-family: ArsenalB" > <i class="fas fa-caret-right" style="color:orange"></i> {{"admin_data"|translate}}</span><br>
-        <div >{{"admin_data_text"|translate}}</div>
+        <div [innerHtml]="'admin_data_text'|translate"></div>
       </div>
       <div class="indi">
         <span style="font-family: ArsenalB" > <i class="fas fa-caret-right" style="color:orange"></i> {{"input_var"|translate}}</span><br>
@@ -45,15 +42,24 @@
       <p class="orangeText">{{"domains"|translate}}</p>
       <div class="indi" id="open_domen_indicator0">
         <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator0')"><i class="fas fa-caret-right" style="color:orange"></i>{{"gender_gap"|translate}}</span><br>
-        <div id="domen_indicator0" class="contentDictionary closeDictionary">{{"gender_gap_text"|translate}}</div>
+        <div id="domen_indicator0" class="contentDictionary closeDictionary">
+        <span [innerHtml]="'gender_gap_text'|translate"></span>
+
+        </div>
       </div>
       <div class="indi" id="open_domen_indicator1">
         <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator1')"><i class="fas fa-caret-right" style="color:orange"></i>{{"enabling_conditions"|translate}} </span><br>
-        <div id="domen_indicator1" class="contentDictionary closeDictionary">{{"enabling_conditions_text"|translate}}</div>
+        <div id="domen_indicator1" class="contentDictionary closeDictionary">
+        <span [innerHtml]="'enabling_conditions_text'|translate"></span>
+
+        </div>
       </div>
       <div class="indi" id="open_domen_indicator2">
         <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator2')"><i class="fas fa-caret-right" style="color:orange"></i> {{"gender_responsive_mun"|translate}}</span><br>
-        <div id="domen_indicator2" class="contentDictionary closeDictionary">{{"gender_responsive_mun_text"|translate}}</div>
+        <div id="domen_indicator2" class="contentDictionary closeDictionary">
+        <span [innerHtml]="'gender_responsive_mun_text'|translate"></span>
+
+        </div>
       </div>
     </div>
     <div class="dictionary">
@@ -79,14 +85,7 @@
         <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator0sub_indicator7')"><i class="fas fa-caret-right" style="color:orange"></i>  {{"amount_pension"|translate}}</span><br>
         <div id="domen_indicator0sub_indicator7" class="contentDictionary closeDictionary">{{"amount_pension_text"|translate}} </div>
       </div>
-      <div class="indi" id="open_domen_indicator0sub_indicator8">
-        <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator0sub_indicator8')"><i class="fas fa-caret-right" style="color:orange"></i>  {{"ownership_facilities"|translate}} </span><br>
-        <div id="domen_indicator0sub_indicator8" class="contentDictionary closeDictionary">{{"ownership_facilities_text"|translate}}</div>
-      </div>
-      <div class="indi" id="open_domen_indicator0sub_indicator9">
-        <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator0sub_indicator9')"><i class="fas fa-caret-right" style="color:orange"></i> {{"ownership_land"|translate}}</span><br>
-        <div id="domen_indicator0sub_indicator9" class="contentDictionary closeDictionary">{{"ownership_land_text"|translate}}</div>
-      </div>
+      
       <div class="indi" id="open_domen_indicator0sub_indicator10">
         <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator0sub_indicator10')"><i class="fas fa-caret-right" style="color:orange"></i> {{"participantion_mun_council"|translate}}</span><br>
         <div id="domen_indicator0sub_indicator10" class="contentDictionary closeDictionary">{{"participantion_mun_council_text"|translate}}</div>
@@ -107,10 +106,7 @@
         <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator1sub_indicator8')"><i class="fas fa-caret-right" style="color:orange"></i> {{"obstetrician_gynecologist"|translate}}</span><br>
         <div id="domen_indicator1sub_indicator8" class="contentDictionary closeDictionary"> {{"obstetrician_gynecologist_text"|translate}}</div>
       </div>
-      <div class="indi" id="open_domen_indicator1sub_indicator12">
-        <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator1sub_indicator12')"><i class="fas fa-caret-right" style="color:orange"></i> {{"adult_facilities"|translate}}</span><br>
-        <div id="domen_indicator1sub_indicator12" class="contentDictionary closeDictionary">{{"adult_facilities_text"|translate}}</div>
-      </div>
+      
       <div class="indi" id="open_domen_indicator2sub_indicator0">
         <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator2sub_indicator0')"><i class="fas fa-caret-right" style="color:orange"></i> {{"coordinator_equal_op_man_wom"|translate}}</span><br>
         <div id="domen_indicator2sub_indicator0" class="contentDictionary closeDictionary">{{"coordinator_equal_op_man_wom_text"|translate}}</div>
@@ -121,12 +117,9 @@
       </div>
       <div class="indi" id="open_domen_indicator2sub_indicator2">
         <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator2sub_indicator2')"><i class="fas fa-caret-right" style="color:orange"></i> {{"annoual_report_submitted_mtsp"|translate}}</span><br>
-        <div id="domen_indicator2sub_indicator2" class="contentDictionary closeDictionary">{{"annoual_report_submitted_mtsp"|translate}}</div>
+        <div id="domen_indicator2sub_indicator2" class="contentDictionary closeDictionary">{{"annoual_report_submitted_mtsp_text"|translate}}</div>
       </div>
-      <div class="indi" id="open_domen_indicator2sub_indicator3">
-        <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator2sub_indicator3')"><i class="fas fa-caret-right" style="color:orange"></i> {{"eu_charter_man_wom_signed_loc"|translate}}</span><br>
-        <div id="domen_indicator2sub_indicator3" class="contentDictionary closeDictionary"> {{"eu_charter_man_wom_signed_loc_text"|translate}}</div>
-      </div>
+      
       <div class="indi" id="open_domen_indicator2sub_indicator4">
         <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator2sub_indicator4')"><i class="fas fa-caret-right" style="color:orange"></i> {{"doc_special_measures_ge"|translate}}</span><br>
         <div id="domen_indicator2sub_indicator4" class="contentDictionary closeDictionary">{{"doc_special_measures_ge_text"|translate}}</div>
@@ -145,24 +138,27 @@
       </div>
     </div>
     <div class="dictionary">
-      <p class="orangeText">{{"data_not_included_ge_index"|translate}}</p>
-      <div class="indi" id="open_domen_indicator0sub_indicator2">
-        <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator0sub_indicator2')"><i class="fas fa-caret-right" style="color:orange"></i> ** {{"unemployed_active_job_seekers"|translate}}</span><br>
-        <div id="domen_indicator0sub_indicator2" class="contentDictionary closeDictionary">{{"unemployed_active_job_seekers_text"|translate}}</div>
+                <p class="orangeText">{{"data_not_included_ge_index"|translate}}</p>
+
+      <div class="indi" id="open_domen_indicator0sub_indicator8">
+        <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator0sub_indicator8')"><i class="fas fa-caret-right" style="color:orange"></i>  {{"ownership_facilities"|translate}} </span><br>
+        <div id="domen_indicator0sub_indicator8" class="contentDictionary closeDictionary">{{"ownership_facilities_text"|translate}}</div>
       </div>
-      <div class="indi" id="open_domen_indicator0sub_indicator3">
-        <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator0sub_indicator3')"><i class="fas fa-caret-right" style="color:orange"></i> ** {{"beneficiaries_monetary"|translate}}</span><br>
-        <div id="domen_indicator0sub_indicator3" class="contentDictionary closeDictionary">{{"beneficiaries_monetary_text"|translate}}</div>
+      <div class="indi" id="open_domen_indicator0sub_indicator9">
+        <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator0sub_indicator9')"><i class="fas fa-caret-right" style="color:orange"></i> {{"ownership_land"|translate}}</span><br>
+        <div id="domen_indicator0sub_indicator9" class="contentDictionary closeDictionary">{{"ownership_land_text"|translate}}</div>
       </div>
-      <div class="indi" id="open_domen_indicator0sub_indicator4">
-        <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator0sub_indicator4')"><i class="fas fa-caret-right" style="color:orange"></i> ** {{"unemployed_disabled_person"|translate}}</span><br>
-        <div id="domen_indicator0sub_indicator4" class="contentDictionary closeDictionary">{{"unemployed_disabled_person_text"|translate}}</div>
+      <div class="indi" id="open_domen_indicator2sub_indicator3">
+        <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator2sub_indicator3')"><i class="fas fa-caret-right" style="color:orange"></i> {{"eu_charter_man_wom_signed_loc"|translate}}</span><br>
+        <div id="domen_indicator2sub_indicator3" class="contentDictionary closeDictionary"> {{"eu_charter_man_wom_signed_loc_text"|translate}}</div>
       </div>
-      <div class="indi" id="open_domen_indicator1sub_indicator2">
-        <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator1sub_indicator2')"><i class="fas fa-caret-right" style="color:orange"></i> ** {{"children_not_admitted_kindergarden"|translate}}</span><br>
-        <div id="domen_indicator1sub_indicator2" class="contentDictionary closeDictionary">{{"children_not_admitted_kindergarden_text"|translate}}</div>
+      <p class="orangeText">{{"data_excluded_in_21"|translate}}</p>
+      <div class="indi" id="open_domen_indicator1sub_indicator12">
+        <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator1sub_indicator12')"><i class="fas fa-caret-right" style="color:orange"></i> {{"adult_facilities"|translate}}</span><br>
+        <div id="domen_indicator1sub_indicator12" class="contentDictionary closeDictionary">{{"adult_facilities_text"|translate}}</div>
       </div>
-      <div class="indi" id="open_domen_indicator1sub_indicator3">
+      <p class="orangeText">{{"data_not_included_but_are_in_mun"|translate}}</p>
+       <div class="indi" id="open_domen_indicator1sub_indicator3">
         <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator1sub_indicator3')"><i class="fas fa-caret-right" style="color:orange"></i> ** {{"current_kindergarden_capacity"|translate}}</span><br>
         <div id="domen_indicator1sub_indicator3" class="contentDictionary closeDictionary">{{"current_kindergarden_capacity_text"|translate}}</div>
       </div>
@@ -170,23 +166,9 @@
         <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator1sub_indicator6')"><i class="fas fa-caret-right" style="color:orange"></i> ** {{"private_kindergardens"|translate}}</span><br>
         <div id="domen_indicator1sub_indicator6" class="contentDictionary closeDictionary">{{"private_kindergardens_text"|translate}}</div>
       </div>
-      <div class="indi" id="open_domen_indicator1sub_indicator9">
-        <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator1sub_indicator9')"><i class="fas fa-caret-right" style="color:orange"></i> ** {{"places_women_helth_care"|translate}}</span><br>
-        <div id="domen_indicator1sub_indicator9" class="contentDictionary closeDictionary">{{"places_women_helth_care_text"|translate}}</div>
-      </div>
-      <div class="indi" id="open_domen_indicator1sub_indicator10">
-        <span style="font-family: ArsenalB" class="indicator" (click)="dictionaryName($event, 'domen_indicator1sub_indicator10')"><i class="fas fa-caret-right" style="color:orange"></i> ** {{"women_health_care_specialist"|translate}}</span><br>
-        <div id="domen_indicator1sub_indicator10" class="contentDictionary closeDictionary">{{"women_health_care_specialist_text"|translate}}</div>
-      </div>
-        <div class="indi" id="open_domen_indicatorSidebar1" >
-        <span style="font-family: ArsenalB" class="indicator"  (click)="dictionaryName($event, 'domen_indicatorSidebar1')"><i class="fas fa-caret-right" style="color:orange"></i> {{"infant_mortality_rate"|translate}} </span><br>
-        <div id="domen_indicatorSidebar1" class="contentDictionary closeDictionary"> {{"infant_mortality_rate_text"|translate}}</div>
-      </div>
-      <div class="indi" id="open_domen_indicatorSidebar2">
-        <span style="font-family: ArsenalB" class="indicator"  (click)="dictionaryName($event, 'domen_indicatorSidebar2')"><i class="fas fa-caret-right" style="color:orange"></i> {{"maternal_mortality_rate"|translate}} </span><br>
-        <div  id="domen_indicatorSidebar2"  class="contentDictionary closeDictionary">{{"maternal_mortality_rate_text"|translate}}
-        </div>
-      </div>
+
+
+
     </div>
   </div>
 </div>

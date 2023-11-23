@@ -315,6 +315,7 @@
 	"Стапка":"Rate",
 	"tooltip_municipality_map":"Map reading data",
 	"policy_brief":"Policy Brief: Gender Equality on the Local Level in North Macedonia",
+	"policy_brief_link":"./assets/policy_brief.pdf",
 	"data_not_included":"** the data are not included in the calculation of the index",
 	"Регистрирани годишни вработувања во <a href='https://2016.rodovindeks.mk/' target='_blank'>2016</a> ":"Registered annual employments in the year <a href='https://2016.rodovindeks.mk/' target='_blank'>2016</a>",
 	"Вработени лица":"Employed persons",
